@@ -15,10 +15,18 @@ run/main_scene="uid://b34o70nnhu3li"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Database="*uid://clpqkoratpot1"
+
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
 
 [physics]
 
