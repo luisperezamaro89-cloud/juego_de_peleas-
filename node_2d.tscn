@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://fb4vehaxil1w" path="res://fondo/694861f9e5ccdcc7906f678c990395c3.jpg" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://ceoca2imt1krw" path="res://script/node_2d.gd" id="1_0hol4"]
 [ext_resource type="PackedScene" uid="uid://y8ih3f2eqpwl" path="res://jugadores/player_1.tscn" id="2_epypp"]
-[ext_resource type="Script" uid="uid://blx8nwoyqkjag" path="res://jugadores/player_1_testeo.gd" id="4_kdubu"]
 [ext_resource type="PackedScene" uid="uid://dj6yeng6igspc" path="res://uix/healthbar/healthbar.tscn" id="4_q6r6c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
@@ -3402,11 +3401,6 @@ layer_1/tile_data = PackedInt32Array(-589841, 1376256, 24, -524305, 1376256, 25,
 [node name="player_1" parent="." unique_id=326816759 instance=ExtResource("2_epypp")]
 position = Vector2(-118, 21)
 scale = Vector2(0.03, 0.03)
-
-[node name="player 1" parent="." unique_id=225489856 instance=ExtResource("2_epypp")]
-position = Vector2(110.999985, 20.000002)
-scale = Vector2(0.03, 0.03)
-script = ExtResource("4_kdubu")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1924857379]
 scale = Vector2(0.29999998, 0.29999998)
