@@ -16,8 +16,8 @@ func actualizar(direccion):
 		return "Golpear"
 
 	# Bloquear
-	if Input.is_key_pressed(player.bloquear):
-		return "Bloquear"
+	if Input.is_key_pressed(player.bloqueando):
+		return "bloqueando"
 
 #caminar
 	if direccion != 0:
