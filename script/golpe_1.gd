@@ -3,69 +3,53 @@ extends Node
 var player
 var sprite
 
-var golpe_actual = 1
-var puede_combar = false
-var ya_golpeo = false
-
-var daño_golpe_1 = 10
-var daño_golpe_2 = 15
-
 
 func entrar():
 
-	player.velocity.x = 0
+	# Asegurarnos de que todas las HitBox estén apagadas
+	player.desactivar_hitboxes()
 
-	golpe_actual = 1
-	puede_combar = false
-	ya_golpeo = false
+	# Elegir animación según la dirección del ataque
+	match player.direccion_ataque:
 
-	player.hitbox.disabled = false
+		"arriba":
+			sprite.play("golpear_1")
 
-	sprite.play("golpear_1")
+		"abajo":
+			sprite.play("golpear_2")
+
+		"delante":
+			sprite.play("golpear_1")
 
 
 func actualizar(_direccion):
 
+	# Mientras golpea, no se mueve
 	player.velocity.x = 0
 
-	# Detectar UNA NUEVA pulsación
-	if Input.is_action_just_pressed("golpear"):
-		puede_combar = true
-
-	# Si la animación terminó
+	# Cuando termina la animación
 	if not sprite.is_playing():
 
-		# Desactivar HitBox
-		player.hitbox.disabled = true
+		# Apagar todas las HitBox
+		player.desactivar_hitboxes()
 
-		# Si estamos en el último golpe
-		if golpe_actual >= 2:
-			golpe_actual = 1
-			return "Idle"
-
-		# Si no se hizo otro golpe
-		if not puede_combar:
-			golpe_actual = 1
-			return "Idle"
-
-		# Pasar al siguiente golpe
-		golpe_actual += 1
-		puede_combar = false
-		ya_golpeo = false
-
-		player.hitbox.disabled = false
-
-		sprite.play("golpear_" + str(golpe_actual))
+		# Volver a idle
+		return "Idle"
 
 	return ""
 
 
 func obtener_daño():
 
-	if golpe_actual == 1:
-		return daño_golpe_1
+	match player.direccion_ataque:
 
-	if golpe_actual == 2:
-		return daño_golpe_2
+		"arriba":
+			return 10
+
+		"abajo":
+			return 10
+
+		"delante":
+			return 10
 
 	return 0

@@ -38,7 +38,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StateMachine/Golpear/HitBox/HitBox collision:disabled")
+tracks/1/path = NodePath("StateMachine/Golpear/HitBox_delante/collision:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -54,7 +54,7 @@ step = 0.055555556
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("StateMachine/Golpear/HitBox/HitBox collision:disabled")
+tracks/0/path = NodePath("StateMachine/Golpear/HitBox_delante/collision:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -70,7 +70,7 @@ step = 0.055555556
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("StateMachine/Golpear/HitBox/HitBox collision:disabled")
+tracks/0/path = NodePath("StateMachine/Golpear/HitBox_delante/collision:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -438,6 +438,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
 size = Vector2(40.59308, 183.65735)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njqwk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wi6ju"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1lj4"]
 size = Vector2(52.08705, 170.67429)
 
@@ -456,7 +460,7 @@ speed_scale = 2.187
 position = Vector2(6.500122, 7.500122)
 scale = Vector2(2.7010562, 2.7010562)
 sprite_frames = SubResource("SpriteFrames_b1lj4")
-animation = &"daño"
+animation = &"golpear_1"
 autoplay = "idle"
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=993402822]
@@ -477,12 +481,12 @@ script = ExtResource("13_rpve8")
 [node name="Golpear" type="Node2D" parent="StateMachine" unique_id=1169133809]
 script = ExtResource("14_vc7ms")
 
-[node name="HitBox" type="Area2D" parent="StateMachine/Golpear" unique_id=953118780]
+[node name="HitBox_delante" type="Area2D" parent="StateMachine/Golpear" unique_id=953118780]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("31_s2w3r")
 
-[node name="HitBox collision" type="CollisionShape2D" parent="StateMachine/Golpear/HitBox" unique_id=1732204681]
+[node name="collision" type="CollisionShape2D" parent="StateMachine/Golpear/HitBox_delante" unique_id=1732204681]
 light_mask = 4
 visibility_layer = 2
 position = Vector2(426.99997, -63.50003)
@@ -491,7 +495,17 @@ shape = SubResource("RectangleShape2D_13qdw")
 disabled = true
 debug_color = Color(0.8016712, 0.23242167, 0.22847077, 0.41960785)
 
-[node name="daño" type="Node2D" parent="StateMachine" unique_id=13573949]
+[node name="hitbox_arriba" type="Area2D" parent="StateMachine/Golpear" unique_id=1522108594]
+
+[node name="collision" type="CollisionShape2D" parent="StateMachine/Golpear/hitbox_arriba" unique_id=1601353001]
+shape = SubResource("RectangleShape2D_njqwk")
+
+[node name="hitbox_abajo" type="Area2D" parent="StateMachine/Golpear" unique_id=1434881098]
+
+[node name="collision" type="CollisionShape2D" parent="StateMachine/Golpear/hitbox_abajo" unique_id=446408359]
+shape = SubResource("RectangleShape2D_wi6ju")
+
+[node name="Daño" type="Node2D" parent="StateMachine" unique_id=13573949]
 script = ExtResource("15_kh3kc")
 
 [node name="Bloquear" type="Node2D" parent="StateMachine" unique_id=1159952335]
@@ -506,4 +520,4 @@ position = Vector2(-282.00003, 403.00003)
 scale = Vector2(14.015, 14.015)
 shape = SubResource("RectangleShape2D_b1lj4")
 
-[connection signal="area_entered" from="StateMachine/Golpear/HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_entered" from="StateMachine/Golpear/HitBox_delante" to="." method="_on_hit_box_area_entered"]

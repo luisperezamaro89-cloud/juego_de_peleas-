@@ -9,7 +9,10 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D 
 @onready var state_machine = $StateMachine 
-@onready var hitbox = $"StateMachine/Golpear/HitBox/HitBox collision"
+@onready var hitbox_delante = $"StateMachine/Golpear/HitBox_delante/collision"
+@onready var hitbox_arriba = $"StateMachine/Golpear/hitbox_arriba/collision"
+@onready var hitbox_abajo = $"StateMachine/Golpear/hitbox_abajo/collision"
+
 
 var bloqueando: bool = false
 var health_bar: TextureProgressBar
@@ -19,11 +22,13 @@ var derecha
 var arriba 
 var abajo 
 var golpear
-var bloquear 
+var direccion_ataque = "delante"
  
 func _ready(): 
 	
-	hitbox.disabled = true
+	hitbox_delante.disabled = true
+	hitbox_arriba.disabled = true
+	hitbox_abajo.disabled = true
 	
 	if jugador == 1: 
 		izquierda = KEY_A 
@@ -31,7 +36,7 @@ func _ready():
 		arriba = KEY_W 
 		abajo = KEY_S 
 		golpear = KEY_F 
-		bloquear = KEY_G
+		bloqueando = KEY_G
  
 	else: 
 		izquierda = KEY_LEFT 
@@ -39,7 +44,7 @@ func _ready():
 		arriba = KEY_UP 
 		abajo = KEY_DOWN 
 		golpear = KEY_N 
-		bloquear = KEY_M
+		bloqueando = KEY_M
 
 
 func _physics_process(delta): 
@@ -60,6 +65,7 @@ func _physics_process(delta):
 		direccion += 1 
  
 	velocity.x = direccion * velocidad 
+	
  
 	# State Machine
 	state_machine.actualizar(direccion) 
@@ -67,20 +73,47 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _on_hit_box_area_entered(area: Area2D) -> void:
+func _input(event):
 
-	if area.name == "Hurtbox":
+	if event is InputEventKey and event.pressed and not event.echo:
 
-		print("¡Golpe conectado!")
+		if event.keycode == golpear:
 
-		var objetivo = area.get_parent()
+			if Input.is_key_pressed(arriba):
+				direccion_ataque = "arriba"
 
-		print("OBJETIVO: ", objetivo)
-		print("TIENE RECIBIR DAÑO: ", objetivo.has_method("recibir_daño"))
+			elif Input.is_key_pressed(abajo):
+				direccion_ataque = "abajo"
 
-		if objetivo.has_method("recibir_daño"):
-			objetivo.recibir_daño(10)
+			else:
+				direccion_ataque = "delante"
 
+			state_machine.cambiar_estado("Golpear")
+
+func activar_hitbox():
+
+	hitbox_arriba.disabled = true
+	hitbox_abajo.disabled = true
+	hitbox_delante.disabled = true
+
+	match direccion_ataque:
+
+		"arriba":
+			hitbox_arriba.disabled = false
+
+		"abajo":
+			hitbox_abajo.disabled = false
+
+		"delante":
+			hitbox_delante.disabled = false
+			
+func desactivar_hitboxes():
+
+	hitbox_arriba.disabled = true
+	hitbox_abajo.disabled = true
+	hitbox_delante.disabled = true
+	
+	
 
 func recibir_daño(cantidad: int):
 
