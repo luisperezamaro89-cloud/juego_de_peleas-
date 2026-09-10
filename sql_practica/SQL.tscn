@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://dd0xe7ypg57s0"]
+
+[ext_resource type="Script" uid="uid://dl4ufygp3ocpk" path="res://SQL.gd" id="1_dj6ja"]
+
+[node name="Control" type="Control" unique_id=521656627]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dj6ja")
+
+[node name="CrearTabla" type="Button" parent="." unique_id=1289785977]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 17.0
+offset_right = 223.0
+offset_bottom = 84.0
+text = "Crear Tabla"
+
+[node name="InsertarJugador" type="Button" parent="." unique_id=2114173974]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 107.0
+offset_right = 223.0
+offset_bottom = 174.0
+text = "Insertar Jugador"
+
+[node name="VerJugadores" type="Button" parent="." unique_id=2114463720]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 221.0
+offset_right = 217.0
+offset_bottom = 288.0
+text = "Ver Jugadores"
+
+[node name="ActualizarJugador" type="Button" parent="." unique_id=1648351365]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 322.0
+offset_right = 218.0
+offset_bottom = 389.0
+text = "Actualizar Jugador"
+
+[node name="BorrarJugador" type="Button" parent="." unique_id=1943070716]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 412.0
+offset_right = 219.0
+offset_bottom = 479.0
+text = "Borrar Jugador"
+
+[node name="ConsultaPersonalizada" type="Button" parent="." unique_id=2027794488]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 533.0
+offset_right = 239.0
+offset_bottom = 600.0
+text = "Consulta Personalizada"
+
+[node name="Label" type="Label" parent="." unique_id=267123223]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 38.0
+offset_right = 356.0
+offset_bottom = 76.0
+text = "Nombre"
+
+[node name="Nombre" type="TextEdit" parent="." unique_id=170206727]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 38.0
+offset_right = 631.0
+offset_bottom = 75.0
+
+[node name="Label2" type="Label" parent="." unique_id=237925067]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 117.0
+offset_right = 353.0
+offset_bottom = 155.0
+text = "Puntuación"
+
+[node name="Puntuación" type="TextEdit" parent="." unique_id=1299712829]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 113.0
+offset_right = 630.0
+offset_bottom = 150.0
+
+[connection signal="button_down" from="CrearTabla" to="." method="_on_crear_tabla_button_down"]
+[connection signal="button_down" from="InsertarJugador" to="." method="_on_insertar_jugador_button_down"]
+[connection signal="button_down" from="VerJugadores" to="." method="_on_ver_jugadores_button_down"]
+[connection signal="button_down" from="ActualizarJugador" to="." method="_on_actualizar_jugador_button_down"]
+[connection signal="button_down" from="BorrarJugador" to="." method="_on_borrar_jugador_button_down"]
+[connection signal="button_down" from="ConsultaPersonalizada" to="." method="_on_consulta_personalizada_button_down"]
