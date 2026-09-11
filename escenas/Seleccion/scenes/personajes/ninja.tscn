@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://1uegq1nnu45q"]
+
+[ext_resource type="Texture2D" uid="uid://cryj4e14bh8mp" path="res://assets/sprites/caminata/fotograma0000.png" id="1_3u65o"]
+[ext_resource type="Texture2D" uid="uid://wp222rdm2tif" path="res://assets/sprites/caminata/fotograma0001.png" id="2_vrq38"]
+[ext_resource type="Texture2D" uid="uid://cxwwq8bkwougy" path="res://assets/sprites/caminata/fotograma0002.png" id="3_htqv3"]
+[ext_resource type="Texture2D" uid="uid://cdejiada3awxd" path="res://assets/sprites/caminata/fotograma0003.png" id="4_6pwtf"]
+[ext_resource type="Texture2D" uid="uid://bpfkbetw4hu2c" path="res://assets/sprites/idle/fotograma0000.png" id="5_ynexx"]
+[ext_resource type="Texture2D" uid="uid://by3l56t0gntj0" path="res://assets/sprites/idle/fotograma0001.png" id="6_6ag46"]
+[ext_resource type="Texture2D" uid="uid://cduqlqaxeuwqa" path="res://assets/sprites/idle/fotograma0002.png" id="7_uvvip"]
+[ext_resource type="Texture2D" uid="uid://ciiaryi3ljx2l" path="res://assets/sprites/idle/fotograma0003.png" id="8_hnsxi"]
+[ext_resource type="Texture2D" uid="uid://bqtgdspb210og" path="res://assets/sprites/idle/fotograma0004.png" id="9_q22yj"]
+[ext_resource type="Texture2D" uid="uid://bcfajm1ltfwqu" path="res://assets/sprites/idle/fotograma0005.png" id="10_br5i7"]
+[ext_resource type="Texture2D" uid="uid://boglbdmu3lbgf" path="res://assets/sprites/idle/fotograma0006.png" id="11_u01ub"]
+[ext_resource type="Texture2D" uid="uid://den47qa71tshs" path="res://assets/sprites/salto/fotograma0000.png" id="12_mpwna"]
+[ext_resource type="Texture2D" uid="uid://1quusl6whgf2" path="res://assets/sprites/salto/fotograma0001.png" id="13_6vsik"]
+[ext_resource type="Texture2D" uid="uid://0oapw7rt2kei" path="res://assets/sprites/salto/fotograma0002.png" id="14_tls4s"]
+[ext_resource type="Texture2D" uid="uid://btt3cb72l5bwu" path="res://assets/sprites/salto/fotograma0003.png" id="15_e03vd"]
+[ext_resource type="Texture2D" uid="uid://dcwrwckmn8cm6" path="res://assets/sprites/salto/fotograma0004.png" id="16_561ow"]
+[ext_resource type="Texture2D" uid="uid://d1jpuyhm5kktn" path="res://assets/sprites/salto/fotograma0005.png" id="17_jxo24"]
+[ext_resource type="Texture2D" uid="uid://bgrxkqxbisu8u" path="res://assets/sprites/salto/fotograma0006.png" id="18_18h74"]
+[ext_resource type="Texture2D" uid="uid://dkbiljq4rwgn7" path="res://assets/sprites/salto/fotograma0007.png" id="19_8rdgn"]
+[ext_resource type="Texture2D" uid="uid://d05ogyaedj8ft" path="res://assets/sprites/salto/fotograma0008.png" id="20_4cded"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vlew8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3u65o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vrq38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_htqv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6pwtf")
+}],
+"loop": 1,
+"name": &"caminata",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ynexx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6ag46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uvvip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hnsxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_q22yj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_br5i7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_u01ub")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_mpwna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6vsik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tls4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_e03vd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_561ow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_jxo24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_18h74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8rdgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_4cded")
+}],
+"loop": 1,
+"name": &"salto",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bekt7"]
+radius = 378.0
+height = 2822.0
+
+[node name="Ninja" type="CharacterBody2D" unique_id=2061853265]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1617345214]
+sprite_frames = SubResource("SpriteFrames_vlew8")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=599447743]
+position = Vector2(-221, 220)
+shape = SubResource("CapsuleShape2D_bekt7")

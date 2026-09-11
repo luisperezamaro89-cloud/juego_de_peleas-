@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://b34o70nnhu3li"]
+
+[ext_resource type="Script" uid="uid://brv1fvfdvxbun" path="res://escenas/Menu_Principal/menu_principal.gd" id="1_nngpg"]
+[ext_resource type="Theme" uid="uid://ett3uumdmfl1" path="res://escenas/Menu_Principal/Boton_menu_principal.tres" id="2_skn2h"]
+[ext_resource type="StyleBox" uid="uid://gjeyjoy0rjn3" path="res://escenas/Seleccion/scenes/Estilos_botones/Normal.tres" id="3_nngpg"]
+[ext_resource type="StyleBox" uid="uid://cx2oqjfxdfk2t" path="res://escenas/Seleccion/scenes/Estilos_botones/Pressed.tres" id="4_skn2h"]
+[ext_resource type="StyleBox" uid="uid://bqa7prlpi6o5g" path="res://escenas/Seleccion/scenes/Estilos_botones/hover.tres" id="5_1vakb"]
+[ext_resource type="StyleBox" uid="uid://dl5y0wmu42ax6" path="res://escenas/Seleccion/scenes/Estilos_botones/Focus.tres" id="6_hbxi3"]
+
+[node name="Menu Principal" type="Control" unique_id=491037825]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nngpg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=201683232]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BtnIniciarPartida" type="Button" parent="VBoxContainer" unique_id=844312960]
+layout_mode = 2
+theme = ExtResource("2_skn2h")
+theme_override_styles/normal = ExtResource("3_nngpg")
+theme_override_styles/pressed = ExtResource("4_skn2h")
+theme_override_styles/hover = ExtResource("5_1vakb")
+theme_override_styles/focus = ExtResource("6_hbxi3")
+text = "INICIAR PARTIDA"
+
+[node name="BtnAjustes" type="Button" parent="VBoxContainer" unique_id=617680171]
+layout_mode = 2
+theme = ExtResource("2_skn2h")
+theme_override_styles/normal = ExtResource("3_nngpg")
+theme_override_styles/pressed = ExtResource("4_skn2h")
+theme_override_styles/hover = ExtResource("5_1vakb")
+theme_override_styles/focus = ExtResource("6_hbxi3")
+text = "AJUSTES"
+
+[node name="BtnTop3" type="Button" parent="VBoxContainer" unique_id=1847149901]
+layout_mode = 2
+theme = ExtResource("2_skn2h")
+theme_override_styles/normal = ExtResource("3_nngpg")
+theme_override_styles/pressed = ExtResource("4_skn2h")
+theme_override_styles/hover = ExtResource("5_1vakb")
+theme_override_styles/focus = ExtResource("6_hbxi3")
+text = "TOP 3"
+
+[node name="BtnSalir" type="Button" parent="VBoxContainer" unique_id=1180849548]
+layout_mode = 2
+theme = ExtResource("2_skn2h")
+theme_override_styles/normal = ExtResource("3_nngpg")
+theme_override_styles/pressed = ExtResource("4_skn2h")
+theme_override_styles/hover = ExtResource("5_1vakb")
+theme_override_styles/focus = ExtResource("6_hbxi3")
+text = "SALIR"
+
+[connection signal="pressed" from="VBoxContainer/BtnIniciarPartida" to="." method="_on_btn_iniciar_partida_pressed"]

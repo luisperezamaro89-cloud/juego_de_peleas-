@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://d01ukiwenn2op"]
+
+[ext_resource type="StyleBox" uid="uid://gjeyjoy0rjn3" path="res://escenas/Seleccion/scenes/Estilos_botones/Normal.tres" id="1_mbim7"]
+[ext_resource type="Script" uid="uid://bc4h6emdekib6" path="res://escenas/Seleccion/seleccion_personajes.gd" id="1_phnib"]
+
+[sub_resource type="Theme" id="Theme_hfy2b"]
+
+[sub_resource type="Theme" id="Theme_8hsf3"]
+
+[node name="SeleccionPersonajes" type="Control" unique_id=1053697363]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_phnib")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=630012887]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 3.0
+offset_right = 1132.0
+offset_bottom = 645.0
+theme = SubResource("Theme_hfy2b")
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=417790820]
+layout_mode = 2
+theme = SubResource("Theme_8hsf3")
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="ContenedorJ1" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=479613236]
+layout_mode = 2
+
+[node name="BtnAsesinaJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=573315114]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("1_mbim7")
+text = "ASESINA"
+
+[node name="BtnNinjaJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1705366667]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("1_mbim7")
+text = "NINJA"
+
+[node name="ContenedorJ2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1535375093]
+layout_mode = 2
+
+[node name="BtnAsesinaJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=836550484]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("1_mbim7")
+text = "ASESINA "
+
+[node name="BtnNinjaJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=1786577451]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("1_mbim7")
+text = "NINJA"
+
+[node name="BtnPelear" type="Button" parent="VBoxContainer" unique_id=944690234]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "PELEAR "
+
+[connection signal="pressed" from="VBoxContainer/BtnPelear" to="." method="_on_btn_pelear_pressed"]
