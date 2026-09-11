@@ -13,7 +13,6 @@ config_version=5
 config/name="Juego de Peleas"
 run/main_scene="uid://b34o70nnhu3li"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [autoload]
 

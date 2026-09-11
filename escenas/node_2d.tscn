@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://c4qirt7eahq7g"]
 
-[ext_resource type="Texture2D" uid="uid://fb4vehaxil1w" path="res://fondo/694861f9e5ccdcc7906f678c990395c3.jpg" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://fb4vehaxil1w" path="res://ux pelea/694861f9e5ccdcc7906f678c990395c3.jpg" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://ceoca2imt1krw" path="res://script/node_2d.gd" id="1_0hol4"]
 [ext_resource type="PackedScene" uid="uid://y8ih3f2eqpwl" path="res://jugadores/player_1.tscn" id="2_epypp"]
-[ext_resource type="PackedScene" uid="uid://dj6yeng6igspc" path="res://uix/healthbar/healthbar.tscn" id="4_q6r6c"]
+[ext_resource type="PackedScene" uid="uid://dj6yeng6igspc" path="res://ux pelea/healthbar/healthbar.tscn" id="4_q6r6c"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_0e48y")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fb4vehaxil1w"
-path="res://.godot/imported/694861f9e5ccdcc7906f678c990395c3.jpg-9d4cec0a238869263f7efc6e309fea2f.ctex"
+uid="uid://drktujpywmmr4"
+path="res://.godot/imported/spritesheet golpe.png-c02acf85bb7ba10da007b7c5a8c8d553.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fondo/694861f9e5ccdcc7906f678c990395c3.jpg"
-dest_files=["res://.godot/imported/694861f9e5ccdcc7906f678c990395c3.jpg-9d4cec0a238869263f7efc6e309fea2f.ctex"]
+source_file="res://personajes/personaje 1/sprites/golpe combo/spritesheet golpe.png"
+dest_files=["res://.godot/imported/spritesheet golpe.png-c02acf85bb7ba10da007b7c5a8c8d553.ctex"]
 
 [params]
 

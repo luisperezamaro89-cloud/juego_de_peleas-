@@ -1,21 +1,22 @@
 [gd_scene format=3 uid="uid://y8ih3f2eqpwl"]
 
 [ext_resource type="Script" uid="uid://bei3sysm7dhby" path="res://script/player.gd" id="1_7w5cg"]
-[ext_resource type="Texture2D" uid="uid://dkvy7ga07gb3m" path="res://personaje/personaje 1/sprites/arrodillarse/spritesheet arrodillarse.png" id="2_rpve8"]
-[ext_resource type="Texture2D" uid="uid://bqgoyabhgay30" path="res://personaje/personaje 1/sprites/caminata/spritesheet caminata.png" id="3_xiorn"]
-[ext_resource type="Texture2D" uid="uid://day08prck2l7o" path="res://personaje/personaje 1/sprites/idle/spritesheet golpe.png" id="4_vc7ms"]
-[ext_resource type="Texture2D" uid="uid://bxsd42ykgrny2" path="res://personaje/personaje 1/sprites/salto/spritesheet salto.png" id="5_uy4wb"]
-[ext_resource type="Texture2D" uid="uid://n7xrwp6qmr3e" path="res://personaje/personaje 1/sprites/golpe combo/spritesheet golpe 2.png" id="5_wkwx7"]
+[ext_resource type="Texture2D" uid="uid://dkvy7ga07gb3m" path="res://personajes/personaje 1/sprites/arrodillarse/spritesheet arrodillarse.png" id="2_rpve8"]
+[ext_resource type="Texture2D" uid="uid://bqgoyabhgay30" path="res://personajes/personaje 1/sprites/caminata/spritesheet caminata.png" id="3_xiorn"]
+[ext_resource type="Texture2D" uid="uid://day08prck2l7o" path="res://personajes/personaje 1/sprites/idle/spritesheet golpe.png" id="4_vc7ms"]
+[ext_resource type="Texture2D" uid="uid://bxsd42ykgrny2" path="res://personajes/personaje 1/sprites/salto/spritesheet salto.png" id="5_uy4wb"]
+[ext_resource type="Texture2D" uid="uid://n7xrwp6qmr3e" path="res://personajes/personaje 1/sprites/golpe combo/spritesheet golpe 2.png" id="5_wkwx7"]
 [ext_resource type="Script" uid="uid://bb2mjh805ex84" path="res://script/state_machine.gd" id="9_8clvj"]
 [ext_resource type="Script" uid="uid://bg56gj8lkw0ae" path="res://script/idle.gd" id="10_mslnv"]
 [ext_resource type="Script" uid="uid://bbhg8muinxnp2" path="res://script/caminar.gd" id="11_mslnv"]
 [ext_resource type="Script" uid="uid://bkm4u0wqpfb2a" path="res://script/salto.gd" id="12_nc6ia"]
-[ext_resource type="Texture2D" uid="uid://drktujpywmmr4" path="res://personaje/personaje 1/sprites/golpe combo/spritesheet golpe.png" id="12_p70f6"]
+[ext_resource type="Texture2D" uid="uid://drktujpywmmr4" path="res://personajes/personaje 1/sprites/golpe combo/spritesheet golpe.png" id="12_p70f6"]
 [ext_resource type="Script" uid="uid://dcmf03bqbwkvi" path="res://script/arrodillarse.gd" id="13_rpve8"]
 [ext_resource type="Script" uid="uid://68lsh7tgtwb4" path="res://script/golpe_1.gd" id="14_vc7ms"]
 [ext_resource type="Script" uid="uid://bw8d4mvd852ed" path="res://script/daño.gd" id="15_kh3kc"]
 [ext_resource type="Script" uid="uid://7im6tth6n73s" path="res://script/bloquear.gd" id="16_rbiu2"]
 [ext_resource type="Script" uid="uid://bedgx7ggyv4bc" path="res://script/hit_box.gd" id="31_s2w3r"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(723, 2615)

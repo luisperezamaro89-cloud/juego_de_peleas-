@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxsd42ykgrny2"
-path="res://.godot/imported/spritesheet salto.png-22e7863436988d08f02738ceefb31cce.ctex"
+uid="uid://fb4vehaxil1w"
+path="res://.godot/imported/694861f9e5ccdcc7906f678c990395c3.jpg-2998a7f267992c293657a3aafeacf594.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://personaje/personaje 1/sprites/salto/spritesheet salto.png"
-dest_files=["res://.godot/imported/spritesheet salto.png-22e7863436988d08f02738ceefb31cce.ctex"]
+source_file="res://ux pelea/694861f9e5ccdcc7906f678c990395c3.jpg"
+dest_files=["res://.godot/imported/694861f9e5ccdcc7906f678c990395c3.jpg-2998a7f267992c293657a3aafeacf594.ctex"]
 
 [params]
 

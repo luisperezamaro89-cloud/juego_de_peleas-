@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkvy7ga07gb3m"
-path="res://.godot/imported/spritesheet arrodillarse.png-adb9cc1fdbb34a0ca8ffa1b908265697.ctex"
+uid="uid://n7xrwp6qmr3e"
+path="res://.godot/imported/spritesheet golpe 2.png-f82905d2be38b6ae8e12a16df2584c35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://personaje/personaje 1/sprites/arrodillarse/spritesheet arrodillarse.png"
-dest_files=["res://.godot/imported/spritesheet arrodillarse.png-adb9cc1fdbb34a0ca8ffa1b908265697.ctex"]
+source_file="res://personajes/personaje 1/sprites/golpe combo/spritesheet golpe 2.png"
+dest_files=["res://.godot/imported/spritesheet golpe 2.png-f82905d2be38b6ae8e12a16df2584c35.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqgoyabhgay30"
-path="res://.godot/imported/spritesheet caminata.png-0df07a5bf3aebebd5bda8c628ea2a096.ctex"
+uid="uid://bxsd42ykgrny2"
+path="res://.godot/imported/spritesheet salto.png-abfdc9f2f8728ec9ddddc3000848aaaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://personaje/personaje 1/sprites/caminata/spritesheet caminata.png"
-dest_files=["res://.godot/imported/spritesheet caminata.png-0df07a5bf3aebebd5bda8c628ea2a096.ctex"]
+source_file="res://personajes/personaje 1/sprites/salto/spritesheet salto.png"
+dest_files=["res://.godot/imported/spritesheet salto.png-abfdc9f2f8728ec9ddddc3000848aaaf.ctex"]
 
 [params]
 
