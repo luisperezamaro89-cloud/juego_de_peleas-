@@ -11,48 +11,92 @@ script = ExtResource("1_rwogp")
 
 [node name="Fondo" type="ColorRect" parent="." unique_id=1774065239]
 layout_mode = 0
-offset_right = 671.0
-offset_bottom = 370.0
+offset_right = 1148.0
+offset_bottom = 652.0
 color = Color(0.15487596, 0.154876, 0.15487596, 1)
 
 [node name="Titulo" type="Label" parent="." unique_id=477222430]
 layout_mode = 0
-offset_left = 288.0
-offset_top = 29.0
-offset_right = 383.0
-offset_bottom = 67.0
-text = "titulo"
+offset_left = 360.0
+offset_top = 32.0
+offset_right = 742.0
+offset_bottom = 104.0
+theme_override_font_sizes/font_size = 52
+text = "FIN DEL JUEGO "
 
 [node name="Ganador" type="Label" parent="." unique_id=1994520976]
 layout_mode = 0
-offset_left = 233.0
-offset_top = 71.0
-offset_right = 391.0
-offset_bottom = 106.0
-text = "ganador"
+offset_left = 307.0
+offset_top = 125.0
+offset_right = 492.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 37
+text = "GANADOR :"
 
-[node name="PuntajeJugador1" type="Label" parent="." unique_id=1567083822]
+[node name="NombreYDefinicion" type="Label" parent="Ganador" unique_id=388210785]
 layout_mode = 0
-offset_left = 219.0
-offset_top = 149.0
-offset_right = 259.0
-offset_bottom = 172.0
-text = "puntaje 1"
+offset_left = 200.0
+offset_top = 11.0
+offset_right = 430.0
+offset_bottom = 46.0
 
-[node name="PuntajeJugador2" type="Label" parent="." unique_id=506151705]
+[node name="Puntaje_Jugador1" type="Label" parent="." unique_id=1567083822]
 layout_mode = 0
-offset_left = 219.0
-offset_top = 201.0
-offset_right = 292.0
-offset_bottom = 224.0
-text = "puntaje 2"
+offset_left = 100.0
+offset_top = 219.0
+offset_right = 246.0
+offset_bottom = 264.0
+theme_override_font_sizes/font_size = 32
+text = "jugador 1"
+
+[node name="Puntaje_Jugador2" type="Label" parent="." unique_id=506151705]
+layout_mode = 0
+offset_left = 895.0
+offset_top = 238.0
+offset_right = 987.0
+offset_bottom = 272.0
+theme_override_font_sizes/font_size = 32
+text = "jugador 2"
 
 [node name="BotonContinuar" type="Button" parent="." unique_id=1984664602]
 layout_mode = 0
-offset_left = 425.0
-offset_top = 304.0
-offset_right = 636.0
-offset_bottom = 344.0
+offset_left = 763.0
+offset_top = 523.0
+offset_right = 1047.0
+offset_bottom = 613.0
+theme_override_font_sizes/font_size = 30
 text = "continuar"
+
+[node name="nombre_J2" type="Label" parent="." unique_id=1630116761]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 364.0
+offset_right = 848.0
+offset_bottom = 400.0
+theme_override_font_sizes/font_size = 26
+text = "Nombre "
+
+[node name="Nombre_J2" type="LineEdit" parent="." unique_id=186938032]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 368.0
+offset_right = 1051.5
+offset_bottom = 399.0
+
+[node name="nombre_J1" type="Label" parent="." unique_id=651005188]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 342.0
+offset_right = 149.0
+offset_bottom = 378.0
+theme_override_font_sizes/font_size = 26
+text = "Nombre"
+
+[node name="Nombre_J1" type="LineEdit" parent="." unique_id=1030520639]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 351.0
+offset_right = 360.0
+offset_bottom = 382.0
 
 [connection signal="pressed" from="BotonContinuar" to="." method="_on_boton_continuar_pressed"]

@@ -55,5 +55,12 @@ func _on_borrar_jugador_button_down():
 	print("Error (si hay): ", baseDatos.error_message)
 
 func _on_consulta_personalizada_button_down():
-	baseDatos.query("SELECT * FROM players WHERE puntaje > 50")
-	print("Resultado consulta personalizada: ", baseDatos.query_result)
+	# Ordena por puntaje de forma descendente (DESC) y toma solo los 3 primeros (LIMIT 3)
+	baseDatos.query("SELECT * FROM players ORDER BY puntaje DESC LIMIT 3")
+	
+	print("--- TOP 3 JUGADORES MÁS ALTOS ---")
+	var puesto = 1
+	for jugador in baseDatos.query_result:
+		print("#", puesto, " | Nombre: ", jugador["nombre"], " | Puntaje Acumulado: ", jugador["puntaje"])
+		puesto += 1
+	print("---------------------------------")
