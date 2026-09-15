@@ -184,4 +184,4 @@ func morir():
 	get_tree().set_meta("puntaje_jugador1", jugador1.puntaje)
 	get_tree().set_meta("puntaje_jugador2", jugador2.puntaje)
 
-	get_tree().change_scene_to_file("res://resultado.tscn")
+	get_tree().change_scene_to_file("res://escenas/Resultado.tscn")

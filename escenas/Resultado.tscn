@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3ruwjeg171m0"]
 
-[ext_resource type="Script" uid="uid://dqqrp015q6tbl" path="res://Resultado.gd" id="1_rwogp"]
+[ext_resource type="Script" uid="uid://dqqrp015q6tbl" path="res://script/Resultado.gd" id="1_rwogp"]
 
 [node name="Resultado" type="Control" unique_id=1949715539]
 layout_mode = 3
