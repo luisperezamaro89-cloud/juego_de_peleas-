@@ -1,5 +1,6 @@
 extends CharacterBody2D 
 
+
 @export var velocidad: float = 200.0
 @export var gravedad: float = 1000.0
 @export var fuerza_salto: float = 400.0
@@ -168,4 +169,19 @@ func recibir_daño(cantidad: int, atacante = null):
 
 func morir():
 	print("Jugador ", jugador, " derrotado")
-# get_tree().change_scene_to_file("res://resultado.tscn")
+
+	var jugador1 = get_parent().peleador1.jugador_controlador
+	var jugador2 = get_parent().peleador2.jugador_controlador
+
+	var ganador
+
+	if jugador == 1:
+		ganador = jugador2
+	else:
+		ganador = jugador1
+
+	get_tree().set_meta("ganador", ganador.nombre)
+	get_tree().set_meta("puntaje_jugador1", jugador1.puntaje)
+	get_tree().set_meta("puntaje_jugador2", jugador2.puntaje)
+
+	get_tree().change_scene_to_file("res://resultado.tscn")

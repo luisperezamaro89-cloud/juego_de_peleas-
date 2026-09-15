@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://d3ruwjeg171m0"]
+
+[ext_resource type="Script" uid="uid://dqqrp015q6tbl" path="res://Resultado.gd" id="1_rwogp"]
+
+[node name="Resultado" type="Control" unique_id=1949715539]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_rwogp")
+
+[node name="Fondo" type="ColorRect" parent="." unique_id=1774065239]
+layout_mode = 0
+offset_right = 671.0
+offset_bottom = 370.0
+color = Color(0.15487596, 0.154876, 0.15487596, 1)
+
+[node name="Titulo" type="Label" parent="." unique_id=477222430]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 29.0
+offset_right = 383.0
+offset_bottom = 67.0
+text = "titulo"
+
+[node name="Ganador" type="Label" parent="." unique_id=1994520976]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 71.0
+offset_right = 391.0
+offset_bottom = 106.0
+text = "ganador"
+
+[node name="PuntajeJugador1" type="Label" parent="." unique_id=1567083822]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 149.0
+offset_right = 259.0
+offset_bottom = 172.0
+text = "puntaje 1"
+
+[node name="PuntajeJugador2" type="Label" parent="." unique_id=506151705]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 201.0
+offset_right = 292.0
+offset_bottom = 224.0
+text = "puntaje 2"
+
+[node name="BotonContinuar" type="Button" parent="." unique_id=1984664602]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 304.0
+offset_right = 636.0
+offset_bottom = 344.0
+text = "continuar"
+
+[connection signal="pressed" from="BotonContinuar" to="." method="_on_boton_continuar_pressed"]

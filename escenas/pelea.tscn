@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://y8ih3f2eqpwl" path="res://peleadores/peleador1.tscn" id="2_epypp"]
 [ext_resource type="Script" uid="uid://dlxhiflqvokpq" path="res://script/camera.gd" id="3_iyxqb"]
 [ext_resource type="Script" uid="uid://kts74ydj6ger" path="res://script/peleador_2testeo.gd" id="4_iyxqb"]
-[ext_resource type="PackedScene" uid="uid://dj6yeng6igspc" path="res://assets/Uix/healthbar/healthbar_1.tscn" id="4_q6r6c"]
+[ext_resource type="PackedScene" uid="uid://dj6yeng6igspc" path="res://Uix/healthbar/healthbar_1.tscn" id="4_q6r6c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_0e48y")
