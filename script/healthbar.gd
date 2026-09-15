@@ -24,6 +24,5 @@ func take_damage(damage: float):
 	if health <= 0:
 		die()
 
-
 func die():
 	print("¡Jugador derrotado!")

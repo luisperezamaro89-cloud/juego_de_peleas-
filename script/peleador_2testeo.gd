@@ -9,8 +9,7 @@ extends CharacterBody2D
 
 var jugador_controlador
 
-@onready var state_machine = $StateMachine 
-
+@onready var state_machine = $StateMachine
 @onready var hitbox_delante: HitBox = $"StateMachine/Golpear/HitBox_delante"
 @onready var hitbox_arriba: HitBox = $"StateMachine/Golpear/hitbox_arriba"
 @onready var hitbox_abajo: HitBox = $"StateMachine/Golpear/hitbox_abajo"
@@ -22,7 +21,6 @@ var jugador_controlador
 var bloqueando: bool = false
 var bloquear
 var health_bar: TextureProgressBar
-var sprite
 
 var izquierda 
 var derecha 
@@ -33,7 +31,7 @@ var direccion_ataque = "delante"
 
  
 func _ready():
-
+ 	
 	collision_delante.disabled = true
 	collision_arriba.disabled = true
 	collision_abajo.disabled = true
@@ -41,20 +39,9 @@ func _ready():
 	hitbox_delante.player = self
 	hitbox_arriba.player = self
 	hitbox_abajo.player = self
-	
-	hitbox_delante.sprite = sprite
-	hitbox_arriba.sprite = sprite
-	hitbox_abajo.sprite = sprite
 
 	if jugador == 1:
-		izquierda = KEY_A
-		derecha = KEY_D
-		arriba = KEY_W
-		abajo = KEY_S
-		golpear = KEY_F
-		bloquear = KEY_G
-
-	else:
+		
 		izquierda = KEY_LEFT
 		derecha = KEY_RIGHT
 		arriba = KEY_UP
@@ -114,10 +101,8 @@ func activar_hitbox():
 	match direccion_ataque:
 		"arriba":
 			collision_arriba.disabled = false
-
 		"abajo":
 			collision_abajo.disabled = false
-
 		"delante":
 			collision_delante.disabled = false
 			

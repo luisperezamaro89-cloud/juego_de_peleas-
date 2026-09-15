@@ -1,11 +1,10 @@
-class_name Jugador
+class_name Jugador2
 extends Node
 
-@export var nombre: String = "Jugador 1"
+@export var nombre: String = "Jugador 2"
 @export var puntaje: int = 0
 @export var victorias: int = 0
 @export var derrotas: int = 0
-
 
 var peleador: CharacterBody2D
 var score_label: Label
@@ -13,8 +12,6 @@ var score_label: Label
 func asignar_peleador(nuevo_peleador: CharacterBody2D):
 
 	peleador = nuevo_peleador
-
-	# Guardamos quién controla a este peleador
 	peleador.jugador_controlador = self
 
 

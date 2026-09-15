@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de6swvnq84vl4"
-path="res://.godot/imported/healthbar frente.PNG-4db62b24895607c835e931f819d5262f.ctex"
+uid="uid://n7xrwp6qmr3e"
+path="res://.godot/imported/spritesheet golpe 2.png-6d1308f934e9ddff9d7c2653d0916c99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ux pelea/healthbar/healthbar frente.PNG"
-dest_files=["res://.godot/imported/healthbar frente.PNG-4db62b24895607c835e931f819d5262f.ctex"]
+source_file="res://assets/personajes/personaje 1/sprites/golpes/spritesheet golpe 2.png"
+dest_files=["res://.godot/imported/spritesheet golpe 2.png-6d1308f934e9ddff9d7c2653d0916c99.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://day08prck2l7o"
-path="res://.godot/imported/spritesheet golpe.png-31789e92d9f23ba38f63d6ede4268a7d.ctex"
+uid="uid://cay5b2p4dbjn5"
+path="res://.godot/imported/spritesheet golpe frente.png-b02fd1c0b1443861859a6d097ba20b1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/personajes/personaje 1/sprites/idle/spritesheet golpe.png"
-dest_files=["res://.godot/imported/spritesheet golpe.png-31789e92d9f23ba38f63d6ede4268a7d.ctex"]
+source_file="res://assets/personajes/personaje 1/sprites/golpes/spritesheet golpe frente.png"
+dest_files=["res://.godot/imported/spritesheet golpe frente.png-b02fd1c0b1443861859a6d097ba20b1d.ctex"]
 
 [params]
 

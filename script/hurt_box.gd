@@ -1,8 +1,15 @@
 extends Area2D
-class_name  hurtbox
+class_name Hurtbox
 
-func recibir_dano(dano: int):
+func recibir_daño(dano: int, atacante = null):
+	print("HURTBOX recibió daño: ", dano)
+
 	var personaje = get_parent()
 
-	if personaje.has_method("recibir_dano"):
-		personaje.recibir_dano(dano)
+	print("PERSONAJE: ", personaje.name)
+
+	if personaje.has_method("recibir_daño"):
+		print("El personaje TIENE recibir_daño")
+		personaje.recibir_daño(dano, atacante)
+	else:
+		print("ERROR: el personaje NO tiene recibir_daño")

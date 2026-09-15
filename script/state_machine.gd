@@ -11,6 +11,8 @@ func _ready():
 
 	# Obtener directamente el AnimatedSprite2D
 	sprite = player.get_node("AnimatedSprite2D")
+	print("STATE MACHINE DE ", player.name)
+	print("SPRITE EN STATE MACHINE: ", sprite)
 
 	# Estado inicial
 	estado_actual = $Idle
@@ -21,6 +23,7 @@ func _ready():
 
 	# Entrar en Idle
 	estado_actual.entrar()
+	
 
 
 func actualizar(direccion):
@@ -50,3 +53,5 @@ func cambiar_estado(nombre_estado):
 	estado_actual.sprite = sprite
 
 	estado_actual.entrar()
+	print("CAMBIANDO A: ", nombre_estado)
+	print("SPRITE QUE SE PASA AL ESTADO: ", sprite)

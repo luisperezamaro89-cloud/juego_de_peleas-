@@ -1,36 +1,50 @@
 extends Node2D
 
-@onready var player_1 = $player_1
+@onready var peleador1 = $peleador1
+@onready var peleador2 = $peleador2
+
 @onready var healthbar_1 = $Uix/healthbar_1
+@onready var healthbar_2 = $Uix/healthbar_2
+
 
 var jugador1
-var peleador1
+var jugador2
+
+var pelea_terminada = false
+
 
 func _ready():
-	var jugador1_scene = preload("res://jugadores/jugador1.tscn")
-	var peleador1_scene = preload("res://peleadores/peleador1.tscn")
 
-	jugador1 = jugador1_scene.instantiate()
-	peleador1 = peleador1_scene.instantiate()
+	# Escena del controlador Jugador
+	var jugador_scene = preload("res://jugadores/jugador1.tscn")
 
+	# Crear controlador del Jugador 1
+	jugador1 = jugador_scene.instantiate()
 	add_child(jugador1)
-	add_child(peleador1)
+
+	# Crear controlador del Jugador 2
+	jugador2 = jugador_scene.instantiate()
+	add_child(jugador2)
+
+
+	# -------------------------
+	# JUGADOR 1
+	# -------------------------
+
+	jugador1.nombre = "Jugador 1"
 
 	jugador1.asignar_peleador(peleador1)
 
-	
-#func comprobar_ganador():
-
-#	if peleador1.vida <= 0:
-#		jugador1.perder()
-#		jugador2.ganar()
-#		finalizar_pelea()
-
-#	elif peleador2.vida <= 0:
-#		jugador1.ganar()
-#		jugador2.perder()
-#		finalizar_pelea()
+	peleador1.health_bar = healthbar_1
 
 
-#func finalizar_pelea():
-#	print("PELEA TERMINADA")
+
+	# -------------------------
+	# JUGADOR 2
+	# -------------------------
+
+	jugador2.nombre = "Jugador 2"
+
+	jugador2.asignar_peleador(peleador2)
+
+	peleador2.health_bar = healthbar_2

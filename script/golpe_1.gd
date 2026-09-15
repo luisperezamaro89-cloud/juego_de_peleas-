@@ -2,6 +2,7 @@ extends Node
 
 var player
 var sprite
+var animation_player
 
 # Combo
 var golpe_actual = 1
@@ -15,19 +16,23 @@ var daño_golpe_3 = 25
 
 
 func entrar():
-
-	# Reiniciar el combo
 	golpe_actual = 1
 	puede_combar = false
-	
-	# Si F sigue presionada al entrar al estado,
-	# esperamos a que la suelte antes de aceptar otra pulsación
-	ataque_presionado = Input.is_key_pressed(player.golpear)
+	ataque_presionado = false
+
+	# Obtener referencias
+	sprite = player.get_node("AnimatedSprite2D")
+	animation_player = player.get_node("AnimationPlayer")
+
+	# Reiniciar que cada HitBox pueda golpear
+	player.hitbox_delante.reiniciar_golpe()
+	player.hitbox_arriba.reiniciar_golpe()
+	player.hitbox_abajo.reiniciar_golpe()
 
 	# Apagar todas las HitBox
 	player.desactivar_hitboxes()
 
-	# Ejecutar primer golpe
+	# Reproducir primer golpe
 	reproducir_golpe()
 
 
@@ -51,15 +56,19 @@ func actualizar(_direccion):
 			if puede_combar and golpe_actual < 3:
 
 				golpe_actual += 1
-
 				puede_combar = false
 
 				player.desactivar_hitboxes()
 
+				# Reiniciar HitBoxes para el nuevo golpe
+				player.hitbox_delante.reiniciar_golpe()
+				player.hitbox_arriba.reiniciar_golpe()
+				player.hitbox_abajo.reiniciar_golpe()
+
+				# Reproducir siguiente golpe
 				reproducir_golpe()
 
 	else:
-
 		ataque_presionado = false
 
 
@@ -86,7 +95,7 @@ func actualizar(_direccion):
 
 		player.desactivar_hitboxes()
 
-		# Termina el ataque y vuelve a Idle
+		# Volver a Idle
 		return "Idle"
 
 
@@ -95,45 +104,59 @@ func actualizar(_direccion):
 
 func reproducir_golpe():
 
-	# Usamos tus animaciones actuales
-	# golpear_1 y golpear_2
+	print("PLAYER: ", player)
+	print("SPRITE: ", sprite)
+	print("ANIMATION PLAYER: ", animation_player)
+
+	# ACTIVAR HITBOX
+	player.activar_hitbox()
 
 	match player.direccion_ataque:
 
 		"arriba":
 
 			if golpe_actual == 1:
-				sprite.play("golpear_1")
+
+				sprite.play("golpe_saltando")
+				animation_player.play("golpe_saltando")
 
 			elif golpe_actual == 2:
-				sprite.play("golpear_2")
 
-			elif golpe_actual == 3:
-				sprite.play("golpear_1")
+				sprite.play("golpe_saltando")
 
 
 		"abajo":
 
 			if golpe_actual == 1:
-				sprite.play("golpear_2")
+
+				sprite.play("golpe_bajo")
+				animation_player.play("golpe_bajo")
 
 			elif golpe_actual == 2:
+
 				sprite.play("golpear_1")
 
 			elif golpe_actual == 3:
+
 				sprite.play("golpear_2")
 
 
 		"delante":
 
 			if golpe_actual == 1:
+
 				sprite.play("golpear_1")
+				animation_player.play("animacion_golpe1")
 
 			elif golpe_actual == 2:
+
 				sprite.play("golpear_2")
+				animation_player.play("animacion_golpe2")
 
 			elif golpe_actual == 3:
+
 				sprite.play("golpear_1")
+				animation_player.play("animacion_golpe3")
 
 
 func obtener_daño():
