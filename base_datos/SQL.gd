@@ -3,18 +3,10 @@ var baseDatos : SQLite
 
 func _ready():
 	baseDatos = SQLite.new()
-	baseDatos.path = "res://base_datos/data.db"
+	baseDatos.path = "res://base_datos/partidas.db"
+
 	baseDatos.open_db()
 
-func _on_crear_tabla_button_down():
-	var table = {
-		"id": {"data_type": "int", "primary_key": true, "not_null": true, "auto_increment": true},
-		"nombre": {"data_type": "text"},
-		"puntaje": {"data_type": "int"},
-	}
-	var resultado = baseDatos.create_table("players", table)
-	print("¿Se creó la tabla?: ", resultado)
-	print("Error (si hay): ", baseDatos.error_message)
 
 func nombre_existe(nombre: String) -> bool:
 	baseDatos.query("SELECT * FROM players WHERE nombre = '%s'" % nombre)
