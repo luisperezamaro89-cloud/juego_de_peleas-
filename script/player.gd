@@ -22,7 +22,10 @@ var jugador_controlador
 var bloqueando: bool = false
 var bloquear
 var health_bar: TextureProgressBar
+var score
 var sprite
+
+
 
 var izquierda 
 var derecha 
@@ -131,6 +134,12 @@ func desactivar_hitboxes():
 func recibir_daño(cantidad: int, atacante = null):
 	print("PLAYER recibió daño: ", cantidad)
 	print("VIDA ANTES: ", vida)
+	
+	# Camera shake
+	var camara = get_node("../Camera2D")
+
+	if camara:
+		camara.shake(cantidad * 0.4)
 
 	if bloqueando:
 		print("¡ATAQUE BLOQUEADO!")

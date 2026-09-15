@@ -48,6 +48,8 @@ func _ready():
 		abajo = KEY_DOWN
 		golpear = KEY_N
 		bloquear = KEY_M
+		
+		scale.x = -abs(scale.x)
 
 
 func _physics_process(delta): 
@@ -116,6 +118,12 @@ func desactivar_hitboxes():
 func recibir_daño(cantidad: int, atacante = null):
 	print("PLAYER recibió daño: ", cantidad)
 	print("VIDA ANTES: ", vida)
+	
+	# Camera shake
+	var camara = get_node("../Camera2D")
+
+	if camara:
+		camara.shake(cantidad * 0.4)
 
 	if bloqueando:
 		print("¡ATAQUE BLOQUEADO!")

@@ -145,18 +145,13 @@ func reproducir_golpe():
 
 			if golpe_actual == 1:
 
-				sprite.play("golpear_1")
-				animation_player.play("animacion_golpe1")
+				sprite.play("golpe1")
+				animation_player.play("animacion golpe1")
 
 			elif golpe_actual == 2:
 
 				sprite.play("golpear_2")
-				animation_player.play("animacion_golpe2")
-
-			elif golpe_actual == 3:
-
-				sprite.play("golpear_1")
-				animation_player.play("animacion_golpe3")
+				animation_player.play("animacion golpe2")
 
 
 func obtener_daño():

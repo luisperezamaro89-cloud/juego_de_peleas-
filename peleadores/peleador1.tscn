@@ -243,7 +243,6 @@ atlas = ExtResource("4_cbhkk")
 region = Rect2(2462, 1231, 1231, 1231)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1h0hy"]
-load_path = "res://.godot/imported/spritesheet golpe.png-764bb6f25676dbb4edc522618b5db4d7.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ijgiy"]
 atlas = SubResource("CompressedTexture2D_1h0hy")
@@ -251,6 +250,30 @@ region = Rect2(0, 1231, 1231, 1231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdxsd"]
 atlas = SubResource("CompressedTexture2D_1h0hy")
+region = Rect2(1231, 1231, 1231, 1231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hei85"]
+atlas = ExtResource("5_oxfs5")
+region = Rect2(0, 0, 1231, 1231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsdqs"]
+atlas = ExtResource("5_oxfs5")
+region = Rect2(1231, 0, 1231, 1231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2pts"]
+atlas = ExtResource("5_oxfs5")
+region = Rect2(2462, 0, 1231, 1231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aietm"]
+atlas = ExtResource("5_oxfs5")
+region = Rect2(3693, 0, 1231, 1231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1whr5"]
+atlas = ExtResource("5_oxfs5")
+region = Rect2(0, 1231, 1231, 1231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tdou"]
+atlas = ExtResource("5_oxfs5")
 region = Rect2(1231, 1231, 1231, 1231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cowne"]
@@ -295,30 +318,6 @@ region = Rect2(0, 1231, 1231, 1231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wcg87"]
 atlas = ExtResource("5_1h0hy")
-region = Rect2(1231, 1231, 1231, 1231)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hei85"]
-atlas = ExtResource("5_oxfs5")
-region = Rect2(0, 0, 1231, 1231)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fsdqs"]
-atlas = ExtResource("5_oxfs5")
-region = Rect2(1231, 0, 1231, 1231)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2pts"]
-atlas = ExtResource("5_oxfs5")
-region = Rect2(2462, 0, 1231, 1231)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aietm"]
-atlas = ExtResource("5_oxfs5")
-region = Rect2(3693, 0, 1231, 1231)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1whr5"]
-atlas = ExtResource("5_oxfs5")
-region = Rect2(0, 1231, 1231, 1231)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1tdou"]
-atlas = ExtResource("5_oxfs5")
 region = Rect2(1231, 1231, 1231, 1231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_leifi"]
@@ -472,6 +471,29 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_hei85")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_fsdqs")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_d2pts")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_aietm")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_1whr5")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_1tdou")
+}],
+"loop": 0,
+"name": &"golpe1",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 0.4,
 "texture": SubResource("AtlasTexture_cowne")
 }, {
@@ -515,29 +537,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.7,
-"texture": SubResource("AtlasTexture_hei85")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_fsdqs")
-}, {
-"duration": 0.4,
-"texture": SubResource("AtlasTexture_d2pts")
-}, {
-"duration": 0.4,
-"texture": SubResource("AtlasTexture_aietm")
-}, {
-"duration": 0.6,
-"texture": SubResource("AtlasTexture_1whr5")
-}, {
-"duration": 0.7,
-"texture": SubResource("AtlasTexture_1tdou")
-}],
-"loop": 0,
-"name": &"golpear_1",
-"speed": 5.0
-}, {
-"frames": [{
 "duration": 0.2,
 "texture": SubResource("AtlasTexture_leifi")
 }, {
@@ -556,13 +555,13 @@ animations = [{
 "duration": 0.2,
 "texture": SubResource("AtlasTexture_ohjpq")
 }, {
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_k3dsy")
 }, {
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_deiij")
 }, {
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_rdcds")
 }],
 "loop": 0,
@@ -649,7 +648,7 @@ speed_scale = 2.187
 position = Vector2(6.500122, 7.500122)
 scale = Vector2(2.7010562, 2.7010562)
 sprite_frames = SubResource("SpriteFrames_b1lj4")
-animation = &"golpe_bajo"
+animation = &"golpear_2"
 autoplay = "idle"
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=993402822]
