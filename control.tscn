@@ -29,34 +29,34 @@ text = "Insertar Jugador"
 
 [node name="VerJugadores" type="Button" parent="." unique_id=2114463720]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 221.0
-offset_right = 217.0
-offset_bottom = 288.0
+offset_left = 71.0
+offset_top = 209.0
+offset_right = 232.0
+offset_bottom = 276.0
 text = "Ver Jugadores"
 
 [node name="ActualizarJugador" type="Button" parent="." unique_id=1648351365]
 layout_mode = 0
-offset_left = 57.0
-offset_top = 322.0
-offset_right = 218.0
-offset_bottom = 389.0
+offset_left = 69.0
+offset_top = 296.0
+offset_right = 230.0
+offset_bottom = 363.0
 text = "Actualizar Jugador"
 
 [node name="BorrarJugador" type="Button" parent="." unique_id=1943070716]
 layout_mode = 0
-offset_left = 58.0
-offset_top = 412.0
-offset_right = 219.0
-offset_bottom = 479.0
+offset_left = 67.0
+offset_top = 393.0
+offset_right = 228.0
+offset_bottom = 460.0
 text = "Borrar Jugador"
 
 [node name="ConsultaPersonalizada" type="Button" parent="." unique_id=2027794488]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 533.0
-offset_right = 239.0
-offset_bottom = 600.0
+offset_left = 57.0
+offset_top = 501.0
+offset_right = 246.0
+offset_bottom = 568.0
 text = "Consulta Personalizada"
 
 [node name="Label" type="Label" parent="." unique_id=267123223]
