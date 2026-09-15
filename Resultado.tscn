@@ -60,10 +60,10 @@ text = "jugador 2"
 
 [node name="BotonContinuar" type="Button" parent="." unique_id=1984664602]
 layout_mode = 0
-offset_left = 763.0
-offset_top = 523.0
-offset_right = 1047.0
-offset_bottom = 613.0
+offset_left = 783.0
+offset_top = 510.0
+offset_right = 1067.0
+offset_bottom = 600.0
 theme_override_font_sizes/font_size = 30
 text = "continuar"
 

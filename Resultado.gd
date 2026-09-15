@@ -13,13 +13,21 @@ var baseDatos : SQLite
 
 func _ready():
 	# 1. Inicializar y abrir la base de datos
+		# 1. Inicializar y abrir la base de datos
 	baseDatos = SQLite.new()
 	baseDatos.path = "res://base_datos/data.db"
 	baseDatos.open_db()
 	
-	# 2. Obtenemos los puntajes que vienen de la pelea usando tus metadatos
-	var puntos_j1 = get_tree().get_meta("puntaje_jugador1")
-	var puntos_j2 = get_tree().get_meta("puntaje_jugador2")
+	# Variables para almacenar los puntos de forma segura
+	var puntos_j1 : int = 0
+	var puntos_j2 : int = 0
+	
+	# 2. Obtenemos los puntajes verificando primero si los metadatos existen
+	if get_tree().has_meta("puntaje_jugador1"):
+		puntos_j1 = int(get_tree().get_meta("puntaje_jugador1"))
+		
+	if get_tree().has_meta("puntaje_jugador2"):
+		puntos_j2 = int(get_tree().get_meta("puntaje_jugador2"))
 	
 	# Mostrar los puntajes en las etiquetas de los lados
 	puntaje_jugador1.text = "Puntaje: " + str(puntos_j1)
