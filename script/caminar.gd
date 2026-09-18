@@ -22,7 +22,7 @@ func actualizar(direccion):
 
 	# Girar personaje
 	if direccion < 0:
-		sprite.flip_h = true
+		sprite.play("golpe_bajo")
 	else:
 		sprite.flip_h = false
 

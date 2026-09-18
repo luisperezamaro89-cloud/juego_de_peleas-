@@ -63,8 +63,8 @@ func _ready():
 		derecha = KEY_RIGHT
 		arriba = KEY_UP
 		abajo = KEY_DOWN
-		golpear = KEY_N
-		bloquear = KEY_M
+		golpear = KEY_M
+		bloquear = KEY_N
 
 
 func _physics_process(delta): 
