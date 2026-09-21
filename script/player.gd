@@ -210,6 +210,7 @@ func _input(event):
 
 			state_machine.cambiar_estado("Golpear")
 
+<<<<<<< HEAD
 
 func activar_hitbox():
 <<<<<<< HEAD
@@ -220,10 +221,14 @@ func activar_hitbox():
 
 =======
 >>>>>>> parent of f26bc04 (hitbox arreglado)
+=======
+func activar_hitbox():
+>>>>>>> parent of f26bc04 (hitbox arreglado)
 	collision_arriba.disabled = true
 	collision_abajo.disabled = true
 	collision_delante.disabled = true
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	print("================================")
 	print("DIRECCION DEL ATAQUE: ", direccion_ataque)
@@ -231,10 +236,13 @@ func activar_hitbox():
 
 =======
 >>>>>>> parent of f26bc04 (hitbox arreglado)
+=======
+>>>>>>> parent of f26bc04 (hitbox arreglado)
 	match direccion_ataque:
 		"arriba":
 
 			collision_arriba.disabled = false
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 			print("HITBOX ARRIBA ACTIVADA")
@@ -242,10 +250,13 @@ func activar_hitbox():
 =======
 >>>>>>> parent of f26bc04 (hitbox arreglado)
 
+=======
+>>>>>>> parent of f26bc04 (hitbox arreglado)
 
 		"abajo":
 
 			collision_abajo.disabled = false
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 			print("HITBOX ABAJO ACTIVADA")
@@ -253,10 +264,13 @@ func activar_hitbox():
 =======
 >>>>>>> parent of f26bc04 (hitbox arreglado)
 
+=======
+>>>>>>> parent of f26bc04 (hitbox arreglado)
 
 		"delante":
 
 			collision_delante.disabled = false
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 			print("HITBOX DELANTE ACTIVADA")
@@ -267,6 +281,8 @@ func activar_hitbox():
 
 
 =======
+=======
+>>>>>>> parent of f26bc04 (hitbox arreglado)
 			
 >>>>>>> parent of f26bc04 (hitbox arreglado)
 func desactivar_hitboxes():

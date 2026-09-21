@@ -44,10 +44,14 @@ func _on_area_entered(area: Area2D):
 
 		print("DAÑO APLICADO: ", daño)
 
+<<<<<<< HEAD
 # ¿Es el tercer golpe?
 		var es_tercer_golpe = golpe.golpe_actual == 3
 
 		area.recibir_daño(daño, player, es_tercer_golpe)
+=======
+		area.recibir_daño(daño, player)
+>>>>>>> parent of f26bc04 (hitbox arreglado)
 
 	else:
 		print("NO TIENE recibir_daño")
