@@ -44,7 +44,10 @@ func _on_area_entered(area: Area2D):
 
 		print("DAÑO APLICADO: ", daño)
 
-		area.recibir_daño(daño, player)
+# ¿Es el tercer golpe?
+		var es_tercer_golpe = golpe.golpe_actual == 3
+
+		area.recibir_daño(daño, player, es_tercer_golpe)
 
 	else:
 		print("NO TIENE recibir_daño")

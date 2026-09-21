@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Fatal Impact"
+config/name="Troublemakers"
 run/main_scene="uid://b34o70nnhu3li"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 

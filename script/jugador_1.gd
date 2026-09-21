@@ -8,13 +8,12 @@ extends Node
 
 
 var peleador: CharacterBody2D
+var jugador_controlador
 var score_label: Label
 
 func asignar_peleador(nuevo_peleador: CharacterBody2D):
 
 	peleador = nuevo_peleador
-
-	# Guardamos quién controla a este peleador
 	peleador.jugador_controlador = self
 
 
