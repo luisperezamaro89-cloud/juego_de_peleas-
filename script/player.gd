@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var fuerza_salto: float = 400.0
 
 @export var jugador: int = 1
-@export var vida: int = 500
+@export var vida: int = 100
 
 var jugador_controlador
 
@@ -212,40 +212,52 @@ func _input(event):
 
 
 func activar_hitbox():
+<<<<<<< HEAD
 
 	# ------------------------------------------
 	# APAGAR TODAS
 	# ------------------------------------------
 
+=======
+>>>>>>> parent of f26bc04 (hitbox arreglado)
 	collision_arriba.disabled = true
 	collision_abajo.disabled = true
 	collision_delante.disabled = true
 
+<<<<<<< HEAD
 	print("================================")
 	print("DIRECCION DEL ATAQUE: ", direccion_ataque)
 
 
+=======
+>>>>>>> parent of f26bc04 (hitbox arreglado)
 	match direccion_ataque:
-
 		"arriba":
 
 			collision_arriba.disabled = false
+<<<<<<< HEAD
 
 			print("HITBOX ARRIBA ACTIVADA")
 			print("ARRIBA disabled: ", collision_arriba.disabled)
+=======
+>>>>>>> parent of f26bc04 (hitbox arreglado)
 
 
 		"abajo":
 
 			collision_abajo.disabled = false
+<<<<<<< HEAD
 
 			print("HITBOX ABAJO ACTIVADA")
 			print("ABAJO disabled: ", collision_abajo.disabled)
+=======
+>>>>>>> parent of f26bc04 (hitbox arreglado)
 
 
 		"delante":
 
 			collision_delante.disabled = false
+<<<<<<< HEAD
 
 			print("HITBOX DELANTE ACTIVADA")
 			print("DELANTE disabled: ", collision_delante.disabled)
@@ -254,6 +266,9 @@ func activar_hitbox():
 	print("================================")
 
 
+=======
+			
+>>>>>>> parent of f26bc04 (hitbox arreglado)
 func desactivar_hitboxes():
 
 	collision_arriba.disabled = true

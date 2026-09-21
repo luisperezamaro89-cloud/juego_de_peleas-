@@ -684,8 +684,6 @@ disabled = true
 debug_color = Color(0.8016712, 0.23242167, 0.22847077, 0.41960785)
 
 [node name="hitbox_arriba" type="Area2D" parent="StateMachine/Golpear" unique_id=1522108594]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("14_i036h")
 
 [node name="collision" type="CollisionShape2D" parent="StateMachine/Golpear/hitbox_arriba" unique_id=1601353001]
@@ -695,8 +693,6 @@ disabled = true
 debug_color = Color(0.9317533, 0.26239598, 0, 0.41960785)
 
 [node name="hitbox_abajo" type="Area2D" parent="StateMachine/Golpear" unique_id=1434881098]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("14_i036h")
 
 [node name="collision" type="CollisionShape2D" parent="StateMachine/Golpear/hitbox_abajo" unique_id=446408359]
@@ -722,5 +718,3 @@ scale = Vector2(14.015, 14.015)
 shape = SubResource("RectangleShape2D_b1lj4")
 
 [connection signal="area_entered" from="StateMachine/Golpear/HitBox_delante" to="StateMachine/Golpear/HitBox_delante" method="_on_area_entered"]
-[connection signal="area_entered" from="StateMachine/Golpear/hitbox_arriba" to="StateMachine/Golpear/HitBox_delante" method="_on_hitbox_arriba_area_entered"]
-[connection signal="area_entered" from="StateMachine/Golpear/hitbox_abajo" to="StateMachine/Golpear/HitBox_delante" method="_on_hitbox_abajo_area_entered"]
