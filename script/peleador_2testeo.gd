@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var fuerza_salto: float = 400.0
 
 @export var jugador: int = 1
-@export var vida: int = 100
+@export var vida: int = 500
 
 var jugador_controlador
 

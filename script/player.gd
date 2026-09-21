@@ -111,33 +111,19 @@ func _input(event):
 			state_machine.cambiar_estado("Golpear")
 
 func activar_hitbox():
-
-	# Apagar todas
 	collision_arriba.disabled = true
 	collision_abajo.disabled = true
 	collision_delante.disabled = true
 
-	print("================================")
-	print("DIRECCION DEL ATAQUE: ", direccion_ataque)
-
 	match direccion_ataque:
-
 		"arriba":
 			collision_arriba.disabled = false
-			print("HITBOX ARRIBA ACTIVADA")
-			print("ARRIBA disabled: ", collision_arriba.disabled)
 
 		"abajo":
 			collision_abajo.disabled = false
-			print("HITBOX ABAJO ACTIVADA")
-			print("ABAJO disabled: ", collision_abajo.disabled)
 
 		"delante":
 			collision_delante.disabled = false
-			print("HITBOX DELANTE ACTIVADA")
-			print("DELANTE disabled: ", collision_delante.disabled)
-
-	print("================================")
 			
 func desactivar_hitboxes():
 	collision_arriba.disabled = true
