@@ -5,8 +5,10 @@
 [ext_resource type="Script" uid="uid://f6udr1lafljb" path="res://script/healthbar.gd" id="3_4skmf"]
 
 [node name="TextureProgressBar" type="TextureProgressBar" unique_id=230015840]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 180.0
+offset_bottom = 32.0
+scale = Vector2(2, 2)
+size_flags_stretch_ratio = 0.0
 value = 100.0
 texture_over = ExtResource("1_emycm")
 texture_progress = ExtResource("2_0c4vn")

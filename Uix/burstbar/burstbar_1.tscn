@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://62cbbpntyi2d"]
+
+[ext_resource type="Texture2D" uid="uid://cpy4fxpec7iwr" path="res://Uix/burstbar/burstbar frente.PNG" id="1_36i3g"]
+[ext_resource type="Texture2D" uid="uid://pfokorkgf5gb" path="res://Uix/burstbar/burstbar detras.PNG" id="2_1iuwd"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" unique_id=600752714]
+offset_right = 180.0
+offset_bottom = 32.0
+texture_over = ExtResource("1_36i3g")
+texture_progress = ExtResource("2_1iuwd")
+texture_progress_offset = Vector2(14.805, 2.64)

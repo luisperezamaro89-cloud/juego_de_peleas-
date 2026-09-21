@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbs630x1s7nr6"
-path="res://.godot/imported/healthbar detras.PNG-dc7aafd7585fa1d6f9f3b2b443d56d17.ctex"
+uid="uid://pfokorkgf5gb"
+path="res://.godot/imported/burstbar detras.PNG-efdf60133e63a56acceed12cbc53e0fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Uix/healthbar/healthbar detras.PNG"
-dest_files=["res://.godot/imported/healthbar detras.PNG-dc7aafd7585fa1d6f9f3b2b443d56d17.ctex"]
+source_file="res://Uix/burstbar/burstbar detras.PNG"
+dest_files=["res://.godot/imported/burstbar detras.PNG-efdf60133e63a56acceed12cbc53e0fb.ctex"]
 
 [params]
 

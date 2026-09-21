@@ -9,6 +9,9 @@ extends Node2D
 @onready var score_1 = $Uix/score_1
 @onready var score_2 = $Uix/score_2
 
+@onready var burstbar_1 = $Uix/burstbar_1
+@onready var burstbar_2 = $Uix/burstbar_2
+
 var jugador1
 var jugador2
 
@@ -34,3 +37,16 @@ func _ready():
 
 	peleador1.health_bar = healthbar_1
 	peleador2.health_bar = healthbar_2
+
+	peleador1.burst_bar = burstbar_1
+	peleador2.burst_bar = burstbar_2
+
+	print("================================")
+	print("JUGADOR 1: ", jugador1)
+	print("JUGADOR 1 SCORE LABEL: ", jugador1.score_label)
+	print("PELEADOR 1 CONTROLADOR: ", peleador1.jugador_controlador)
+
+	print("JUGADOR 2: ", jugador2)
+	print("JUGADOR 2 SCORE LABEL: ", jugador2.score_label)
+	print("PELEADOR 2 CONTROLADOR: ", peleador2.jugador_controlador)
+	print("================================")

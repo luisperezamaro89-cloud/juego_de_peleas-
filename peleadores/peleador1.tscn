@@ -635,6 +635,11 @@ size = Vector2(52.08705, 170.67429)
 
 [node name="peleador1" type="CharacterBody2D" unique_id=326816759]
 script = ExtResource("1_qvkvg")
+velocidad = null
+gravedad = null
+fuerza_salto = null
+jugador = null
+vida = null
 
 [node name="collision" type="CollisionShape2D" parent="." unique_id=1171166826]
 position = Vector2(-280.5, 351.5)
@@ -718,3 +723,5 @@ scale = Vector2(14.015, 14.015)
 shape = SubResource("RectangleShape2D_b1lj4")
 
 [connection signal="area_entered" from="StateMachine/Golpear/HitBox_delante" to="StateMachine/Golpear/HitBox_delante" method="_on_area_entered"]
+[connection signal="area_entered" from="StateMachine/Golpear/hitbox_arriba" to="StateMachine/Golpear/hitbox_arriba" method="_on_area_entered"]
+[connection signal="area_entered" from="StateMachine/Golpear/hitbox_abajo" to="StateMachine/Golpear/hitbox_abajo" method="_on_area_entered"]

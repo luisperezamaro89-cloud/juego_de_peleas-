@@ -15,6 +15,7 @@ var jugador_controlador
 @onready var hitbox_delante: HitBox = $"StateMachine/Golpear/HitBox_delante"
 @onready var hitbox_arriba: HitBox = $"StateMachine/Golpear/hitbox_arriba"
 @onready var hitbox_abajo: HitBox = $"StateMachine/Golpear/hitbox_abajo"
+@onready var camera = $"../Camera2D"
 
 @onready var collision_delante: CollisionShape2D = $"StateMachine/Golpear/HitBox_delante/collision"
 @onready var collision_arriba: CollisionShape2D = $"StateMachine/Golpear/hitbox_arriba/collision"
@@ -23,6 +24,7 @@ var jugador_controlador
 var bloqueando: bool = false
 var bloquear
 var health_bar: TextureProgressBar
+var burst_bar: TextureProgressBar
 var score
 var sprite
 
@@ -133,14 +135,9 @@ func desactivar_hitboxes():
 	
 
 func recibir_daño(cantidad: int, atacante = null):
+
 	print("PLAYER recibió daño: ", cantidad)
 	print("VIDA ANTES: ", vida)
-	
-	# Camera shake
-	var camara = get_node("../Camera2D")
-
-	if camara:
-		camara.shake(cantidad * 0.4)
 
 	if bloqueando:
 		print("¡ATAQUE BLOQUEADO!")
@@ -148,8 +145,14 @@ func recibir_daño(cantidad: int, atacante = null):
 
 	vida -= cantidad
 	vida = max(vida, 0)
-
-	print("VIDA DESPUÉS: ", vida)
+	
+	if burst_bar:
+		print("BURST BAR ENCONTRADA: ", burst_bar)
+		burst_bar.agregar_carga(cantidad)
+	
+	else:
+		print("ERROR: burst_bar está vacío en Jugador 1")
+		print("VIDA DESPUÉS: ", vida)
 
 	if health_bar:
 		health_bar.value = vida
@@ -159,7 +162,10 @@ func recibir_daño(cantidad: int, atacante = null):
 
 	if atacante and atacante.jugador_controlador:
 		atacante.jugador_controlador.sumar_puntos(cantidad)
-
+	
+	if camera:
+		camera.shake(5.0)
+	
 	if vida <= 0:
 		morir()
 		return
@@ -185,3 +191,7 @@ func morir():
 	get_tree().set_meta("puntaje_jugador2", jugador2.puntaje)
 
 	get_tree().change_scene_to_file("res://escenas/Resultado.tscn")
+
+
+func _on_hitbox_arriba_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
