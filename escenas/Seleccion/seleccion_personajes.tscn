@@ -2,6 +2,8 @@
 
 [ext_resource type="StyleBox" uid="uid://gjeyjoy0rjn3" path="res://escenas/Seleccion/scenes/Estilos_botones/Normal.tres" id="1_mbim7"]
 [ext_resource type="Script" uid="uid://bc4h6emdekib6" path="res://escenas/Seleccion/seleccion_personajes.gd" id="1_phnib"]
+[ext_resource type="Texture2D" uid="uid://c5v13ddp4g6e1" path="res://images seccion personajes/images.jpg" id="3_xf1re"]
+[ext_resource type="Texture2D" uid="uid://b7sjc7fapc50r" path="res://images seccion personajes/images (1).jpg" id="4_yqtke"]
 
 [sub_resource type="Theme" id="Theme_hfy2b"]
 
@@ -15,6 +17,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_phnib")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=561928306]
+layout_mode = 0
+offset_right = 1149.0
+offset_bottom = 649.0
+color = Color(0.6392157, 0.1764706, 0.16470589, 1)
+
+[node name="TituloSeleccion" type="Label" parent="." unique_id=787392305]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 39.0
+offset_right = 796.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 36
+text = "SELECCIONA TU PERSONAJE"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=630012887]
 layout_mode = 0
@@ -35,48 +53,54 @@ alignment = 1
 [node name="ContenedorJ1" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=479613236]
 layout_mode = 2
 
-[node name="BtnAsesinaJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=573315114]
+[node name="LabelAsesinaJ1" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1187745615]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = ExtResource("1_mbim7")
 text = "ASESINA"
 
-[node name="BtnNinjaJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1705366667]
+[node name="BtnAsesinaJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=573315114]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = ExtResource("1_mbim7")
+icon = ExtResource("3_xf1re")
+expand_icon = true
+
+[node name="LabelNinjaJ1" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1859312645]
+layout_mode = 2
 text = "NINJA"
+
+[node name="BtnNinjaJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1705366667]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("1_mbim7")
+icon = ExtResource("4_yqtke")
+expand_icon = true
 
 [node name="ContenedorJ2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1535375093]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+
+[node name="LabelAsesinaJ2" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=1355797999]
+layout_mode = 2
+text = "ASESINA"
 
 [node name="BtnAsesinaJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=836550484]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = ExtResource("1_mbim7")
-text = "ASESINA "
+icon = ExtResource("3_xf1re")
+expand_icon = true
 
-[node name="BtnNinjaJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=1786577451]
+[node name="LabelNinjaJ2" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=2049738083]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = ExtResource("1_mbim7")
 text = "NINJA"
 
-[node name="BtnPelear" type="Button" parent="VBoxContainer" unique_id=944690234]
+[node name="BtnNinjaJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=1786577451]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "PELEAR "
-
-[node name="ImagenJ1" type="TextureRect" parent="." unique_id=1134113423]
-layout_mode = 0
-offset_right = 563.0
-offset_bottom = 633.0
-
-[node name="ImagenJ2" type="TextureRect" parent="." unique_id=555522473]
-layout_mode = 0
-offset_left = 560.0
-offset_top = 7.0
-offset_right = 1144.0
-offset_bottom = 633.0
-
-[connection signal="pressed" from="VBoxContainer/BtnPelear" to="." method="_on_btn_pelear_pressed"]
+theme_override_styles/normal = ExtResource("1_mbim7")
+icon = ExtResource("4_yqtke")
+expand_icon = true
