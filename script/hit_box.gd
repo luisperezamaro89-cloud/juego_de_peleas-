@@ -27,11 +27,17 @@ func actualizar(_direccion):
 
 
 func _on_area_entered(area: Area2D):
+
 	print("HITBOX detectó: ", area.name)
 	print("SCRIPT DEL AREA: ", area.get_script())
 
-	if area.has_method("recibir_daño"):
-		print("¡¡TIENE recibir_daño!!")
+	print("¿ES HURTBOX?: ", area is Hurtbox)
+	print("¿TIENE recibir_daño?: ", area.has_method("recibir_daño"))
+	print("SCRIPT: ", area.get_script())
+
+	if area is Hurtbox:
+
+		print("¡¡ES UN HURTBOX!!")
 
 		if ya_golpeo:
 			print("Este ataque ya golpeó")
@@ -47,52 +53,5 @@ func _on_area_entered(area: Area2D):
 		area.recibir_daño(daño, player)
 
 	else:
-		print("NO TIENE recibir_daño")
 
-
-func _on_hitbox_arriba_area_entered(area: Area2D) -> void:
-	print("HITBOX detectó: ", area.name)
-	print("SCRIPT DEL AREA: ", area.get_script())
-
-	if area.has_method("recibir_daño"):
-		print("¡¡TIENE recibir_daño!!")
-
-		if ya_golpeo:
-			print("Este ataque ya golpeó")
-			return
-
-		ya_golpeo = true
-
-		var golpe = player.get_node("StateMachine/Golpear")
-		var daño = golpe.obtener_daño()
-
-		print("DAÑO APLICADO: ", daño)
-
-		area.recibir_daño(daño, player)
-
-	else:
-		print("NO TIENE recibir_daño")
-
-
-func _on_hitbox_abajo_area_entered(area: Area2D) -> void:
-	print("HITBOX detectó: ", area.name)
-	print("SCRIPT DEL AREA: ", area.get_script())
-
-	if area.has_method("recibir_daño"):
-		print("¡¡TIENE recibir_daño!!")
-
-		if ya_golpeo:
-			print("Este ataque ya golpeó")
-			return
-
-		ya_golpeo = true
-
-		var golpe = player.get_node("StateMachine/Golpear")
-		var daño = golpe.obtener_daño()
-
-		print("DAÑO APLICADO: ", daño)
-
-		area.recibir_daño(daño, player)
-
-	else:
-		print("NO TIENE recibir_daño")
+		print("NO ES UN HURTBOX")

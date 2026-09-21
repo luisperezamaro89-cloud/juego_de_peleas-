@@ -10,9 +10,9 @@ var puede_combar = false
 var ataque_presionado = false
 
 # Daño de cada golpe
-var daño_golpe_1 = 10
-var daño_golpe_2 = 15
-var daño_golpe_3 = 25
+var daño_golpe_1 = 30
+var daño_golpe_2 = 35
+var daño_golpe_3 = 45
 
 
 func entrar():

@@ -3,4 +3,6 @@
 [node name="Label" type="Label" unique_id=1076015153]
 offset_right = 72.0
 offset_bottom = 23.0
-text = "0000000"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "0000"

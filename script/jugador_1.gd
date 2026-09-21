@@ -13,10 +13,8 @@ var score_label: Label
 func asignar_peleador(nuevo_peleador: CharacterBody2D):
 
 	peleador = nuevo_peleador
-
-	# Guardamos quién controla a este peleador
 	peleador.jugador_controlador = self
-
+	print(nombre, " asignado a ", peleador.name)
 
 func sumar_puntos(cantidad: int):
 	puntaje += cantidad

@@ -5,11 +5,12 @@ extends CharacterBody2D
 @export var fuerza_salto: float = 400.0
 
 @export var jugador: int = 1
-@export var vida: int = 100
+@export var vida: int = 500
 
 var jugador_controlador
 
 @onready var state_machine = $StateMachine
+
 @onready var hitbox_delante: HitBox = $"StateMachine/Golpear/HitBox_delante"
 @onready var hitbox_arriba: HitBox = $"StateMachine/Golpear/hitbox_arriba"
 @onready var hitbox_abajo: HitBox = $"StateMachine/Golpear/hitbox_abajo"
@@ -18,20 +19,22 @@ var jugador_controlador
 @onready var collision_arriba: CollisionShape2D = $"StateMachine/Golpear/hitbox_arriba/collision"
 @onready var collision_abajo: CollisionShape2D = $"StateMachine/Golpear/hitbox_abajo/collision"
 
+@onready var camera = $"../Camera2D"
+
 var bloqueando: bool = false
 var bloquear
 var health_bar: TextureProgressBar
-
+var burst_bar: TextureProgressBar
 var izquierda 
 var derecha 
 var arriba 
 var abajo 
-var golpear
+var golpear 
 var direccion_ataque = "delante"
 
- 
+
 func _ready():
- 	
+	
 	collision_delante.disabled = true
 	collision_arriba.disabled = true
 	collision_abajo.disabled = true
@@ -71,7 +74,6 @@ func _physics_process(delta):
  
 	velocity.x = direccion * velocidad 
 	
- 
 	# State Machine
 	state_machine.actualizar(direccion) 
  
@@ -95,35 +97,36 @@ func _input(event):
 
 			state_machine.cambiar_estado("Golpear")
 
+
 func activar_hitbox():
+	
 	collision_arriba.disabled = true
 	collision_abajo.disabled = true
 	collision_delante.disabled = true
 
 	match direccion_ataque:
+		
 		"arriba":
 			collision_arriba.disabled = false
+		
 		"abajo":
 			collision_abajo.disabled = false
+		
 		"delante":
 			collision_delante.disabled = false
 			
+
 func desactivar_hitboxes():
+	
 	collision_arriba.disabled = true
 	collision_abajo.disabled = true
 	collision_delante.disabled = true
-	
-	
+
 
 func recibir_daño(cantidad: int, atacante = null):
+
 	print("PLAYER recibió daño: ", cantidad)
 	print("VIDA ANTES: ", vida)
-	
-	# Camera shake
-	var camara = get_node("../Camera2D")
-
-	if camara:
-		camara.shake(cantidad * 0.4)
 
 	if bloqueando:
 		print("¡ATAQUE BLOQUEADO!")
@@ -131,7 +134,15 @@ func recibir_daño(cantidad: int, atacante = null):
 
 	vida -= cantidad
 	vida = max(vida, 0)
-
+	
+	if burst_bar:
+		print("BURST BAR ENCONTRADA: ", burst_bar)
+		burst_bar.agregar_carga(cantidad)
+	
+	else:
+		print("ERROR: burst_bar está vacío en Jugador 1")
+		print("VIDA DESPUÉS: ", vida)
+	
 	print("VIDA DESPUÉS: ", vida)
 
 	if health_bar:
@@ -140,6 +151,11 @@ func recibir_daño(cantidad: int, atacante = null):
 	else:
 		print("ERROR: health_bar está vacío")
 
+	# Efecto de temblor de cámara
+	if camera:
+		camera.shake(5.0)
+
+	# Dar puntos al jugador que atacó
 	if atacante and atacante.jugador_controlador:
 		atacante.jugador_controlador.sumar_puntos(cantidad)
 
@@ -151,5 +167,21 @@ func recibir_daño(cantidad: int, atacante = null):
 
 
 func morir():
+	
 	print("Jugador ", jugador, " derrotado")
-# get_tree().change_scene_to_file("res://resultado.tscn")
+
+	var jugador1 = get_parent().peleador1.jugador_controlador
+	var jugador2 = get_parent().peleador2.jugador_controlador
+
+	var ganador
+
+	if jugador == 1:
+		ganador = jugador2
+	else:
+		ganador = jugador1
+
+	get_tree().set_meta("ganador", ganador.nombre)
+	get_tree().set_meta("puntaje_jugador1", jugador1.puntaje)
+	get_tree().set_meta("puntaje_jugador2", jugador2.puntaje)
+
+	get_tree().change_scene_to_file("res://escenas/Resultado.tscn")
