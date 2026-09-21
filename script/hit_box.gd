@@ -51,6 +51,9 @@ func _on_area_entered(area: Area2D):
 		area.recibir_daño(daño, player, es_tercer_golpe)
 =======
 		area.recibir_daño(daño, player)
+<<<<<<< HEAD
+>>>>>>> parent of f26bc04 (hitbox arreglado)
+=======
 >>>>>>> parent of f26bc04 (hitbox arreglado)
 
 	else:
