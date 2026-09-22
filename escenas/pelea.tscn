@@ -3412,20 +3412,10 @@ script = ExtResource("3_iyxqb")
 position = Vector2(103, 27)
 scale = Vector2(0.03, 0.03)
 script = ExtResource("4_iyxqb")
-velocidad = 200.0
-gravedad = 1000.0
-fuerza_salto = 400.0
-jugador = 1
-vida = 500
 
 [node name="peleador1" parent="." unique_id=911742902 instance=ExtResource("2_epypp")]
 position = Vector2(-110, 26)
 scale = Vector2(0.03, 0.03)
-velocidad = 200.0
-gravedad = 1000.0
-fuerza_salto = 400.0
-jugador = 1
-vida = 500
 
 [node name="Uix" type="CanvasLayer" parent="." unique_id=298885631]
 
@@ -3497,3 +3487,11 @@ offset_right = -5798.0
 offset_bottom = -624.24994
 script = ExtResource("9_bpb78")
 metadata/_edit_use_anchors_ = true
+
+[node name="ronda_label" type="Label" parent="Uix" unique_id=1586363716]
+offset_left = 383.0
+offset_top = 49.0
+offset_right = 454.0
+offset_bottom = 72.0
+scale = Vector2(3.955, 3.955)
+text = "RONDA 1"

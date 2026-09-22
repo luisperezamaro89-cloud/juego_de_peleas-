@@ -27,8 +27,8 @@ var health_bar: TextureProgressBar
 var burst_bar: TextureProgressBar
 var score
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-
-
+var escena_pelea
+var derrotado = false
 
 var izquierda 
 var derecha 
@@ -184,10 +184,14 @@ func recibir_daño(cantidad: int, atacante = null):
 		atacante.jugador_controlador.sumar_puntos(cantidad)
 
 	if vida <= 0:
-		morir()
-		return
+		derrotado = true
+		print("PERSONAJE DERROTADO")
 
-	state_machine.cambiar_estado("Daño")
+	if escena_pelea:
+		escena_pelea.solicitar_comprobar_ganador()
+
+	else:
+		state_machine.cambiar_estado("daño")
 
 
 func morir():

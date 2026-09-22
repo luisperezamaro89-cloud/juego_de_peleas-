@@ -26,8 +26,9 @@ var bloquear
 var health_bar: TextureProgressBar
 var burst_bar: TextureProgressBar
 var score
-var sprite
-
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+var escena_pelea
+var derrotado = false
 
 
 var izquierda 
@@ -195,10 +196,14 @@ func recibir_daño(cantidad: int, atacante = null):
 		camera.shake(5.0)
 	
 	if vida <= 0:
-		morir()
-		return
+		derrotado = true
+		print("PERSONAJE DERROTADO")
 
-	state_machine.cambiar_estado("Daño")
+	if escena_pelea:
+		escena_pelea.solicitar_comprobar_ganador()
+
+	else:
+		state_machine.cambiar_estado("daño")
 
 
 func morir():
@@ -219,7 +224,3 @@ func morir():
 	get_tree().set_meta("puntaje_jugador2", jugador2.puntaje)
 
 	get_tree().change_scene_to_file("res://escenas/Resultado.tscn")
-
-
-func _on_hitbox_arriba_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
