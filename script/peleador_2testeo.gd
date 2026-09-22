@@ -1,5 +1,6 @@
 extends CharacterBody2D 
 
+
 @export var velocidad: float = 200.0
 @export var gravedad: float = 1000.0
 @export var fuerza_salto: float = 400.0
@@ -9,32 +10,34 @@ extends CharacterBody2D
 
 var jugador_controlador
 
-@onready var state_machine = $StateMachine
+@onready var state_machine = $StateMachine 
 
 @onready var hitbox_delante: HitBox = $"StateMachine/Golpear/HitBox_delante"
 @onready var hitbox_arriba: HitBox = $"StateMachine/Golpear/hitbox_arriba"
 @onready var hitbox_abajo: HitBox = $"StateMachine/Golpear/hitbox_abajo"
+@onready var camera = $"../Camera2D"
 
 @onready var collision_delante: CollisionShape2D = $"StateMachine/Golpear/HitBox_delante/collision"
 @onready var collision_arriba: CollisionShape2D = $"StateMachine/Golpear/hitbox_arriba/collision"
 @onready var collision_abajo: CollisionShape2D = $"StateMachine/Golpear/hitbox_abajo/collision"
 
-@onready var camera = $"../Camera2D"
-
 var bloqueando: bool = false
 var bloquear
 var health_bar: TextureProgressBar
 var burst_bar: TextureProgressBar
+var score
+var sprite
+
 var izquierda 
 var derecha 
 var arriba 
 var abajo 
-var golpear 
+var golpear
 var direccion_ataque = "delante"
-
-
+var tecla_burst
+ 
 func _ready():
-	
+
 	collision_delante.disabled = true
 	collision_arriba.disabled = true
 	collision_abajo.disabled = true
@@ -42,15 +45,20 @@ func _ready():
 	hitbox_delante.player = self
 	hitbox_arriba.player = self
 	hitbox_abajo.player = self
+	
+	hitbox_delante.sprite = sprite
+	hitbox_arriba.sprite = sprite
+	hitbox_abajo.sprite = sprite
 
 	if jugador == 1:
-		
+
 		izquierda = KEY_LEFT
 		derecha = KEY_RIGHT
 		arriba = KEY_UP
 		abajo = KEY_DOWN
 		golpear = KEY_N
 		bloquear = KEY_M
+		tecla_burst = KEY_J
 		
 		scale.x = -abs(scale.x)
 
@@ -74,6 +82,7 @@ func _physics_process(delta):
  
 	velocity.x = direccion * velocidad 
 	
+ 
 	# State Machine
 	state_machine.actualizar(direccion) 
  
@@ -84,6 +93,13 @@ func _input(event):
 
 	if event is InputEventKey and event.pressed and not event.echo:
 
+		# BURST
+		if event.keycode == tecla_burst:
+			usar_burst()
+			return
+
+
+		# ATAQUE NORMAL
 		if event.keycode == golpear:
 
 			if Input.is_key_pressed(arriba):
@@ -97,31 +113,103 @@ func _input(event):
 
 			state_machine.cambiar_estado("Golpear")
 
-
 func activar_hitbox():
-	
 	collision_arriba.disabled = true
 	collision_abajo.disabled = true
 	collision_delante.disabled = true
 
 	match direccion_ataque:
-		
 		"arriba":
 			collision_arriba.disabled = false
-		
+
 		"abajo":
 			collision_abajo.disabled = false
-		
+
 		"delante":
 			collision_delante.disabled = false
 			
-
 func desactivar_hitboxes():
-	
 	collision_arriba.disabled = true
 	collision_abajo.disabled = true
 	collision_delante.disabled = true
+	
+	
+func usar_burst():
 
+	if burst_bar == null:
+		print("ERROR: no existe burst_bar")
+		return
+
+	print("================================")
+	print("BURST ACTIVADO")
+	print("BURST ACTUAL: ", burst_bar.value)
+
+	if burst_bar.value < 33:
+		print("No tienes suficiente Burst")
+		return
+
+	var rival
+
+	if jugador == 1:
+		rival = get_parent().peleador2
+	else:
+		rival = get_parent().peleador1
+
+
+	# ==========================
+	# 1/3
+	# ==========================
+
+	if burst_bar.value < 66:
+
+		print("BURST NIVEL 1")
+
+		rival.recibir_knockback(250)
+
+
+	# ==========================
+	# 2/3
+	# ==========================
+
+	elif burst_bar.value < 100:
+
+		print("BURST NIVEL 2")
+
+		rival.recibir_knockback(350)
+		rival.recibir_daño(15, self)
+
+
+	# ==========================
+	# 3/3
+	# ==========================
+
+	else:
+
+		print("BURST NIVEL 3 - ULTIMATE")
+
+		rival.recibir_knockback(500)
+		rival.recibir_daño(75, self)
+
+		# Aquí posteriormente pondremos
+		# la animación de la ulti.
+
+
+	burst_bar.gastar()
+
+	print("================================")
+	
+func recibir_knockback(fuerza: float, atacante = null):
+
+	if atacante == null:
+		return
+
+	var direccion = sign(
+		global_position.x - atacante.global_position.x
+	)
+
+	velocity.x = direccion * fuerza
+
+	print("KNOCKBACK BURST: ", velocity.x)
 
 func recibir_daño(cantidad: int, atacante = null):
 
@@ -142,8 +230,6 @@ func recibir_daño(cantidad: int, atacante = null):
 	else:
 		print("ERROR: burst_bar está vacío en Jugador 1")
 		print("VIDA DESPUÉS: ", vida)
-	
-	print("VIDA DESPUÉS: ", vida)
 
 	if health_bar:
 		health_bar.value = vida
@@ -151,14 +237,12 @@ func recibir_daño(cantidad: int, atacante = null):
 	else:
 		print("ERROR: health_bar está vacío")
 
-	# Efecto de temblor de cámara
-	if camera:
-		camera.shake(5.0)
-
-	# Dar puntos al jugador que atacó
 	if atacante and atacante.jugador_controlador:
 		atacante.jugador_controlador.sumar_puntos(cantidad)
-
+	
+	if camera:
+		camera.shake(5.0)
+	
 	if vida <= 0:
 		morir()
 		return
@@ -167,7 +251,6 @@ func recibir_daño(cantidad: int, atacante = null):
 
 
 func morir():
-	
 	print("Jugador ", jugador, " derrotado")
 
 	var jugador1 = get_parent().peleador1.jugador_controlador
@@ -185,3 +268,7 @@ func morir():
 	get_tree().set_meta("puntaje_jugador2", jugador2.puntaje)
 
 	get_tree().change_scene_to_file("res://escenas/Resultado.tscn")
+
+
+func _on_hitbox_arriba_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

@@ -28,15 +28,13 @@ var burst_bar: TextureProgressBar
 var score
 var sprite
 
-
-
 var izquierda 
 var derecha 
 var arriba 
 var abajo 
 var golpear
 var direccion_ataque = "delante"
-
+var tecla_burst
  
 func _ready():
 
@@ -59,14 +57,15 @@ func _ready():
 		abajo = KEY_S
 		golpear = KEY_F
 		bloquear = KEY_G
-
+		tecla_burst = KEY_R
 	else:
 		izquierda = KEY_LEFT
 		derecha = KEY_RIGHT
 		arriba = KEY_UP
 		abajo = KEY_DOWN
-		golpear = KEY_M
-		bloquear = KEY_N
+		golpear = KEY_N
+		bloquear = KEY_M
+		tecla_burst = KEY_J
 
 
 func _physics_process(delta): 
@@ -99,6 +98,13 @@ func _input(event):
 
 	if event is InputEventKey and event.pressed and not event.echo:
 
+		# BURST
+		if event.keycode == tecla_burst:
+			usar_burst()
+			return
+
+
+		# ATAQUE NORMAL
 		if event.keycode == golpear:
 
 			if Input.is_key_pressed(arriba):
@@ -133,6 +139,82 @@ func desactivar_hitboxes():
 	collision_delante.disabled = true
 	
 	
+func usar_burst():
+
+	if burst_bar == null:
+		print("ERROR: no existe burst_bar")
+		return
+
+	print("================================")
+	print("BURST ACTIVADO")
+	print("BURST ACTUAL: ", burst_bar.value)
+
+	if burst_bar.value < 33:
+		print("No tienes suficiente Burst")
+		return
+
+	var rival
+
+	if jugador == 1:
+		rival = get_parent().peleador2
+	else:
+		rival = get_parent().peleador1
+
+
+	# ==========================
+	# 1/3
+	# ==========================
+
+	if burst_bar.value < 66:
+
+		print("BURST NIVEL 1")
+
+		rival.recibir_knockback(250)
+
+
+	# ==========================
+	# 2/3
+	# ==========================
+
+	elif burst_bar.value < 100:
+
+		print("BURST NIVEL 2")
+
+		rival.recibir_knockback(350)
+		rival.recibir_daño(15, self)
+
+
+	# ==========================
+	# 3/3
+	# ==========================
+
+	else:
+
+		print("BURST NIVEL 3 - ULTIMATE")
+
+		rival.recibir_knockback(500)
+		rival.recibir_daño(75, self)
+
+		# Aquí posteriormente pondremos
+		# la animación de la ulti.
+
+
+	burst_bar.gastar()
+
+	print("================================")
+	
+func recibir_knockback(fuerza: float, atacante = null):
+
+	if atacante == null:
+		return
+
+	var direccion = sign(
+		global_position.x - atacante.global_position.x
+	)
+
+	velocity.x = direccion * fuerza
+
+	print("KNOCKBACK BURST: ", velocity.x)
 
 func recibir_daño(cantidad: int, atacante = null):
 
