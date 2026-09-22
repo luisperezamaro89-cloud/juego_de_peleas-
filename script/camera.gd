@@ -22,7 +22,7 @@ extends Camera2D
 @export var zoom_normal: float = 4.0
 
 # Zoom máximo alejándose
-@export var zoom_minimo: float = 1.3
+@export var zoom_minimo: float = 1.9
 
 # Distancia a partir de la cual empieza a alejarse
 @export var distancia_zoom: float = 200.0

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Fatal Impact"
-run/main_scene="uid://b34o70nnhu3li"
+run/main_scene="uid://c4qirt7eahq7g"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]

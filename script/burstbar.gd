@@ -1,6 +1,6 @@
 extends TextureProgressBar
 
-@export var multiplicador_carga: float = 0.5
+@export var multiplicador_carga: float = 0.2
 
 
 func agregar_carga(dano: int):
@@ -12,9 +12,3 @@ func agregar_carga(dano: int):
 
 	print("BURST +", carga)
 	print("BURST ACTUAL: ", value)
-
-
-func gastar():
-
-	value = 0
-	print("BURST GASTADO")
