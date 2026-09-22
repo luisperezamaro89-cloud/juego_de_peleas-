@@ -27,10 +27,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -323.0
+offset_top = -250.0
+offset_right = 323.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -71,5 +71,13 @@ theme_override_styles/pressed = ExtResource("4_skn2h")
 theme_override_styles/hover = ExtResource("5_1vakb")
 theme_override_styles/focus = ExtResource("6_hbxi3")
 text = "SALIR"
+
+[node name="BtnAdmin" type="Button" parent="." unique_id=1121005340]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 562.0
+offset_right = 1128.0
+offset_bottom = 642.0
+text = "ADMINISTRADORES"
 
 [connection signal="pressed" from="VBoxContainer/BtnIniciarPartida" to="." method="_on_btn_iniciar_partida_pressed"]

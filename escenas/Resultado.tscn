@@ -39,6 +39,7 @@ offset_left = 200.0
 offset_top = 11.0
 offset_right = 430.0
 offset_bottom = 46.0
+theme_override_font_sizes/font_size = 32
 
 [node name="Puntaje_Jugador1" type="Label" parent="." unique_id=1567083822]
 layout_mode = 0
