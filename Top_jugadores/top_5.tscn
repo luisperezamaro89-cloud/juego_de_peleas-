@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://uymxyh242178"]
+
+[ext_resource type="Script" uid="uid://runljopey51t" path="res://control.gd" id="1_hn8yy"]
+
+[node name="Control" type="Control" unique_id=353167568]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hn8yy")
+
+[node name="Panel" type="Panel" parent="." unique_id=967232988]
+layout_mode = 0
+offset_right = 1158.0
+offset_bottom = 650.0
+
+[node name="TituloTop" type="Label" parent="Panel" unique_id=474207771]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 20.0
+offset_right = 510.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 40
+text = "TOP 5 MEJORES PUNTAJES"
+
+[node name="ListaTop5" type="ItemList" parent="Panel" unique_id=561322755]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 102.0
+offset_right = 468.0
+offset_bottom = 624.0
+max_columns = 3
+same_column_width = true
+
+[node name="PuestoJugador" type="Label" parent="Panel" unique_id=1827326001]
+layout_mode = 0
+offset_left = 805.0
+offset_top = 14.0
+offset_right = 1137.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 30
+text = "ESTAS EN EL PUESTO "
+
+[node name="TopJugador" type="Label" parent="Panel" unique_id=1100339633]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 71.0
+offset_right = 1124.0
+offset_bottom = 129.0
