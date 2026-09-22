@@ -16,230 +16,215 @@ var nombres_j2 = ["Asesina", "Ninja"]
 @onready var fondo_personaje: TextureRect = $FondoPersonaje
 @onready var fondo_personaje2: TextureRect = $FondoPersonaje2
 
-var fondo_asesina = preload("res://images seccion personajes/placeholder1.jpg")
-var fondo_ninja = preload("res://images seccion personajes/placeholder2.jpg")
 
-@onready var botones: Array[Button] = [
-	$VBoxContainer/HBoxContainer/ListaPersonajes/BtnAsesinaJ1,
-	$VBoxContainer/HBoxContainer/ListaPersonajes/BtnNinjaJ1
-]
+# IMÁGENES DE LOS PERSONAJES
+var fondo_asesina = preload("res://Uix/placeholder1.jpg")
+var fondo_ninja = preload("res://Uix/placeholder2.jpg")
 
-@onready var imagen_grande_j1: TextureRect = $ImagenGrandeJ1
-@onready var imagen_grande_j2: TextureRect = $ImagenGrandeJ2
-
-@onready var botones_j1: Array[Button] = [$VBoxContainer/HBoxContainer/ContenedorJ1/BtnAsesinaJ1, $VBoxContainer/HBoxContainer/ContenedorJ1/BtnNinjaJ1]
-@onready var botones_j2: Array[Button] = [$VBoxContainer/HBoxContainer/ContenedorJ2/BtnAsesinaJ2, $VBoxContainer/HBoxContainer/ContenedorJ2/BtnNinjaJ2]
-
-@onready var botones_j1: Array[Button] = [$VBoxContainer/HBoxContainer/ContenedorJ1/BtnAsesinaJ1, $VBoxContainer/HBoxContainer/ContenedorJ1/BtnNinjaJ1]
-@onready var botones_j2: Array[Button] = [$VBoxContainer/HBoxContainer/ContenedorJ2/BtnAsesinaJ2, $VBoxContainer/HBoxContainer/ContenedorJ2/BtnNinjaJ2]
-
-@onready var botones_j1: Array[Button] = [$VBoxContainer/HBoxContainer/ContenedorJ1/BtnAsesinaJ1, $VBoxContainer/HBoxContainer/ContenedorJ1/BtnNinjaJ1]
-@onready var botones_j2: Array[Button] = [$VBoxContainer/HBoxContainer/ContenedorJ2/BtnAsesinaJ2, $VBoxContainer/HBoxContainer/ContenedorJ2/BtnNinjaJ2]
->>>>>>> parent of 334ba5f (seleciona personaje funciona pero bueado las imagenes)
 
 var indice_j1 = 0
 var indice_j2 = 0
+
 var personaje_j1 = ""
 var personaje_j2 = ""
+
+# 1 = Jugador 1
+# 2 = Jugador 2
+# 3 = Ambos seleccionados
 var turno = 1
 
-func _ready():
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
-=======
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
-=======
->>>>>>> parent of 334ba5f (seleciona personaje funciona pero bueado las imagenes)
+func _ready():
+
 	aplicar_estilo_seleccion()
+
+	# =========================
+	# JUGADOR 1
+	# =========================
+
 	resaltar_boton(botones_j1, indice_j1)
+
+	# Mostrar personaje inicial de J1
+	cambiar_fondo_j1(nombres_j1[indice_j1])
+
+
+	# =========================
+	# JUGADOR 2
+	# =========================
+
+	# Mostrar personaje inicial de J2
+	cambiar_fondo_j2(nombres_j2[indice_j2])
+
+
+	# J2 empieza bloqueado
 	for boton in botones_j2:
 		boton.modulate = Color(1, 1, 1, 0.3)
-<<<<<<< HEAD
+
+
+	# Los fondos no deben bloquear los botones
+	fondo_personaje.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	fondo_personaje2.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+	print("Escena de selección iniciada")
+
 
 func aplicar_estilo_seleccion():
-	var estilo = StyleBoxFlat.new()
-	estilo.border_color = Color(1, 0.8, 0, 1)
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-	resaltar_boton(indice_j1, Color(1, 0.8, 0, 1))
-	actualizar_imagen_grande(imagen_grande_j1, indice_j1)
-	actualizar_imagen_grande(imagen_grande_j2, indice_j2)
-=======
->>>>>>> parent of 334ba5f (seleciona personaje funciona pero bueado las imagenes)
-
-func aplicar_estilo_seleccion():
 	var estilo = StyleBoxFlat.new()
-<<<<<<< HEAD
-	estilo.border_color = color
->>>>>>> 334ba5f4d05296f2bfd784b5f45bcad49dc7b572
-=======
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
-=======
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
-=======
+
 	estilo.border_color = Color(1, 0.8, 0, 1)
->>>>>>> parent of 334ba5f (seleciona personaje funciona pero bueado las imagenes)
+
 	estilo.border_width_left = 4
 	estilo.border_width_right = 4
 	estilo.border_width_top = 4
 	estilo.border_width_bottom = 4
+
 	estilo.bg_color = Color(0, 0, 0, 0)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
-=======
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
 	for boton in botones_j1 + botones_j2:
 		boton.add_theme_stylebox_override("focus", estilo)
 
-func resaltar_boton(lista_botones: Array[Button], indice: int):
-	lista_botones[indice].grab_focus()
-=======
-	botones[indice].add_theme_stylebox_override("focus", estilo)
-	botones[indice].grab_focus()
-
-<<<<<<< HEAD
-func actualizar_imagen_grande(imagen: TextureRect, indice: int):
-	imagen.texture = botones[indice].icon
->>>>>>> 334ba5f4d05296f2bfd784b5f45bcad49dc7b572
-=======
-	for boton in botones_j1 + botones_j2:
-		boton.add_theme_stylebox_override("focus", estilo)
 
 func resaltar_boton(lista_botones: Array[Button], indice: int):
+
 	lista_botones[indice].grab_focus()
->>>>>>> parent of 334ba5f (seleciona personaje funciona pero bueado las imagenes)
+
+
+# ==================================================
+# CAMBIAR FONDO DEL JUGADOR 1
+# ==================================================
+
+func cambiar_fondo_j1(personaje: String):
+
+	print("CAMBIANDO FONDO J1: ", personaje)
+
+	if personaje == "Asesina":
+		fondo_personaje.texture = fondo_asesina
+
+	elif personaje == "Ninja":
+		fondo_personaje.texture = fondo_ninja
+
+
+# ==================================================
+# CAMBIAR FONDO DEL JUGADOR 2
+# ==================================================
+
+func cambiar_fondo_j2(personaje: String):
+
+	print("CAMBIANDO FONDO J2: ", personaje)
+
+	if personaje == "Asesina":
+		fondo_personaje2.texture = fondo_asesina
+
+	elif personaje == "Ninja":
+		fondo_personaje2.texture = fondo_ninja
+
+
+# ==================================================
+# CONTROL DE TECLAS
+# ==================================================
 
 func _input(event):
-	if not (event is InputEventKey) or not event.pressed:
+
+	if not (event is InputEventKey) or not event.pressed or event.echo:
 		return
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-<<<<<<< HEAD
 
-	# ==========================================
+	# ==================================================
 	# JUGADOR 1
-	# ==========================================
+	# ==================================================
 
-=======
->>>>>>> 334ba5f4d05296f2bfd784b5f45bcad49dc7b572
-=======
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
 	if turno == 1:
-		if event.keycode == KEY_W:
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
-=======
-func _input(event):
-	if not (event is InputEventKey) or not event.pressed:
-		return
-	if turno == 1:
+		# W = personaje anterior
 		if event.keycode == KEY_W:
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
+
 			indice_j1 = (indice_j1 - 1 + botones_j1.size()) % botones_j1.size()
+
 			resaltar_boton(botones_j1, indice_j1)
+
+			cambiar_fondo_j1(nombres_j1[indice_j1])
+
+
+		# S = personaje siguiente
 		elif event.keycode == KEY_S:
+
 			indice_j1 = (indice_j1 + 1) % botones_j1.size()
+
 			resaltar_boton(botones_j1, indice_j1)
+
+			cambiar_fondo_j1(nombres_j1[indice_j1])
+
+
+		# ENTER = confirmar J1
 		elif event.keycode == KEY_ENTER:
+
 			personaje_j1 = nombres_j1[indice_j1]
-			turno = 2
-			for boton in botones_j2:
-				boton.modulate = Color(1, 1, 1, 1)
-			resaltar_boton(botones_j2, indice_j2)
-	elif turno == 2:
-		if event.keycode == KEY_LEFT:
-			indice_j2 = (indice_j2 - 1 + botones_j2.size()) % botones_j2.size()
-			resaltar_boton(botones_j2, indice_j2)
-		elif event.keycode == KEY_RIGHT:
-			indice_j2 = (indice_j2 + 1) % botones_j2.size()
-			resaltar_boton(botones_j2, indice_j2)
-		elif event.keycode == KEY_ENTER:
-			personaje_j2 = nombres_j2[indice_j2]
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 			print("================================")
+			print("JUGADOR 1 SELECCIONÓ: ", personaje_j1)
+			print("================================")
+
+			# Ahora le toca a J2
+			turno = 2
+
+			# Activar botones de J2
+			for boton in botones_j2:
+				boton.modulate = Color(1, 1, 1, 1)
+
+			# Seleccionar el primer personaje de J2
+			resaltar_boton(botones_j2, indice_j2)
+
+			print("AHORA ES EL TURNO DEL JUGADOR 2")
+
+
+	# ==================================================
+	# JUGADOR 2
+	# ==================================================
+
+	elif turno == 2:
+
+		# FLECHA IZQUIERDA = personaje anterior
+		if event.keycode == KEY_LEFT:
+
+			indice_j2 = (indice_j2 - 1 + botones_j2.size()) % botones_j2.size()
+
+			resaltar_boton(botones_j2, indice_j2)
+
+			cambiar_fondo_j2(nombres_j2[indice_j2])
+
+
+		# FLECHA DERECHA = personaje siguiente
+		elif event.keycode == KEY_RIGHT:
+
+			indice_j2 = (indice_j2 + 1) % botones_j2.size()
+
+			resaltar_boton(botones_j2, indice_j2)
+
+			cambiar_fondo_j2(nombres_j2[indice_j2])
+
+
+		# ENTER = confirmar J2
+		elif event.keycode == KEY_ENTER:
+
+			print("================================")
+			print("ENTER DE JUGADOR 2 DETECTADO")
+			print("================================")
+
+			personaje_j2 = nombres_j2[indice_j2]
+
 			print("JUGADOR 2 SELECCIONÓ: ", personaje_j2)
-			print("================================")
 
-=======
-			indice_j1 = (indice_j1 - 1 + botones.size()) % botones.size()
-			resaltar_boton(indice_j1, Color(1, 0.8, 0, 1))
-			actualizar_imagen_grande(imagen_grande_j1, indice_j1)
-=======
-	if turno == 1:
-		if event.keycode == KEY_W:
-			indice_j1 = (indice_j1 - 1 + botones_j1.size()) % botones_j1.size()
-			resaltar_boton(botones_j1, indice_j1)
->>>>>>> parent of 334ba5f (seleciona personaje funciona pero bueado las imagenes)
-		elif event.keycode == KEY_S:
-			indice_j1 = (indice_j1 + 1) % botones_j1.size()
-			resaltar_boton(botones_j1, indice_j1)
-		elif event.keycode == KEY_ENTER:
-			personaje_j1 = nombres_j1[indice_j1]
-			turno = 2
-			for boton in botones_j2:
-				boton.modulate = Color(1, 1, 1, 1)
-			resaltar_boton(botones_j2, indice_j2)
-	elif turno == 2:
-		if event.keycode == KEY_LEFT:
-			indice_j2 = (indice_j2 - 1 + botones_j2.size()) % botones_j2.size()
-			resaltar_boton(botones_j2, indice_j2)
-		elif event.keycode == KEY_RIGHT:
-			indice_j2 = (indice_j2 + 1) % botones_j2.size()
-			resaltar_boton(botones_j2, indice_j2)
-		elif event.keycode == KEY_ENTER:
-<<<<<<< HEAD
-			personaje_j2 = nombres[indice_j2]
->>>>>>> 334ba5f4d05296f2bfd784b5f45bcad49dc7b572
-=======
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
-=======
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
-=======
-			personaje_j2 = nombres_j2[indice_j2]
->>>>>>> parent of 334ba5f (seleciona personaje funciona pero bueado las imagenes)
 			turno = 3
-			iniciar_pelea()
 
-func iniciar_pelea():
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+			print("AMBOS JUGADORES HAN SELECCIONADO")
+			print("J1: ", personaje_j1)
+			print("J2: ", personaje_j2)
 
-	var resultado = get_tree().change_scene_to_file(
-		"res://escenas/pelea.tscn"
-	)
+			# Cambiar directamente a la escena de pelea
+			var resultado = get_tree().change_scene_to_file(
+				"res://escenas/pelea.tscn"
+			)
 
-=======
-	var resultado = get_tree().change_scene_to_file("res://escenas/Seleccion/pelea.tscn")
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
-=======
-	var resultado = get_tree().change_scene_to_file("res://escenas/Seleccion/pelea.tscn")
->>>>>>> parent of 1050dbe (cambio de seleccion de personaje, aun falta arreglar)
-	print("Resultado del cambio de escena: ", resultado)
-=======
-	print("J1 eligió: ", personaje_j1, " | J2 eligió: ", personaje_j2)
-	get_tree().change_scene_to_file("res://escenas/Seleccion/pelea.tscn")
->>>>>>> 334ba5f4d05296f2bfd784b5f45bcad49dc7b572
-=======
-	var resultado = get_tree().change_scene_to_file("res://escenas/Seleccion/pelea.tscn")
-	print("Resultado del cambio de escena: ", resultado)
->>>>>>> parent of 334ba5f (seleciona personaje funciona pero bueado las imagenes)
+			print("RESULTADO CAMBIO DE ESCENA: ", resultado)

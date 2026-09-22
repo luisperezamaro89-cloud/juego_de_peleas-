@@ -53,5 +53,8 @@ func cambiar_estado(nombre_estado):
 	estado_actual.sprite = sprite
 
 	estado_actual.entrar()
+	print("================================")
+	print("PELEADOR: ", player.name)
 	print("CAMBIANDO A: ", nombre_estado)
-	print("SPRITE QUE SE PASA AL ESTADO: ", sprite)
+	print("SPRITE: ", sprite)
+	print("================================")

@@ -21,8 +21,20 @@ script = ExtResource("1_phnib")
 [node name="ColorRect" type="ColorRect" parent="." unique_id=561928306]
 layout_mode = 0
 offset_right = 1149.0
-offset_bottom = 649.0
+offset_bottom = 657.0
 color = Color(0.6392157, 0.1764706, 0.16470589, 1)
+
+[node name="FondoPersonaje" type="TextureRect" parent="." unique_id=1956058007]
+layout_mode = 0
+offset_right = 505.0
+offset_bottom = 649.0
+
+[node name="FondoPersonaje2" type="TextureRect" parent="." unique_id=250922058]
+layout_mode = 0
+offset_left = 646.0
+offset_top = 2.0
+offset_right = 1151.0
+offset_bottom = 651.0
 
 [node name="TituloSeleccion" type="Label" parent="." unique_id=787392305]
 layout_mode = 0

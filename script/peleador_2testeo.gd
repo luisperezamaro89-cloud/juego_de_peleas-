@@ -1,5 +1,6 @@
 extends CharacterBody2D 
 
+
 @export var velocidad: float = 200.0
 @export var gravedad: float = 1000.0
 @export var fuerza_salto: float = 400.0
@@ -9,27 +10,31 @@ extends CharacterBody2D
 
 var jugador_controlador
 
-@onready var state_machine = $StateMachine
+@onready var state_machine = $StateMachine 
 
 @onready var hitbox_delante: HitBox = $"StateMachine/Golpear/HitBox_delante"
 @onready var hitbox_arriba: HitBox = $"StateMachine/Golpear/hitbox_arriba"
 @onready var hitbox_abajo: HitBox = $"StateMachine/Golpear/hitbox_abajo"
+@onready var camera = $"../Camera2D"
 
 @onready var collision_delante: CollisionShape2D = $"StateMachine/Golpear/HitBox_delante/collision"
 @onready var collision_arriba: CollisionShape2D = $"StateMachine/Golpear/hitbox_arriba/collision"
 @onready var collision_abajo: CollisionShape2D = $"StateMachine/Golpear/hitbox_abajo/collision"
 
-@onready var camera = $"../Camera2D"
-
 var bloqueando: bool = false
 var bloquear
 var health_bar: TextureProgressBar
 var burst_bar: TextureProgressBar
+var score
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+
+
 var izquierda 
 var derecha 
 var arriba 
 var abajo 
-var golpear 
+var golpear
 var direccion_ataque = "delante"
 
 
@@ -42,6 +47,10 @@ func _ready():
 	hitbox_delante.player = self
 	hitbox_arriba.player = self
 	hitbox_abajo.player = self
+	
+	hitbox_delante.sprite = sprite
+	hitbox_arriba.sprite = sprite
+	hitbox_abajo.sprite = sprite
 
 	if jugador == 1:
 		
@@ -55,28 +64,43 @@ func _ready():
 		scale.x = -abs(scale.x)
 
 
-func _physics_process(delta): 
-	
-	# Gravedad
-	if not is_on_floor(): 
-		velocity.y += gravedad * delta 
-	else: 
-		velocity.y = 0 
- 
-	# Dirección
-	var direccion = 0 
- 
-	if Input.is_key_pressed(izquierda): 
-		direccion -= 1 
-		
-	if Input.is_key_pressed(derecha): 
-		direccion += 1 
- 
-	velocity.x = direccion * velocidad 
-	
-	# State Machine
-	state_machine.actualizar(direccion) 
- 
+func _physics_process(delta):
+
+	if not is_on_floor():
+		velocity.y += gravedad * delta
+	else:
+		velocity.y = 0
+
+	var direccion = 0
+
+	if Input.is_key_pressed(izquierda):
+		direccion -= 1
+
+	if Input.is_key_pressed(derecha):
+		direccion += 1
+
+
+	# ==========================================
+	# SI ESTÁ ATACANDO
+	# ==========================================
+
+	if state_machine.estado_actual.name == "Golpear":
+
+		# No permitir movimiento mientras ataca
+		velocity.x = 0
+
+		# IMPORTANTE:
+		# Sí actualizamos Golpear para que el
+		# combo y la animación continúen.
+		state_machine.actualizar(direccion)
+
+	else:
+
+		velocity.x = direccion * velocidad
+
+		state_machine.actualizar(direccion)
+
+
 	move_and_slide()
 
 

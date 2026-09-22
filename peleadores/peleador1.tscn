@@ -635,11 +635,6 @@ size = Vector2(52.08705, 170.67429)
 
 [node name="peleador1" type="CharacterBody2D" unique_id=326816759]
 script = ExtResource("1_qvkvg")
-velocidad = null
-gravedad = null
-fuerza_salto = null
-jugador = null
-vida = null
 
 [node name="collision" type="CollisionShape2D" parent="." unique_id=1171166826]
 position = Vector2(-280.5, 351.5)

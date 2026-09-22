@@ -69,29 +69,43 @@ func _ready():
 		bloquear = KEY_N
 
 
-func _physics_process(delta): 
-	
-	# Gravedad
-	if not is_on_floor(): 
-		velocity.y += gravedad * delta 
-	else: 
-		velocity.y = 0 
- 
-	# Dirección
-	var direccion = 0 
- 
-	if Input.is_key_pressed(izquierda): 
-		direccion -= 1 
-		
-	if Input.is_key_pressed(derecha): 
-		direccion += 1 
- 
-	velocity.x = direccion * velocidad 
-	
- 
-	# State Machine
-	state_machine.actualizar(direccion) 
- 
+func _physics_process(delta):
+
+	if not is_on_floor():
+		velocity.y += gravedad * delta
+	else:
+		velocity.y = 0
+
+	var direccion = 0
+
+	if Input.is_key_pressed(izquierda):
+		direccion -= 1
+
+	if Input.is_key_pressed(derecha):
+		direccion += 1
+
+
+	# ==========================================
+	# SI ESTÁ ATACANDO
+	# ==========================================
+
+	if state_machine.estado_actual.name == "Golpear":
+
+		# No permitir movimiento mientras ataca
+		velocity.x = 0
+
+		# IMPORTANTE:
+		# Sí actualizamos Golpear para que el
+		# combo y la animación continúen.
+		state_machine.actualizar(direccion)
+
+	else:
+
+		velocity.x = direccion * velocidad
+
+		state_machine.actualizar(direccion)
+
+
 	move_and_slide()
 
 
@@ -113,19 +127,33 @@ func _input(event):
 			state_machine.cambiar_estado("Golpear")
 
 func activar_hitbox():
+
 	collision_arriba.disabled = true
 	collision_abajo.disabled = true
 	collision_delante.disabled = true
 
+	print("================================")
+	print("ACTIVANDO HITBOX")
+	print("DIRECCIÓN DE ATAQUE: ", direccion_ataque)
+
 	match direccion_ataque:
+
 		"arriba":
 			collision_arriba.disabled = false
+			print(">>> HITBOX ARRIBA ACTIVADA")
 
 		"abajo":
 			collision_abajo.disabled = false
+			print(">>> HITBOX ABAJO ACTIVADA")
 
 		"delante":
 			collision_delante.disabled = false
+			print(">>> HITBOX DELANTE ACTIVADA")
+
+	print("DELANTE: ", not collision_delante.disabled)
+	print("ARRIBA: ", not collision_arriba.disabled)
+	print("ABAJO: ", not collision_abajo.disabled)
+	print("================================")
 			
 func desactivar_hitboxes():
 	collision_arriba.disabled = true
