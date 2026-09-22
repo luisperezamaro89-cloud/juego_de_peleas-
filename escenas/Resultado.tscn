@@ -61,25 +61,25 @@ text = "jugador 2"
 
 [node name="BotonContinuar" type="Button" parent="." unique_id=1984664602]
 layout_mode = 0
-offset_left = 783.0
-offset_top = 510.0
-offset_right = 1067.0
-offset_bottom = 600.0
+offset_left = 767.0
+offset_top = 505.0
+offset_right = 1051.0
+offset_bottom = 595.0
 theme_override_font_sizes/font_size = 30
 text = "continuar"
 
 [node name="nombre_J2" type="Label" parent="." unique_id=1630116761]
 layout_mode = 0
-offset_left = 738.0
-offset_top = 364.0
-offset_right = 848.0
-offset_bottom = 400.0
+offset_left = 756.0
+offset_top = 365.0
+offset_right = 866.0
+offset_bottom = 401.0
 theme_override_font_sizes/font_size = 26
 text = "Nombre "
 
 [node name="Nombre_J2" type="LineEdit" parent="." unique_id=186938032]
 layout_mode = 0
-offset_left = 880.0
+offset_left = 902.0
 offset_top = 368.0
 offset_right = 1051.5
 offset_bottom = 399.0

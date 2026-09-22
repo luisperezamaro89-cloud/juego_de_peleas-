@@ -89,6 +89,14 @@ offset_top = 113.0
 offset_right = 630.0
 offset_bottom = 150.0
 
+[node name="ConsolaSalida" type="TextEdit" parent="." unique_id=570092381]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 171.0
+offset_right = 896.0
+offset_bottom = 608.0
+editable = false
+
 [connection signal="button_down" from="CrearTabla" to="." method="_on_crear_tabla_button_down"]
 [connection signal="button_down" from="InsertarJugador" to="." method="_on_insertar_jugador_button_down"]
 [connection signal="button_down" from="VerJugadores" to="." method="_on_ver_jugadores_button_down"]
