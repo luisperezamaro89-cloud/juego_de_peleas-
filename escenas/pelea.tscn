@@ -3434,9 +3434,9 @@ theme_override_font_sizes/font_size = 16
 metadata/_edit_use_anchors_ = true
 
 [node name="score_2" parent="Uix" unique_id=194074743 instance=ExtResource("6_2edlo")]
-offset_left = 1029.0
+offset_left = 971.0
 offset_top = 18.0
-offset_right = 1101.0
+offset_right = 1043.0
 offset_bottom = 41.0
 
 [node name="healthbar_1" parent="Uix" unique_id=230015840 instance=ExtResource("4_q6r6c")]
@@ -3477,21 +3477,19 @@ metadata/_edit_use_anchors_ = true
 
 [node name="burstbar_2" parent="Uix" unique_id=2152606 instance=ExtResource("8_db4js")]
 anchors_preset = -1
-anchor_left = 5.0
-anchor_top = 0.15624991
-anchor_right = 6.0
-anchor_bottom = 1.1562499
-offset_left = -4826.0
-offset_top = -8.249939
-offset_right = -5798.0
-offset_bottom = -624.24994
+anchor_left = 0.7925347
+anchor_top = 0.1404321
+anchor_right = 0.9487847
+anchor_bottom = 0.18981482
+offset_right = 0.0
+offset_bottom = -7.6293945e-06
 script = ExtResource("9_bpb78")
 metadata/_edit_use_anchors_ = true
 
 [node name="ronda_label" type="Label" parent="Uix" unique_id=1586363716]
-offset_left = 383.0
-offset_top = 49.0
-offset_right = 454.0
-offset_bottom = 72.0
-scale = Vector2(3.955, 3.955)
+offset_left = 322.0
+offset_top = 55.0
+offset_right = 393.0
+offset_bottom = 78.0
+scale = Vector2(5.16, 5.16)
 text = "RONDA 1"
