@@ -6,6 +6,7 @@ extends Node
 @export var victorias: int = 0
 @export var derrotas: int = 0
 
+
 var peleador: CharacterBody2D
 var score_label: Label
 
@@ -13,7 +14,7 @@ func asignar_peleador(nuevo_peleador: CharacterBody2D):
 
 	peleador = nuevo_peleador
 	peleador.jugador_controlador = self
-
+	print(nombre, " asignado a ", peleador.name)
 
 func sumar_puntos(cantidad: int):
 	puntaje += cantidad

@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var gravedad: float = 1000.0
 @export var fuerza_salto: float = 400.0
 
-@export var jugador: int = 1
+@export var jugador = 1
 @export var vida: int = 500
 
 var jugador_controlador
@@ -21,10 +21,10 @@ var jugador_controlador
 @onready var collision_arriba: CollisionShape2D = $"StateMachine/Golpear/hitbox_arriba/collision"
 @onready var collision_abajo: CollisionShape2D = $"StateMachine/Golpear/hitbox_abajo/collision"
 
+
 var bloqueando: bool = false
 var bloquear
 var health_bar: TextureProgressBar
-var burst_bar: TextureProgressBar
 var score
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 var escena_pelea
@@ -53,6 +53,7 @@ func _ready():
 	hitbox_arriba.sprite = sprite
 	hitbox_abajo.sprite = sprite
 
+func configurar_controles():
 	if jugador == 1:
 		izquierda = KEY_A
 		derecha = KEY_D
@@ -174,14 +175,6 @@ func recibir_daño(cantidad: int, atacante = null):
 
 	vida -= cantidad
 	vida = max(vida, 0)
-	
-	if burst_bar:
-		print("BURST BAR ENCONTRADA: ", burst_bar)
-		burst_bar.agregar_carga(cantidad)
-	
-	else:
-		print("ERROR: burst_bar está vacío en Jugador 1")
-		print("VIDA DESPUÉS: ", vida)
 
 	if health_bar:
 		health_bar.value = vida
@@ -191,20 +184,25 @@ func recibir_daño(cantidad: int, atacante = null):
 
 	if atacante and atacante.jugador_controlador:
 		atacante.jugador_controlador.sumar_puntos(cantidad)
-	
+
 	if camera:
 		camera.shake(5.0)
-	
+
+	print("VIDA DESPUÉS: ", vida)
+
 	if vida <= 0:
+
+		vida = 0
 		derrotado = true
+
 		print("PERSONAJE DERROTADO")
 
-	if escena_pelea:
-		escena_pelea.solicitar_comprobar_ganador()
+		if escena_pelea:
+			escena_pelea.solicitar_comprobar_ganador()
 
 	else:
-		state_machine.cambiar_estado("daño")
 
+		state_machine.cambiar_estado("daño")
 
 func morir():
 	print("Jugador ", jugador, " derrotado")

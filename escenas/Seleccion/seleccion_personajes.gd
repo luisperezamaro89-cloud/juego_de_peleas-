@@ -1,16 +1,16 @@
 extends Control
 
-var nombres_j1 = ["Asesina", "Ninja"]
-var nombres_j2 = ["Asesina", "Ninja"]
+var nombres_j1 = ["estudiante", "delincuente"]
+var nombres_j2 = ["estudiante", "delincuente"]
 
 @onready var botones_j1: Array[Button] = [
-	$VBoxContainer/HBoxContainer/ContenedorJ1/BtnAsesinaJ1,
-	$VBoxContainer/HBoxContainer/ContenedorJ1/BtnNinjaJ1
+	$VBoxContainer/HBoxContainer/ContenedorJ1/BtnestudianteJ1,
+	$VBoxContainer/HBoxContainer/ContenedorJ1/BtndelincuenteJ1
 ]
 
 @onready var botones_j2: Array[Button] = [
-	$VBoxContainer/HBoxContainer/ContenedorJ2/BtnAsesinaJ2,
-	$VBoxContainer/HBoxContainer/ContenedorJ2/BtnNinjaJ2
+	$VBoxContainer/HBoxContainer/ContenedorJ2/BtnestudianteJ2,
+	$VBoxContainer/HBoxContainer/ContenedorJ2/BtndelincuenteJ2
 ]
 
 @onready var fondo_personaje: TextureRect = $FondoPersonaje
@@ -18,8 +18,8 @@ var nombres_j2 = ["Asesina", "Ninja"]
 
 
 # IMÁGENES DE LOS PERSONAJES
-var fondo_asesina = preload("res://Uix/placeholder1.jpg")
-var fondo_ninja = preload("res://Uix/placeholder2.jpg")
+var fondo_estudiante = preload("res://Uix/placeholder1.jpg")
+var fondo_delincuente = preload("res://Uix/placeholder2.jpg")
 
 
 var indice_j1 = 0
@@ -99,11 +99,11 @@ func cambiar_fondo_j1(personaje: String):
 
 	print("CAMBIANDO FONDO J1: ", personaje)
 
-	if personaje == "Asesina":
-		fondo_personaje.texture = fondo_asesina
+	if personaje == "estudiante":
+		fondo_personaje.texture = fondo_estudiante
 
-	elif personaje == "Ninja":
-		fondo_personaje.texture = fondo_ninja
+	elif personaje == "delincuente":
+		fondo_personaje.texture = fondo_delincuente
 
 
 # ==================================================
@@ -114,11 +114,11 @@ func cambiar_fondo_j2(personaje: String):
 
 	print("CAMBIANDO FONDO J2: ", personaje)
 
-	if personaje == "Asesina":
-		fondo_personaje2.texture = fondo_asesina
+	if personaje == "estudiante":
+		fondo_personaje2.texture = fondo_estudiante
 
-	elif personaje == "Ninja":
-		fondo_personaje2.texture = fondo_ninja
+	elif personaje == "delincuente":
+		fondo_personaje2.texture = fondo_delincuente
 
 
 # ==================================================

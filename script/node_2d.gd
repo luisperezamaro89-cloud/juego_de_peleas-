@@ -9,11 +9,12 @@ extends Node2D
 @onready var score_1 = $Uix/score_1
 @onready var score_2 = $Uix/score_2
 
-@onready var burstbar_1 = $Uix/burstbar_1
-@onready var burstbar_2 = $Uix/burstbar_2
 @onready var ronda_label = $Uix/ronda_label
 var jugador1
 var jugador2
+var personaje_j1 = "Estudiante"
+var personaje_j2 = "Delincuente"
+
 
 # ==========================================
 # RONDAS
@@ -33,23 +34,33 @@ func mostrar_ronda():
 	await get_tree().create_timer(2.0).timeout
 	
 	ronda_label.visible = false
-	
+		
 	
 func _ready():
+	
+	var jugador_scene_1 = preload("res://jugadores/jugador1.tscn")
+	var jugador_scene_2 = preload("res://jugadores/jugador_2.tscn")
 
-	var jugador_scene = preload("res://jugadores/jugador1.tscn")
-
-	jugador1 = jugador_scene.instantiate()
-	jugador2 = jugador_scene.instantiate()
+	jugador1 = jugador_scene_1.instantiate()
+	jugador2 = jugador_scene_2.instantiate()
 
 	add_child(jugador1)
 	add_child(jugador2)
 
 	jugador1.nombre = "Jugador 1"
 	jugador2.nombre = "Jugador 2"
-
+	
 	jugador1.asignar_peleador(peleador1)
 	jugador2.asignar_peleador(peleador2)
+	
+	peleador1.jugador = 1
+	peleador2.jugador = 2
+
+	peleador1.configurar_controles()
+	peleador2.configurar_controles()
+	
+	peleador1.scale.x = abs(peleador1.scale.x)
+	peleador2.scale.x = -abs(peleador2.scale.x)
 
 	peleador1.escena_pelea = self
 	peleador2.escena_pelea = self
@@ -59,9 +70,6 @@ func _ready():
 
 	peleador1.health_bar = healthbar_1
 	peleador2.health_bar = healthbar_2
-
-	peleador1.burst_bar = burstbar_1
-	peleador2.burst_bar = burstbar_2
 
 	print("================================")
 	print("JUGADOR 1: ", jugador1)
@@ -116,21 +124,26 @@ func iniciar_ronda():
 
 func comprobar_ganador():
 
+	print("================================")
 	print("COMPROBANDO GANADOR")
+	print("RONDA ACTUAL: ", ronda_actual)
 	print("VIDA J1: ", peleador1.vida)
 	print("VIDA J2: ", peleador2.vida)
 
 	if ronda_terminada:
+		print("LA RONDA YA TERMINÓ")
 		return
 
 	if peleador1.vida <= 0:
 
 		ronda_terminada = true
 
-		print("JUGADOR 2 GANA LA RONDA")
+		print(">>> JUGADOR 2 GANA LA RONDA <<<")
 
 		victorias_j2 += 1
 		jugador2.ganar()
+
+		print("VICTORIAS ACTUALES: J1=", victorias_j1, " J2=", victorias_j2)
 
 		terminar_ronda()
 
@@ -138,10 +151,12 @@ func comprobar_ganador():
 
 		ronda_terminada = true
 
-		print("JUGADOR 1 GANA LA RONDA")
+		print(">>> JUGADOR 1 GANA LA RONDA <<<")
 
 		victorias_j1 += 1
 		jugador1.ganar()
+
+		print("VICTORIAS ACTUALES: J1=", victorias_j1, " J2=", victorias_j2)
 
 		terminar_ronda()
 
@@ -185,17 +200,12 @@ func reiniciar_ronda():
 
 	# Restaurar vida
 	peleador1.vida = 500
-	peleador2.vida = 000
+	peleador2.vida = 500
 
 
 	# Restaurar barras de vida
 	healthbar_1.value = 500
 	healthbar_2.value = 500
-
-
-	# Restaurar burst
-	burstbar_1.value = 0
-	burstbar_2.value = 0
 
 
 	# Quitar bloqueo
@@ -231,20 +241,21 @@ func terminar_pelea():
 	print("PELEA TERMINADA")
 	print("VICTORIAS J1: ", victorias_j1)
 	print("VICTORIAS J2: ", victorias_j2)
+	print("JUGADOR 1 VICTORIAS: ", jugador1.victorias)
+	print("JUGADOR 2 VICTORIAS: ", jugador2.victorias)
+	print("PUNTAJE J1: ", jugador1.puntaje)
+	print("PUNTAJE J2: ", jugador2.puntaje)
 	print("================================")
 
-
 	if victorias_j1 > victorias_j2:
-
 		print("JUGADOR 1 GANA LA PELEA")
-
 	elif victorias_j2 > victorias_j1:
-
 		print("JUGADOR 2 GANA LA PELEA")
-
 	else:
-
 		print("EMPATE")
 
+	# Guardar los puntajes para la escena de resultados
+	get_tree().set_meta("puntaje_jugador1", jugador1.puntaje)
+	get_tree().set_meta("puntaje_jugador2", jugador2.puntaje)
 
-	get_tree().change_scene_to_file("res://escenas/resultado.tscn")	
+	get_tree().change_scene_to_file("res://escenas/resultado.tscn")

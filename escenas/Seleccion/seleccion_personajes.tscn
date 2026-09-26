@@ -65,11 +65,11 @@ alignment = 1
 [node name="ContenedorJ1" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=479613236]
 layout_mode = 2
 
-[node name="LabelAsesinaJ1" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1187745615]
+[node name="LabelestudianteJ1" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1187745615]
 layout_mode = 2
 text = "ASESINA"
 
-[node name="BtnAsesinaJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=573315114]
+[node name="BtnestudianteJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=573315114]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
@@ -77,11 +77,11 @@ theme_override_styles/normal = ExtResource("1_mbim7")
 icon = ExtResource("3_xf1re")
 expand_icon = true
 
-[node name="LabelNinjaJ1" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1859312645]
+[node name="LabeldelincuenteJ1" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1859312645]
 layout_mode = 2
 text = "NINJA"
 
-[node name="BtnNinjaJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1705366667]
+[node name="BtndelincuenteJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1705366667]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
@@ -93,11 +93,11 @@ expand_icon = true
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 
-[node name="LabelAsesinaJ2" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=1355797999]
+[node name="LabelestudianteJ2" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=1355797999]
 layout_mode = 2
 text = "ASESINA"
 
-[node name="BtnAsesinaJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=836550484]
+[node name="BtnestudianteJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=836550484]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
@@ -105,11 +105,11 @@ theme_override_styles/normal = ExtResource("1_mbim7")
 icon = ExtResource("3_xf1re")
 expand_icon = true
 
-[node name="LabelNinjaJ2" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=2049738083]
+[node name="LabeldelincuenteJ2" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=2049738083]
 layout_mode = 2
 text = "NINJA"
 
-[node name="BtnNinjaJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=1786577451]
+[node name="BtndelincuenteJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=1786577451]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64

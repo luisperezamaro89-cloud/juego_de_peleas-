@@ -4,11 +4,9 @@
 [ext_resource type="Script" uid="uid://ceoca2imt1krw" path="res://script/node_2d.gd" id="1_0hol4"]
 [ext_resource type="PackedScene" uid="uid://y8ih3f2eqpwl" path="res://peleadores/peleador1.tscn" id="2_epypp"]
 [ext_resource type="Script" uid="uid://dlxhiflqvokpq" path="res://script/camera.gd" id="3_iyxqb"]
-[ext_resource type="Script" uid="uid://kts74ydj6ger" path="res://script/peleador_2testeo.gd" id="4_iyxqb"]
 [ext_resource type="PackedScene" uid="uid://dj6yeng6igspc" path="res://Uix/healthbar/healthbar_1.tscn" id="4_q6r6c"]
+[ext_resource type="PackedScene" uid="uid://bwuwmyocl8o6q" path="res://peleadores/peleador_2.tscn" id="5_db4js"]
 [ext_resource type="PackedScene" uid="uid://gp665tcad2cf" path="res://Uix/score_1.tscn" id="6_2edlo"]
-[ext_resource type="PackedScene" uid="uid://62cbbpntyi2d" path="res://Uix/burstbar/burstbar_1.tscn" id="8_db4js"]
-[ext_resource type="Script" uid="uid://bgdhppbxutmh8" path="res://script/burstbar.gd" id="9_bpb78"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_0e48y")
@@ -3408,13 +3406,12 @@ zoom = Vector2(3, 3)
 limit_enabled = false
 script = ExtResource("3_iyxqb")
 
-[node name="peleador2" parent="." unique_id=326816759 instance=ExtResource("2_epypp")]
-position = Vector2(103, 27)
-scale = Vector2(0.03, 0.03)
-script = ExtResource("4_iyxqb")
-
 [node name="peleador1" parent="." unique_id=911742902 instance=ExtResource("2_epypp")]
 position = Vector2(-110, 26)
+scale = Vector2(0.03, 0.03)
+
+[node name="peleador2" parent="." unique_id=1935761512 instance=ExtResource("5_db4js")]
+position = Vector2(99.99999, 17.999998)
 scale = Vector2(0.03, 0.03)
 
 [node name="Uix" type="CanvasLayer" parent="." unique_id=298885631]
@@ -3462,28 +3459,6 @@ offset_right = -69.30005
 offset_bottom = -15.400009
 grow_horizontal = 0
 scale = Vector2(1.385, 1.385)
-metadata/_edit_use_anchors_ = true
-
-[node name="burstbar_1" parent="Uix" unique_id=600752714 instance=ExtResource("8_db4js")]
-anchors_preset = -1
-anchor_left = 0.03125
-anchor_top = 0.14197531
-anchor_right = 0.1875
-anchor_bottom = 0.19135803
-offset_right = 0.0
-offset_bottom = 0.0
-script = ExtResource("9_bpb78")
-metadata/_edit_use_anchors_ = true
-
-[node name="burstbar_2" parent="Uix" unique_id=2152606 instance=ExtResource("8_db4js")]
-anchors_preset = -1
-anchor_left = 0.7925347
-anchor_top = 0.1404321
-anchor_right = 0.9487847
-anchor_bottom = 0.18981482
-offset_right = 0.0
-offset_bottom = -7.6293945e-06
-script = ExtResource("9_bpb78")
 metadata/_edit_use_anchors_ = true
 
 [node name="ronda_label" type="Label" parent="Uix" unique_id=1586363716]

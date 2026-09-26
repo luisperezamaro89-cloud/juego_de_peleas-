@@ -24,7 +24,6 @@ var jugador_controlador
 var bloqueando: bool = false
 var bloquear
 var health_bar: TextureProgressBar
-var burst_bar: TextureProgressBar
 var score
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 var escena_pelea
@@ -58,8 +57,8 @@ func _ready():
 		derecha = KEY_RIGHT
 		arriba = KEY_UP
 		abajo = KEY_DOWN
-		golpear = KEY_N
-		bloquear = KEY_M
+		golpear = KEY_M
+		bloquear = KEY_N
 		
 		scale.x = -abs(scale.x)
 
@@ -158,16 +157,6 @@ func recibir_daño(cantidad: int, atacante = null):
 
 	vida -= cantidad
 	vida = max(vida, 0)
-	
-	if burst_bar:
-		print("BURST BAR ENCONTRADA: ", burst_bar)
-		burst_bar.agregar_carga(cantidad)
-	
-	else:
-		print("ERROR: burst_bar está vacío en Jugador 1")
-		print("VIDA DESPUÉS: ", vida)
-	
-	print("VIDA DESPUÉS: ", vida)
 
 	if health_bar:
 		health_bar.value = vida

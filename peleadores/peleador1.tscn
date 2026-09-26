@@ -701,7 +701,7 @@ shape = SubResource("RectangleShape2D_wi6ju")
 disabled = true
 debug_color = Color(0.6798284, 0.5021078, 0.12608707, 0.41960785)
 
-[node name="Daño" type="Node2D" parent="StateMachine" unique_id=13573949]
+[node name="daño" type="Node2D" parent="StateMachine" unique_id=13573949]
 script = ExtResource("15_xo8tn")
 
 [node name="Bloquear" type="Node2D" parent="StateMachine" unique_id=1159952335]
