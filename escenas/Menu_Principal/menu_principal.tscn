@@ -74,24 +74,29 @@ text = "SALIR"
 
 [node name="BtnAdmin" type="Button" parent="." unique_id=1121005340]
 layout_mode = 0
-offset_left = 916.0
-offset_top = 562.0
-offset_right = 1128.0
-offset_bottom = 642.0
+offset_left = 929.0
+offset_top = 576.0
+offset_right = 1141.0
+offset_bottom = 656.0
 text = "ADMINISTRADORES"
 
 [node name="PopUpAdmin" type="ConfirmationDialog" parent="." unique_id=1089627831]
 oversampling_override = 1.0
 title = "Acceso Administrador"
 position = Vector2i(0, 36)
-visible = true
 
 [node name="InputPassword" type="LineEdit" parent="PopUpAdmin" unique_id=1076589863]
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 199.0
-offset_bottom = 54.0
+offset_right = 192.0
+offset_bottom = 51.0
 secret = true
+
+[node name="LabelError" type="Label" parent="PopUpAdmin" unique_id=626822419]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 51.0
 
 [connection signal="pressed" from="VBoxContainer/BtnIniciarPartida" to="." method="_on_btn_iniciar_partida_pressed"]
 [connection signal="pressed" from="BtnAdmin" to="." method="_on_administradores_pressed"]
