@@ -134,28 +134,18 @@ func activar_hitbox():
 	collision_abajo.disabled = true
 	collision_delante.disabled = true
 
-	print("================================")
-	print("ACTIVANDO HITBOX")
-	print("DIRECCIÓN DE ATAQUE: ", direccion_ataque)
 
 	match direccion_ataque:
 
 		"arriba":
 			collision_arriba.disabled = false
-			print(">>> HITBOX ARRIBA ACTIVADA")
 
 		"abajo":
 			collision_abajo.disabled = false
-			print(">>> HITBOX ABAJO ACTIVADA")
 
 		"delante":
 			collision_delante.disabled = false
-			print(">>> HITBOX DELANTE ACTIVADA")
 
-	print("DELANTE: ", not collision_delante.disabled)
-	print("ARRIBA: ", not collision_arriba.disabled)
-	print("ABAJO: ", not collision_abajo.disabled)
-	print("================================")
 			
 func desactivar_hitboxes():
 	collision_arriba.disabled = true
@@ -167,7 +157,6 @@ func desactivar_hitboxes():
 func recibir_daño(cantidad: int, atacante = null):
 
 	print("PLAYER recibió daño: ", cantidad)
-	print("VIDA ANTES: ", vida)
 
 	if bloqueando:
 		print("¡ATAQUE BLOQUEADO!")
@@ -222,3 +211,4 @@ func morir():
 	get_tree().set_meta("puntaje_jugador2", jugador2.puntaje)
 
 	get_tree().change_scene_to_file("res://escenas/Resultado.tscn")
+	

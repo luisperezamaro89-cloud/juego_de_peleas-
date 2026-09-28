@@ -116,11 +116,6 @@ func actualizar(_direccion):
 
 func reproducir_golpe():
 
-	print("================================")
-	print("REPRODUCIENDO GOLPE")
-	print("Dirección: ", player.direccion_ataque)
-	print("Golpe actual: ", golpe_actual)
-
 	# Apagar todas las HitBox
 	player.desactivar_hitboxes()
 
@@ -135,8 +130,6 @@ func reproducir_golpe():
 	# ==========================================
 
 	if player.direccion_ataque == "arriba":
-
-		print("ACTIVANDO HITBOX ARRIBA")
 
 		player.collision_arriba.disabled = false
 
@@ -168,7 +161,6 @@ func reproducir_golpe():
 
 	elif player.direccion_ataque == "abajo":
 
-		print("ACTIVANDO HITBOX ABAJO")
 
 		player.collision_abajo.disabled = false
 
@@ -209,7 +201,6 @@ func reproducir_golpe():
 
 	elif player.direccion_ataque == "delante":
 
-		print("ACTIVANDO HITBOX DELANTE")
 
 		player.collision_delante.disabled = false
 
@@ -242,14 +233,6 @@ func reproducir_golpe():
 
 			if animation_player.has_animation("animacion golpe2"):
 				animation_player.play("animacion golpe2")
-
-
-	print("HitBox DELANTE: ", not player.collision_delante.disabled)
-	print("HitBox ARRIBA: ", not player.collision_arriba.disabled)
-	print("HitBox ABAJO: ", not player.collision_abajo.disabled)
-	print("ANIMACIÓN: ", sprite.animation)
-	print("¿ANIMACIÓN INICIADA?: ", animacion_iniciada)
-	print("================================")
 
 
 # ==========================================
