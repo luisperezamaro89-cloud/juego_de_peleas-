@@ -65,14 +65,15 @@ func _on_insertar_jugador_button_down():
 	else:
 		mostrar_en_consola("Error al guardar: " + str(baseDatos.error_message), true)
 
-# --- BOTÓN 3: VER JUGADORES ---
+
 func _on_ver_jugadores_button_down():
 	baseDatos.query("SELECT * FROM players;")
 	mostrar_en_consola("=== LISTA DE JUGADORES ===", true)
 	
 	for jugador in baseDatos.query_result:
-		mostrar_en_consola("ID: %d | Nombre: %s | Puntaje: %d" % [
-			jugador["id"], jugador["nombre"], jugador["puntaje"]
+		mostrar_en_consola("ID: %d | Nombre: %s | Puntaje: %d | Personaje: %s | Derrotas: %s" % [
+			jugador["id"], jugador["nombre"], jugador["puntaje"],
+			jugador["personaje"], jugador["derrotas"]
 		])
 
 # --- BOTÓN 4: ACTUALIZAR JUGADOR ---

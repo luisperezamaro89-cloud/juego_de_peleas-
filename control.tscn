@@ -93,8 +93,8 @@ offset_bottom = 150.0
 layout_mode = 0
 offset_left = 289.0
 offset_top = 171.0
-offset_right = 896.0
-offset_bottom = 608.0
+offset_right = 1048.0
+offset_bottom = 595.0
 editable = false
 
 [connection signal="button_down" from="CrearTabla" to="." method="_on_crear_tabla_button_down"]
