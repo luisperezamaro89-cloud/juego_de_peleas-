@@ -239,8 +239,8 @@ func terminar_pelea():
 
 	if victorias_j1 > victorias_j2:
 
-			ganador_partida = "Jugador 1"
-			print("JUGADOR 1 GANA LA PELEA")
+		ganador_partida = "Jugador 1"
+		print("JUGADOR 1 GANA LA PELEA")
 
 	elif victorias_j2 > victorias_j1:
 
@@ -252,9 +252,14 @@ func terminar_pelea():
 		ganador_partida = "Empate"
 		print("EMPATE")
 
-	# Guardar los puntajes para la escena de resultados
+
+	# Guardar los puntajes
 	get_tree().set_meta("puntaje_jugador1", jugador1.puntaje)
 	get_tree().set_meta("puntaje_jugador2", jugador2.puntaje)
+
+	# Guardar quién ganó la partida
 	get_tree().set_meta("ganador_partida", ganador_partida)
 
-	get_tree().change_scene_to_file("res://escenas/resultado.tscn")
+
+	# Ir a resultados
+	get_tree().change_scene_to_file("res://escenas/Resultado.tscn")

@@ -10,96 +10,229 @@ extends Control
 var baseDatos: SQLite
 var puntos_j1: int = 0
 var puntos_j2: int = 0
+var ganador_partida: String = ""
+
 
 func _ready():
+
 	baseDatos = SQLite.new()
 	baseDatos.path = "res://base_datos/data.db"
 	baseDatos.open_db()
 
+
+	# ==========================================
+	# OBTENER PUNTAJES
+	# ==========================================
+
 	if get_tree().has_meta("puntaje_jugador1"):
 		puntos_j1 = int(get_tree().get_meta("puntaje_jugador1"))
+
 	if get_tree().has_meta("puntaje_jugador2"):
 		puntos_j2 = int(get_tree().get_meta("puntaje_jugador2"))
+
+
+	# ==========================================
+	# OBTENER GANADOR DE LA PARTIDA
+	# ==========================================
+
+	if get_tree().has_meta("ganador_partida"):
+		ganador_partida = get_tree().get_meta("ganador_partida")
+
+
+	# ==========================================
+	# MOSTRAR PUNTAJES
+	# ==========================================
 
 	puntaje_jugador1.text = "Puntaje: " + str(puntos_j1)
 	puntaje_jugador2.text = "Puntaje: " + str(puntos_j2)
 
-	if puntos_j1 > puntos_j2:
+
+	# ==========================================
+	# MOSTRAR GANADOR
+	# ==========================================
+
+	if ganador_partida == "Jugador 1":
+
 		nombre_y_definicion.text = "¡Jugador 1!"
-	elif puntos_j2 > puntos_j1:
+
+	elif ganador_partida == "Jugador 2":
+
 		nombre_y_definicion.text = "¡Jugador 2!"
+
 	else:
+
 		nombre_y_definicion.text = "¡Empate!"
 
+
+# ==========================================
+# CONTINUAR
+# ==========================================
+
 func _on_boton_continuar_pressed() -> void:
+
 	var nombre_final_j1: String = entrada_nombre_j1.text
 	var nombre_final_j2: String = entrada_nombre_j2.text
 
-	if nombre_final_j1.strip_edges() == "": nombre_final_j1 = "Jugador 1"
-	if nombre_final_j2.strip_edges() == "": nombre_final_j2 = "Jugador 2"
 
-	if puntos_j1 > puntos_j2:
+	if nombre_final_j1.strip_edges() == "":
+		nombre_final_j1 = "Jugador 1"
+
+	if nombre_final_j2.strip_edges() == "":
+		nombre_final_j2 = "Jugador 2"
+
+
+	# ==========================================
+	# GUARDAR RESULTADO SEGÚN RONDAS
+	# ==========================================
+
+	if ganador_partida == "Jugador 1":
+
 		registrar_victoria(nombre_final_j1, puntos_j1)
 		registrar_derrota(nombre_final_j2)
-	elif puntos_j2 > puntos_j1:
+
+	elif ganador_partida == "Jugador 2":
+
 		registrar_victoria(nombre_final_j2, puntos_j2)
 		registrar_derrota(nombre_final_j1)
+
 	else:
+
 		print("Empate, no se registra victoria ni derrota")
+
 
 	get_tree().change_scene_to_file("res://Top_jugadores/top_5.tscn")
 
+
+# ==========================================
+# COMPROBAR SI EXISTE
+# ==========================================
+
 func jugador_existe(nombre: String) -> bool:
-	baseDatos.query("SELECT * FROM players WHERE nombre = '%s'" % nombre)
+
+	baseDatos.query(
+		"SELECT * FROM players WHERE nombre = '%s'" % nombre
+	)
+
 	return baseDatos.query_result.size() > 0
 
+
+# ==========================================
+# OBTENER JUGADOR
+# ==========================================
+
 func obtener_jugador_por_nombre(nombre: String) -> Dictionary:
-	baseDatos.query("SELECT * FROM players WHERE nombre = '%s'" % nombre)
+
+	baseDatos.query(
+		"SELECT * FROM players WHERE nombre = '%s'" % nombre
+	)
+
 	if baseDatos.query_result.size() > 0:
 		return baseDatos.query_result[0]
+
 	return {}
 
+
+# ==========================================
+# REGISTRAR VICTORIA
+# ==========================================
+
 func registrar_victoria(nombre: String, puntaje: int):
+
 	if jugador_existe(nombre):
+
 		var jugador = obtener_jugador_por_nombre(nombre)
+
 		var victorias_actuales = 0
+
 		if jugador["victorias"] != null:
 			victorias_actuales = int(jugador["victorias"])
+
+
+		var puntaje_actual = 0
+
+		if jugador["puntaje"] != null:
+			puntaje_actual = int(jugador["puntaje"])
+
+
 		var datos = {
 			"victorias": victorias_actuales + 1,
-			"puntaje": puntaje
+			"puntaje": puntaje_actual + puntaje
 		}
-		baseDatos.update_rows("players", "nombre = '%s'" % nombre, datos)
-		print(nombre, " ganó. Victorias totales: ", victorias_actuales + 1)
+
+
+		baseDatos.update_rows(
+			"players",
+			"nombre = '%s'" % nombre,
+			datos
+		)
+
+
+		print(nombre, " ganó.")
+		print("Victorias totales: ", victorias_actuales + 1)
+		print("Puntaje total: ", puntaje_actual + puntaje)
+
+
 	else:
+
 		var fila = {
 			"nombre": nombre,
 			"puntaje": puntaje,
 			"victorias": 1,
 			"derrotas": 0
 		}
+
+
 		baseDatos.insert_row("players", fila)
+
+
 		print("Jugador nuevo registrado con 1 victoria: ", nombre)
-		
-		
+
+
+# ==========================================
+# REGISTRAR DERROTA
+# ==========================================
 
 func registrar_derrota(nombre: String):
+
 	if jugador_existe(nombre):
+
 		var jugador = obtener_jugador_por_nombre(nombre)
+
 		var derrotas_actuales = 0
+
 		if jugador["derrotas"] != null:
 			derrotas_actuales = int(jugador["derrotas"])
+
+
 		var datos = {
-			"derrotas": derrotas_actuales + 1
+			"derrotas": derrotas_actuales + 1,
+			"puntaje": 0
 		}
-		baseDatos.update_rows("players", "nombre = '%s'" % nombre, datos)
-		print(nombre, " perdió. Derrotas totales: ", derrotas_actuales + 1)
+
+
+		baseDatos.update_rows(
+			"players",
+			"nombre = '%s'" % nombre,
+			datos
+		)
+
+
+		print(nombre, " perdió.")
+		print("Derrotas totales: ", derrotas_actuales + 1)
+		print("Puntaje eliminado: 0")
+
+
 	else:
+
 		var fila = {
 			"nombre": nombre,
 			"puntaje": 0,
 			"victorias": 0,
 			"derrotas": 1
 		}
+
+
 		baseDatos.insert_row("players", fila)
+
+
 		print("Jugador nuevo registrado con 1 derrota: ", nombre)
