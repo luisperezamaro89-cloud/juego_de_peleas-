@@ -12,9 +12,10 @@ var jugador_controlador
 
 @onready var state_machine = $StateMachine 
 
-@onready var hitbox_delante: HitBox = $"StateMachine/Golpear/HitBox_delante"
-@onready var hitbox_arriba: HitBox = $"StateMachine/Golpear/hitbox_arriba"
-@onready var hitbox_abajo: HitBox = $"StateMachine/Golpear/hitbox_abajo"
+@onready var hitbox_delante = $"StateMachine/Golpear/HitBox_delante"
+@onready var hitbox_arriba = $"StateMachine/Golpear/hitbox_arriba"
+@onready var hitbox_abajo = $"StateMachine/Golpear/hitbox_abajo"
+
 @onready var camera = $"../Camera2D"
 
 @onready var collision_delante: CollisionShape2D = $"StateMachine/Golpear/HitBox_delante/collision"
