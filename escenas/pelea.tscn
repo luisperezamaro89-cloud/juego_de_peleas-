@@ -3411,7 +3411,7 @@ position = Vector2(-110, 26)
 scale = Vector2(0.03, 0.03)
 
 [node name="peleador2" parent="." unique_id=1935761512 instance=ExtResource("5_db4js")]
-position = Vector2(99.99999, 17.999998)
+position = Vector2(87.99999, 9.999999)
 scale = Vector2(0.03, 0.03)
 
 [node name="Uix" type="CanvasLayer" parent="." unique_id=298885631]

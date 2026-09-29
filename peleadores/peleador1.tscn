@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bei3sysm7dhby" path="res://script/player.gd" id="1_qvkvg"]
 [ext_resource type="Texture2D" uid="uid://dkvy7ga07gb3m" path="res://assets/personajes/personaje 1/sprites/arrodillarse/spritesheet arrodillarse.png" id="2_tj1uq"]
 [ext_resource type="Texture2D" uid="uid://bxsd42ykgrny2" path="res://assets/personajes/personaje 1/sprites/salto/spritesheet salto.png" id="3_r87xo"]
+[ext_resource type="Texture2D" uid="uid://861rtx80j1c1" path="res://assets/personajes/personaje 1/sprites/daño/spiptesheet general.png" id="3_ylli0"]
 [ext_resource type="Texture2D" uid="uid://bqgoyabhgay30" path="res://assets/personajes/personaje 1/sprites/caminata/spritesheet caminata.png" id="4_cbhkk"]
 [ext_resource type="Texture2D" uid="uid://bk0w77moyxq0n" path="res://assets/personajes/personaje 1/sprites/golpes/spritesheet golpe saltando.png" id="5_1h0hy"]
 [ext_resource type="Texture2D" uid="uid://w1efmtxrjinx" path="res://assets/personajes/personaje 1/sprites/golpes/spritesheet golpe bajo.png" id="5_lre48"]
@@ -21,7 +22,7 @@
 [ext_resource type="Script" uid="uid://d33olm0elxb0p" path="res://script/hurt_box.gd" id="19_npc34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
-size = Vector2(723, 2615)
+size = Vector2(723, 4198)
 
 [sub_resource type="Animation" id="Animation_1qjux"]
 length = 0.001
@@ -214,9 +215,9 @@ region = Rect2(1231, 0, 1231, 1231)
 atlas = ExtResource("2_tj1uq")
 region = Rect2(2462, 0, 1231, 1231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ucis"]
-atlas = ExtResource("3_r87xo")
-region = Rect2(2462, 1231, 1231, 1231)
+[sub_resource type="AtlasTexture" id="AtlasTexture_im0m3"]
+atlas = ExtResource("3_ylli0")
+region = Rect2(1231, 1231, 1231, 1231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0bhp"]
 atlas = ExtResource("4_cbhkk")
@@ -242,15 +243,9 @@ region = Rect2(1231, 1231, 1231, 1231)
 atlas = ExtResource("4_cbhkk")
 region = Rect2(2462, 1231, 1231, 1231)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1h0hy"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ijgiy"]
-atlas = SubResource("CompressedTexture2D_1h0hy")
-region = Rect2(0, 1231, 1231, 1231)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mdxsd"]
-atlas = SubResource("CompressedTexture2D_1h0hy")
-region = Rect2(1231, 1231, 1231, 1231)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd6jj"]
+atlas = ExtResource("3_ylli0")
+region = Rect2(2462, 1231, 1231, 1231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hei85"]
 atlas = ExtResource("5_oxfs5")
@@ -430,7 +425,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7ucis")
+"texture": SubResource("AtlasTexture_im0m3")
 }],
 "loop": 1,
 "name": &"bloquear",
@@ -460,11 +455,8 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.3,
-"texture": SubResource("AtlasTexture_ijgiy")
-}, {
-"duration": 0.9,
-"texture": SubResource("AtlasTexture_mdxsd")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd6jj")
 }],
 "loop": 0,
 "name": &"daño",
@@ -637,7 +629,7 @@ size = Vector2(52.08705, 170.67429)
 script = ExtResource("1_qvkvg")
 
 [node name="collision" type="CollisionShape2D" parent="." unique_id=1171166826]
-position = Vector2(-280.5, 351.5)
+position = Vector2(-280.5, -440)
 shape = SubResource("RectangleShape2D_xrivr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1161712993]
@@ -645,10 +637,9 @@ libraries/ = SubResource("AnimationLibrary_eka8j")
 speed_scale = 2.187
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1682922483]
-position = Vector2(6.500122, 7.500122)
 scale = Vector2(2.7010562, 2.7010562)
 sprite_frames = SubResource("SpriteFrames_b1lj4")
-animation = &"golpear_2"
+animation = &"golpe_saltando"
 autoplay = "idle"
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=993402822]
@@ -670,7 +661,6 @@ script = ExtResource("12_m4eqs")
 script = ExtResource("13_efuxv")
 
 [node name="HitBox_delante" type="Area2D" parent="StateMachine/Golpear" unique_id=953118780]
-collision_layer = 2
 collision_mask = 2
 script = ExtResource("14_i036h")
 
@@ -684,6 +674,7 @@ disabled = true
 debug_color = Color(0.8016712, 0.23242167, 0.22847077, 0.41960785)
 
 [node name="hitbox_arriba" type="Area2D" parent="StateMachine/Golpear" unique_id=1522108594]
+collision_mask = 2
 script = ExtResource("14_i036h")
 
 [node name="collision" type="CollisionShape2D" parent="StateMachine/Golpear/hitbox_arriba" unique_id=1601353001]
@@ -693,6 +684,7 @@ disabled = true
 debug_color = Color(0.9317533, 0.26239598, 0, 0.41960785)
 
 [node name="hitbox_abajo" type="Area2D" parent="StateMachine/Golpear" unique_id=1434881098]
+collision_mask = 2
 script = ExtResource("14_i036h")
 
 [node name="collision" type="CollisionShape2D" parent="StateMachine/Golpear/hitbox_abajo" unique_id=446408359]
@@ -709,7 +701,6 @@ script = ExtResource("16_t22iv")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1515319043]
 collision_layer = 2
-collision_mask = 2
 script = ExtResource("19_npc34")
 
 [node name="HurtBox collision" type="CollisionShape2D" parent="Hurtbox" unique_id=1229225619]

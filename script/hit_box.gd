@@ -12,6 +12,21 @@ func _ready():
 		area_entered.connect(_on_area_entered)
 
 
+func _physics_process(_delta):
+
+	# Comprobar también áreas que ya están dentro
+	if ya_golpeo:
+		return
+
+	var areas = get_overlapping_areas()
+
+	for area in areas:
+
+		if area is Hurtbox:
+			_aplicar_golpe(area)
+			break
+
+
 func reiniciar_golpe():
 	ya_golpeo = false
 
@@ -42,26 +57,30 @@ func _on_area_entered(area: Area2D):
 	print("¿TIENE recibir_daño?: ", area.has_method("recibir_daño"))
 
 	if area is Hurtbox:
-
-		print("¡¡ES UN HURTBOX!!")
-
-		if ya_golpeo:
-			print("ESTA HITBOX YA GOLPEÓ")
-			print("================================")
-			return
-
-		ya_golpeo = true
-
-		var golpe = player.get_node("StateMachine/Golpear")
-		var daño = golpe.obtener_daño()
-
-		print("DAÑO APLICADO: ", daño)
-		print("ATACANTE: ", player.name)
-
-		area.recibir_daño(daño, player)
-
+		_aplicar_golpe(area)
 	else:
-
 		print("NO ES UN HURTBOX")
+
+	print("================================")
+
+
+func _aplicar_golpe(area: Area2D):
+
+	if ya_golpeo:
+		print("ESTA HITBOX YA GOLPEÓ")
+		return
+
+	ya_golpeo = true
+
+	var golpe = player.get_node("StateMachine/Golpear")
+	var daño = golpe.obtener_daño()
+
+	print("================================")
+	print("¡¡GOLPE DETECTADO!!")
+	print("HITBOX: ", name)
+	print("DAÑO APLICADO: ", daño)
+	print("ATACANTE: ", player.name)
+
+	area.recibir_daño(daño, player)
 
 	print("================================")
