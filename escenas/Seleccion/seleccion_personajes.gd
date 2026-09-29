@@ -18,8 +18,8 @@ var nombres_j2 = ["estudiante", "delincuente"]
 
 
 # IMÁGENES DE LOS PERSONAJES
-var fondo_estudiante = preload("res://Uix/placeholder1.jpg")
-var fondo_delincuente = preload("res://Uix/placeholder2.jpg")
+var fondo_estudiante = preload("res://Uix/placeholder1.png")
+var fondo_delincuente = preload("res://Uix/placeholder2.png")
 
 
 var indice_j1 = 0
