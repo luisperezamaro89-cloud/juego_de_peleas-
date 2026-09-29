@@ -49,3 +49,12 @@ offset_left = 758.0
 offset_top = 71.0
 offset_right = 1124.0
 offset_bottom = 129.0
+
+[node name="BtnMenu" type="Button" parent="." unique_id=1390615486]
+layout_mode = 0
+offset_left = 796.0
+offset_top = 549.0
+offset_right = 1140.0
+offset_bottom = 630.0
+theme_override_font_sizes/font_size = 28
+text = "Volver al menu principal "

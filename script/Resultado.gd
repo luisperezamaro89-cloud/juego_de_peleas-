@@ -47,7 +47,7 @@ func _on_boton_continuar_pressed() -> void:
 	else:
 		print("Empate, no se registra victoria ni derrota")
 
-	get_tree().change_scene_to_file("res://escenas/pelea.tscn")
+	get_tree().change_scene_to_file("res://Top_jugadores/top_5.tscn")
 
 func jugador_existe(nombre: String) -> bool:
 	baseDatos.query("SELECT * FROM players WHERE nombre = '%s'" % nombre)
@@ -80,6 +80,8 @@ func registrar_victoria(nombre: String, puntaje: int):
 		}
 		baseDatos.insert_row("players", fila)
 		print("Jugador nuevo registrado con 1 victoria: ", nombre)
+		
+		
 
 func registrar_derrota(nombre: String):
 	if jugador_existe(nombre):
