@@ -235,15 +235,26 @@ func terminar_pelea():
 	print("PUNTAJE J2: ", jugador2.puntaje)
 	print("================================")
 
+	var ganador_partida = ""
+
 	if victorias_j1 > victorias_j2:
-		print("JUGADOR 1 GANA LA PELEA")
+
+			ganador_partida = "Jugador 1"
+			print("JUGADOR 1 GANA LA PELEA")
+
 	elif victorias_j2 > victorias_j1:
+
+		ganador_partida = "Jugador 2"
 		print("JUGADOR 2 GANA LA PELEA")
+
 	else:
+
+		ganador_partida = "Empate"
 		print("EMPATE")
 
 	# Guardar los puntajes para la escena de resultados
 	get_tree().set_meta("puntaje_jugador1", jugador1.puntaje)
 	get_tree().set_meta("puntaje_jugador2", jugador2.puntaje)
+	get_tree().set_meta("ganador_partida", ganador_partida)
 
 	get_tree().change_scene_to_file("res://escenas/resultado.tscn")
