@@ -49,3 +49,8 @@ func mostrar_puesto_ganador():
 		label_top_jugador.text = "%s\n¡PUESTO #%d!" % [nombre.to_upper(), puesto]
 	else:
 		label_top_jugador.text = "Sin registros."
+
+
+func _on_btn_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://escenas/Menu_Principal/menu_principal.tscn")
+	

@@ -67,7 +67,7 @@ layout_mode = 2
 
 [node name="LabelestudianteJ1" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1187745615]
 layout_mode = 2
-text = "ASESINA"
+text = "ESTUDIANTE"
 
 [node name="BtnestudianteJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=573315114]
 custom_minimum_size = Vector2(150, 150)
@@ -79,7 +79,7 @@ expand_icon = true
 
 [node name="LabeldelincuenteJ1" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1859312645]
 layout_mode = 2
-text = "NINJA"
+text = "DELICUENTE"
 
 [node name="BtndelincuenteJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1705366667]
 custom_minimum_size = Vector2(150, 150)
@@ -95,7 +95,7 @@ layout_mode = 2
 
 [node name="LabelestudianteJ2" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=1355797999]
 layout_mode = 2
-text = "ASESINA"
+text = "ESTUDINTE"
 
 [node name="BtnestudianteJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=836550484]
 custom_minimum_size = Vector2(150, 150)
@@ -107,7 +107,7 @@ expand_icon = true
 
 [node name="LabeldelincuenteJ2" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=2049738083]
 layout_mode = 2
-text = "NINJA"
+text = "DELICUENTE"
 
 [node name="BtndelincuenteJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=1786577451]
 custom_minimum_size = Vector2(150, 150)

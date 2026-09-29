@@ -1,7 +1,10 @@
+# este es el que estamos utilisando en data :v#
+
 extends Control
 # Referencias a la ventana emergente y al campo de texto
 @onready var pop_up_admin = $PopUpAdmin
 @onready var input_password = $PopUpAdmin/InputPassword
+
 
 # Define aquí la clave de acceso que desees
 const CLAVE_CORRECTA = "Admin123" # Contraseña no olvidar
@@ -41,10 +44,13 @@ func _on_crear_tabla_button_down():
 	var esquema_jugadores = {
 		"id": {"data_type": "int", "primary_key": true, "not_null": true, "auto_increment": true},
 		"nombre": {"data_type": "text", "not_null": true},
-		"puntaje": {"data_type": "int", "default": 0}
+		"puntaje": {"data_type": "int", "default": 0},
+		"victorias": {"data_type": "int", "default": 0},
+		"derrotas": {"data_type": "int", "default": 0},
+		"Personaje": {"data_type": "text", "default": "Desconocido"}
 	}
 	baseDatos.create_table("players", esquema_jugadores)
-	mostrar_en_consola("=== TABLA 'PLAYERS' LISTA ===", true)
+	mostrar_en_consola("=== TABLA 'PLAYERS' COMPLETA LISTA ===", true)
 
 # --- BOTÓN 2: INSERTAR JUGADOR ---
 func _on_insertar_jugador_button_down():

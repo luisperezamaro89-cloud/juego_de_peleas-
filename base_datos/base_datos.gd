@@ -1,4 +1,7 @@
+# no tocar esto no sirve pero si lo borra sale error #
+
 extends Node
+
 
 var db = SQLite.new()
 
@@ -23,7 +26,7 @@ func crear_tabla_jugadores():
 func guardar_jugador(nombre: String, puntaje: int):
 	var fila = {
 		"nombre": nombre,
-		"victorias": 1,
+		"victorias": 0,
 		"derrotas": 0,
 		"puntaje": puntaje
 	}

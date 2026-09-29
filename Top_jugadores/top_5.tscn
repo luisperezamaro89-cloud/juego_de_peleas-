@@ -13,7 +13,7 @@ script = ExtResource("1_hn8yy")
 
 [node name="Panel" type="Panel" parent="." unique_id=967232988]
 layout_mode = 0
-offset_right = 1158.0
+offset_right = 1147.0
 offset_bottom = 650.0
 
 [node name="TituloTop" type="Label" parent="Panel" unique_id=474207771]
@@ -52,9 +52,11 @@ offset_bottom = 129.0
 
 [node name="BtnMenu" type="Button" parent="." unique_id=1390615486]
 layout_mode = 0
-offset_left = 796.0
-offset_top = 549.0
-offset_right = 1140.0
-offset_bottom = 630.0
+offset_left = 783.0
+offset_top = 538.0
+offset_right = 1127.0
+offset_bottom = 619.0
 theme_override_font_sizes/font_size = 28
 text = "Volver al menu principal "
+
+[connection signal="pressed" from="BtnMenu" to="." method="_on_btn_menu_pressed"]
