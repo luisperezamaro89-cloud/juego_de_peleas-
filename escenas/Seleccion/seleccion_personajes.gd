@@ -27,8 +27,8 @@ var rutas_j2 = {
 @onready var fondo_personaje: TextureRect = $FondoPersonaje
 @onready var fondo_personaje2: TextureRect = $FondoPersonaje2
 
-var fondo_estudiante = preload("res://Uix/placeholder1.jpg")
-var fondo_delincuente = preload("res://Uix/placeholder2.jpg")
+var fondo_estudiante = preload("res://Uix/placeholder1.png")
+var fondo_delincuente = preload("res://Uix/placeholder2.png")
 
 var indice_j1 = 0
 var indice_j2 = 0
