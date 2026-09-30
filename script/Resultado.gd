@@ -11,6 +11,8 @@ var baseDatos: SQLite
 var puntos_j1: int = 0
 var puntos_j2: int = 0
 var ganador_partida: String = ""
+var personaje_j1: String = ""
+var personaje_j2: String = ""
 
 
 func _ready():
@@ -37,6 +39,17 @@ func _ready():
 
 	if get_tree().has_meta("ganador_partida"):
 		ganador_partida = get_tree().get_meta("ganador_partida")
+
+
+	# ==========================================
+	# OBTENER PERSONAJES ELEGIDOS
+	# ==========================================
+
+	if get_tree().has_meta("personaje_j1"):
+		personaje_j1 = get_tree().get_meta("personaje_j1")
+
+	if get_tree().has_meta("personaje_j2"):
+		personaje_j2 = get_tree().get_meta("personaje_j2")
 
 
 	# ==========================================
@@ -98,6 +111,14 @@ func _on_boton_continuar_pressed() -> void:
 	else:
 
 		print("Empate, no se registra victoria ni derrota")
+
+
+	# ==========================================
+	# GUARDAR PERSONAJE DE CADA JUGADOR
+	# ==========================================
+
+	guardar_personaje(nombre_final_j1, personaje_j1)
+	guardar_personaje(nombre_final_j2, personaje_j2)
 
 
 	get_tree().change_scene_to_file("res://Top_jugadores/top_5.tscn")
@@ -236,3 +257,19 @@ func registrar_derrota(nombre: String):
 
 
 		print("Jugador nuevo registrado con 1 derrota: ", nombre)
+
+
+# ==========================================
+# GUARDAR PERSONAJE
+# ==========================================
+
+func guardar_personaje(nombre: String, personaje: String):
+
+	if personaje == "":
+		return
+
+	baseDatos.update_rows(
+		"players",
+		"nombre = '%s'" % nombre,
+		{"personaje": personaje}
+	)
