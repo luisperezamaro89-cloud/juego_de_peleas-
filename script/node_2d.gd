@@ -1,7 +1,9 @@
 extends Node2D
 
-@onready var peleador1 = $peleador1
-@onready var peleador2 = $peleador2
+# Los peleadores ya no están puestos a mano en la escena:
+# se crean por código según lo que se eligió en la selección.
+var peleador1
+var peleador2
 
 @onready var healthbar_1 = $Uix/healthbar_1
 @onready var healthbar_2 = $Uix/healthbar_2
@@ -14,6 +16,18 @@ var jugador1
 var jugador2
 var personaje_j1 = "Estudiante"
 var personaje_j2 = "Delincuente"
+
+# Escenas que se usan si abres la pelea directo (sin pasar por la selección)
+const RUTA_PELEADOR_1_POR_DEFECTO := "res://peleadores/peleador1.tscn"
+const RUTA_PELEADOR_2_POR_DEFECTO := "res://peleadores/peleador_2.tscn"
+
+# Dónde aparece cada peleador
+const POSICION_PELEADOR_1 := Vector2(-110.0, 26.0)
+const POSICION_PELEADOR_2 := Vector2(103.0, 27.0)
+
+# Tamaño de los peleadores. Si se ven más grandes o pequeños que antes,
+# pon aquí el mismo Scale que tenían en la escena.
+const ESCALA_PELEADORES := Vector2(0.03, 0.03)
 
 
 # ==========================================
@@ -34,9 +48,67 @@ func mostrar_ronda():
 	await get_tree().create_timer(2.0).timeout
 	
 	ronda_label.visible = false
+
+
+# ==========================================
+# CREAR LOS PELEADORES ELEGIDOS
+# ==========================================
+
+func crear_peleadores():
+
+	# Si quedó algún peleador de prueba puesto en la escena, se quita
+	for nombre in ["peleador1", "peleador2"]:
+		var viejo = get_node_or_null(nombre)
+		if viejo:
+			remove_child(viejo)
+			viejo.queue_free()
+
+	var ruta1 = RUTA_PELEADOR_1_POR_DEFECTO
+	var ruta2 = RUTA_PELEADOR_2_POR_DEFECTO
+
+	if get_tree().has_meta("ruta_j1"):
+		ruta1 = get_tree().get_meta("ruta_j1")
+
+	if get_tree().has_meta("ruta_j2"):
+		ruta2 = get_tree().get_meta("ruta_j2")
+
+	peleador1 = crear_peleador(ruta1, "peleador1", POSICION_PELEADOR_1)
+	peleador2 = crear_peleador(ruta2, "peleador2", POSICION_PELEADOR_2)
+
+	# La cámara sigue a los peleadores: se le pasan los nuevos
+	for hijo in get_children():
+		if hijo is Camera2D:
+			hijo.peleador1 = peleador1
+			hijo.peleador2 = peleador2
+
+	if get_tree().has_meta("personaje_j1"):
+		personaje_j1 = get_tree().get_meta("personaje_j1")
+
+	if get_tree().has_meta("personaje_j2"):
+		personaje_j2 = get_tree().get_meta("personaje_j2")
+
+
+func crear_peleador(ruta: String, nombre: String, posicion: Vector2):
+
+	var nuevo = load(ruta).instantiate()
+
+	nuevo.name = nombre
+	nuevo.position = posicion
+	nuevo.scale = ESCALA_PELEADORES
+
+	add_child(nuevo)
+
+	# Se coloca antes de la interfaz para que la interfaz quede encima
+	if has_node("Uix"):
+		move_child(nuevo, $Uix.get_index())
+
+	return nuevo
 		
 	
 func _ready():
+
+	# Primero se crean los peleadores que eligieron en la selección
+	crear_peleadores()
 	
 	var jugador_scene_1 = preload("res://jugadores/jugador1.tscn")
 	var jugador_scene_2 = preload("res://jugadores/jugador_2.tscn")
@@ -212,8 +284,8 @@ func reiniciar_ronda():
 
 
 	# Volver a las posiciones iniciales
-	peleador1.position = Vector2(-110.0, 26.0)
-	peleador2.position = Vector2(103.0, 27.0)
+	peleador1.position = POSICION_PELEADOR_1
+	peleador2.position = POSICION_PELEADOR_2
 
 	print("VIDA J1 DESPUÉS: ", peleador1.vida)
 	print("VIDA J2 DESPUÉS: ", peleador2.vida)
