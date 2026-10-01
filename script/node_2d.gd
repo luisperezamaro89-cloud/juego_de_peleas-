@@ -334,4 +334,4 @@ func terminar_pelea():
 
 
 	# Ir a resultados
-	get_tree().change_scene_to_file("res://escenas/Resultado.tscn")
+	get_tree().change_scene_to_file("res://escenas/ko_estudiante.tscn")
