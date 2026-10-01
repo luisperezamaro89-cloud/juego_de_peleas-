@@ -83,8 +83,8 @@ func _ready():
 
 func _on_boton_continuar_pressed() -> void:
 
-	var nombre_final_j1: String = entrada_nombre_j1.text
-	var nombre_final_j2: String = entrada_nombre_j2.text
+	var nombre_final_j1: String = entrada_nombre_j1.text.strip_edges()
+	var nombre_final_j2: String = entrada_nombre_j2.text.strip_edges()
 
 
 	if nombre_final_j1.strip_edges() == "":
@@ -131,7 +131,7 @@ func _on_boton_continuar_pressed() -> void:
 func jugador_existe(nombre: String) -> bool:
 
 	baseDatos.query(
-		"SELECT * FROM players WHERE nombre = '%s'" % nombre
+		"SELECT * FROM players WHERE nombre = '%s' COLLATE NOCASE" % nombre
 	)
 
 	return baseDatos.query_result.size() > 0
@@ -144,7 +144,7 @@ func jugador_existe(nombre: String) -> bool:
 func obtener_jugador_por_nombre(nombre: String) -> Dictionary:
 
 	baseDatos.query(
-		"SELECT * FROM players WHERE nombre = '%s'" % nombre
+		"SELECT * FROM players WHERE nombre = '%s' COLLATE NOCASE" % nombre
 	)
 
 	if baseDatos.query_result.size() > 0:
@@ -183,7 +183,7 @@ func registrar_victoria(nombre: String, puntaje: int):
 
 		baseDatos.update_rows(
 			"players",
-			"nombre = '%s'" % nombre,
+			"nombre = '%s' COLLATE NOCASE" % nombre,
 			datos
 		)
 
@@ -233,7 +233,7 @@ func registrar_derrota(nombre: String):
 
 		baseDatos.update_rows(
 			"players",
-			"nombre = '%s'" % nombre,
+			"nombre = '%s' COLLATE NOCASE" % nombre,
 			datos
 		)
 
@@ -270,6 +270,6 @@ func guardar_personaje(nombre: String, personaje: String):
 
 	baseDatos.update_rows(
 		"players",
-		"nombre = '%s'" % nombre,
+		"nombre = '%s' COLLATE NOCASE" % nombre,
 		{"personaje": personaje}
 	)

@@ -26,7 +26,8 @@ func _on_pop_up_admin_confirmed():
 var baseDatos : SQLite
 
 # Referencia directa al TextEdit que acabas de acomodar
-@onready var consola = $ConsolaSalida
+@onready var consola = $ConsolaSalida 
+@onready var panel_mas_opciones = $PanelMasOpciones
 
 func _ready():
 	baseDatos = SQLite.new()
@@ -113,3 +114,49 @@ func _on_consulta_personalizada_button_down():
 			puesto, jugador["nombre"], jugador["puntaje"]
 		])
 		puesto += 1
+
+func _on_regresar_menu_pressed():
+	baseDatos.close_db()
+	get_tree().change_scene_to_file("res://escenas/Menu_Principal/menu_principal.tscn")
+
+
+
+
+func _on_mas_obciones_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_btn_victorias_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_btn_derrotas_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_btn_personaje_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_btn_volver_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_btn_nombre_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_nombre_buscar_text_changed(new_text: String) -> void:
+	pass # Replace with function body.
+
+
+func _on_sugerencias_nombre_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	pass # Replace with function body.
+
+
+func _on_btn_cancelar_edicion_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_btn_guardar_edicion_pressed() -> void:
+	pass # Replace with function body.

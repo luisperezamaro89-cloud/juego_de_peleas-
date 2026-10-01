@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dl4ufygp3ocpk" path="res://base_datos/SQL.gd" id="1_0fbet"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlew8"]
+content_margin_left = 8.0
+bg_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+corner_radius_top_left = 6
+
 [node name="Control" type="Control" unique_id=521656627]
 layout_mode = 3
 anchors_preset = 15
@@ -13,50 +18,50 @@ script = ExtResource("1_0fbet")
 
 [node name="CrearTabla" type="Button" parent="." unique_id=1289785977]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 17.0
-offset_right = 223.0
-offset_bottom = 84.0
+offset_left = 63.0
+offset_top = 4.0
+offset_right = 224.0
+offset_bottom = 71.0
 text = "Crear Tabla"
 
 [node name="InsertarJugador" type="Button" parent="." unique_id=2114173974]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 107.0
-offset_right = 223.0
-offset_bottom = 174.0
+offset_left = 63.0
+offset_top = 81.0
+offset_right = 224.0
+offset_bottom = 148.0
 text = "Insertar Jugador"
 
 [node name="VerJugadores" type="Button" parent="." unique_id=2114463720]
 layout_mode = 0
-offset_left = 71.0
-offset_top = 209.0
-offset_right = 232.0
-offset_bottom = 276.0
+offset_left = 64.0
+offset_top = 162.0
+offset_right = 225.0
+offset_bottom = 229.0
 text = "Ver Jugadores"
 
 [node name="ActualizarJugador" type="Button" parent="." unique_id=1648351365]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 296.0
-offset_right = 230.0
-offset_bottom = 363.0
+offset_left = 63.0
+offset_top = 251.0
+offset_right = 224.0
+offset_bottom = 318.0
 text = "Actualizar Jugador"
 
 [node name="BorrarJugador" type="Button" parent="." unique_id=1943070716]
 layout_mode = 0
-offset_left = 67.0
-offset_top = 393.0
-offset_right = 228.0
-offset_bottom = 460.0
+offset_left = 61.0
+offset_top = 339.0
+offset_right = 222.0
+offset_bottom = 406.0
 text = "Borrar Jugador"
 
 [node name="ConsultaPersonalizada" type="Button" parent="." unique_id=2027794488]
 layout_mode = 0
-offset_left = 57.0
-offset_top = 501.0
-offset_right = 246.0
-offset_bottom = 568.0
+offset_left = 54.0
+offset_top = 429.0
+offset_right = 243.0
+offset_bottom = 496.0
 text = "Consulta Personalizada"
 
 [node name="Label" type="Label" parent="." unique_id=267123223]
@@ -91,11 +96,150 @@ offset_bottom = 150.0
 
 [node name="ConsolaSalida" type="TextEdit" parent="." unique_id=570092381]
 layout_mode = 0
-offset_left = 289.0
-offset_top = 171.0
-offset_right = 1048.0
-offset_bottom = 595.0
+offset_left = 286.0
+offset_top = 184.0
+offset_right = 1045.0
+offset_bottom = 608.0
 editable = false
+
+[node name="regresar_menu" type="Button" parent="." unique_id=1886611927]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 527.0
+offset_right = 225.0
+offset_bottom = 601.0
+text = "Regresar Menu"
+
+[node name="MasObciones" type="Button" parent="." unique_id=1203117649]
+layout_mode = 0
+offset_left = 818.0
+offset_top = 51.0
+offset_right = 1019.0
+offset_bottom = 156.0
+text = "Mas Obciones"
+
+[node name="PanelMasOpciones" type="PanelContainer" parent="." unique_id=317019846]
+custom_minimum_size = Vector2(400, 350)
+layout_mode = 0
+offset_left = 348.0
+offset_top = 114.0
+offset_right = 871.0
+offset_bottom = 362.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelMasOpciones" unique_id=717397588]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TituloMasOpciones" type="Label" parent="PanelMasOpciones/VBoxContainer" unique_id=733002916]
+layout_mode = 2
+text = "¿QUÉ QUIERES CAMBIAR?"
+horizontal_alignment = 1
+
+[node name="BtnVictorias" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=2110258562]
+layout_mode = 2
+text = "Victorias"
+
+[node name="BtnDerrotas" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=1635748944]
+layout_mode = 2
+text = "Derrotas"
+
+[node name="BtnPersonaje" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=277653945]
+layout_mode = 2
+text = "Personaje"
+
+[node name="BtnVolver" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=91075073]
+layout_mode = 2
+text = "Volver"
+
+[node name="BtnNombre" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=1912804501]
+layout_mode = 2
+text = "Nombre"
+
+[node name="PanelEditar" type="PanelContainer" parent="." unique_id=712888814]
+custom_minimum_size = Vector2(450, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -204.0
+offset_right = 248.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelEditar" unique_id=2004961370]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TituloEditar" type="Label" parent="PanelEditar/VBoxContainer" unique_id=1022584934]
+layout_mode = 2
+text = "CAMBIAR VICTORIAS"
+horizontal_alignment = 1
+
+[node name="NombreBuscar" type="LineEdit" parent="PanelEditar/VBoxContainer" unique_id=1106657304]
+layout_mode = 2
+text = "Nombre del jugador"
+
+[node name="SugerenciasNombre" type="ItemList" parent="PanelEditar/VBoxContainer" unique_id=1200634385]
+visible = false
+layout_mode = 2
+
+[node name="FilaValores" type="HBoxContainer" parent="PanelEditar/VBoxContainer" unique_id=317363879]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ColumnaActual" type="VBoxContainer" parent="PanelEditar/VBoxContainer/FilaValores" unique_id=1435962211]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TituloActual" type="Label" parent="PanelEditar/VBoxContainer/FilaValores/ColumnaActual" unique_id=174706537]
+layout_mode = 2
+text = "Victorias actuales"
+horizontal_alignment = 1
+
+[node name="ValorActual" type="Label" parent="PanelEditar/VBoxContainer/FilaValores/ColumnaActual" unique_id=1939160598]
+layout_mode = 2
+text = "—"
+horizontal_alignment = 1
+
+[node name="ColumnaNueva" type="VBoxContainer" parent="PanelEditar/VBoxContainer/FilaValores" unique_id=1313883083]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TituloNuevo" type="Label" parent="PanelEditar/VBoxContainer/FilaValores/ColumnaNueva" unique_id=1601439558]
+layout_mode = 2
+text = "Victorias nuevas"
+horizontal_alignment = 1
+
+[node name="ValorNuevo" type="LineEdit" parent="PanelEditar/VBoxContainer/FilaValores/ColumnaNueva" unique_id=747193057]
+layout_mode = 2
+placeholder_text = "Número nuevo"
+alignment = 1
+
+[node name="MensajeEditar" type="Label" parent="PanelEditar/VBoxContainer" unique_id=1407809758]
+custom_minimum_size = Vector2(400, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vlew8")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="FilaBotones" type="HBoxContainer" parent="PanelEditar/VBoxContainer" unique_id=289450054]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BtnCancelarEdicion" type="Button" parent="PanelEditar/VBoxContainer/FilaBotones" unique_id=1488194340]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "Cancelar"
+
+[node name="BtnGuardarEdicion" type="Button" parent="PanelEditar/VBoxContainer/FilaBotones" unique_id=793365617]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "Cambiar"
 
 [connection signal="button_down" from="CrearTabla" to="." method="_on_crear_tabla_button_down"]
 [connection signal="button_down" from="InsertarJugador" to="." method="_on_insertar_jugador_button_down"]
@@ -103,3 +247,14 @@ editable = false
 [connection signal="button_down" from="ActualizarJugador" to="." method="_on_actualizar_jugador_button_down"]
 [connection signal="button_down" from="BorrarJugador" to="." method="_on_borrar_jugador_button_down"]
 [connection signal="button_down" from="ConsultaPersonalizada" to="." method="_on_consulta_personalizada_button_down"]
+[connection signal="pressed" from="regresar_menu" to="." method="_on_regresar_menu_pressed"]
+[connection signal="pressed" from="MasObciones" to="." method="_on_mas_obciones_pressed"]
+[connection signal="pressed" from="PanelMasOpciones/VBoxContainer/BtnVictorias" to="." method="_on_btn_victorias_pressed"]
+[connection signal="pressed" from="PanelMasOpciones/VBoxContainer/BtnDerrotas" to="." method="_on_btn_derrotas_pressed"]
+[connection signal="pressed" from="PanelMasOpciones/VBoxContainer/BtnPersonaje" to="." method="_on_btn_personaje_pressed"]
+[connection signal="pressed" from="PanelMasOpciones/VBoxContainer/BtnVolver" to="." method="_on_btn_volver_pressed"]
+[connection signal="pressed" from="PanelMasOpciones/VBoxContainer/BtnNombre" to="." method="_on_btn_nombre_pressed"]
+[connection signal="text_changed" from="PanelEditar/VBoxContainer/NombreBuscar" to="." method="_on_nombre_buscar_text_changed"]
+[connection signal="item_clicked" from="PanelEditar/VBoxContainer/SugerenciasNombre" to="." method="_on_sugerencias_nombre_item_clicked"]
+[connection signal="pressed" from="PanelEditar/VBoxContainer/FilaBotones/BtnCancelarEdicion" to="." method="_on_btn_cancelar_edicion_pressed"]
+[connection signal="pressed" from="PanelEditar/VBoxContainer/FilaBotones/BtnGuardarEdicion" to="." method="_on_btn_guardar_edicion_pressed"]
