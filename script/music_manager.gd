@@ -3,7 +3,9 @@ extends AudioStreamPlayer
 var canciones = {
 	"menu": preload("res://audio/musica_fondo/Lights, Camera, Action! - Studiopolis Zone Act 1.wav"),
 	"seleccion": preload("res://audio/musica_fondo/Vs. Metal Sonic.wav")
-}
+	#"pelea": preload("res://audio/musica_fondo/Vs. Metal Sonic.wav")
+	#"ganador_estudiante": preload("res://audio/musica_fondo/Vs. Metal Sonic.wav")
+}	
 
 var cancion_actual = ""
 
