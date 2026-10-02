@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bg56gj8lkw0ae" path="res://script/idle.gd" id="9_ymdyp"]
 [ext_resource type="Script" uid="uid://bbhg8muinxnp2" path="res://script/caminar.gd" id="10_wro0v"]
 [ext_resource type="Script" uid="uid://bkm4u0wqpfb2a" path="res://script/salto.gd" id="11_02ibp"]
+[ext_resource type="Script" uid="uid://dfl2yqs2n02os" path="res://script/sonido.gd" id="11_4601a"]
 [ext_resource type="Script" uid="uid://dcmf03bqbwkvi" path="res://script/arrodillarse.gd" id="12_m4eqs"]
 [ext_resource type="Script" uid="uid://68lsh7tgtwb4" path="res://script/golpe_1.gd" id="13_efuxv"]
 [ext_resource type="Script" uid="uid://bedgx7ggyv4bc" path="res://script/hit_box.gd" id="14_i036h"]
@@ -639,8 +640,11 @@ speed_scale = 2.187
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1682922483]
 scale = Vector2(2.7010562, 2.7010562)
 sprite_frames = SubResource("SpriteFrames_b1lj4")
-animation = &"golpe_saltando"
+animation = &"golpe_bajo"
 autoplay = "idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1280747178]
+script = ExtResource("11_4601a")
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=993402822]
 script = ExtResource("8_s7o1o")
