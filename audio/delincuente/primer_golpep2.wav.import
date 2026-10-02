@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://3bt3piil8btq"
-path="res://.godot/imported/primer golpe p2.wav-b928bd2033fb727067ab5aa6ede1b536.sample"
+path="res://.godot/imported/primer_golpep2.wav-5053d7de268eb0ae029b9ce2b5b78a43.sample"
 
 [deps]
 
-source_file="res://audio/delincuente/primer golpe p2.wav"
-dest_files=["res://.godot/imported/primer golpe p2.wav-b928bd2033fb727067ab5aa6ede1b536.sample"]
+source_file="res://audio/delincuente/primer_golpep2.wav"
+dest_files=["res://.godot/imported/primer_golpep2.wav-5053d7de268eb0ae029b9ce2b5b78a43.sample"]
 
 [params]
 

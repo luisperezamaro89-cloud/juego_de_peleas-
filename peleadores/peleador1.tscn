@@ -643,9 +643,6 @@ sprite_frames = SubResource("SpriteFrames_b1lj4")
 animation = &"golpe_bajo"
 autoplay = "idle"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1280747178]
-script = ExtResource("11_4601a")
-
 [node name="StateMachine" type="Node2D" parent="." unique_id=993402822]
 script = ExtResource("8_s7o1o")
 
@@ -711,6 +708,9 @@ script = ExtResource("19_npc34")
 position = Vector2(-282.00003, 403.00003)
 scale = Vector2(14.015, 14.015)
 shape = SubResource("RectangleShape2D_b1lj4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1280747178]
+script = ExtResource("11_4601a")
 
 [connection signal="area_entered" from="StateMachine/Golpear/HitBox_delante" to="StateMachine/Golpear/HitBox_delante" method="_on_area_entered"]
 [connection signal="area_entered" from="StateMachine/Golpear/hitbox_arriba" to="StateMachine/Golpear/hitbox_arriba" method="_on_area_entered"]
