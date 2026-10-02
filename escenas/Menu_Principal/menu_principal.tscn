@@ -170,5 +170,11 @@ layout_mode = 2
 text = "Jaquelin Martinez Colque"
 horizontal_alignment = 1
 
+[node name="BtnVolver" type="Button" parent="PanelCreditos/VBoxContainer" unique_id=1994117320]
+layout_mode = 2
+text = "Volver al menú"
+
 [connection signal="pressed" from="VBoxContainer/BtnIniciarPartida" to="." method="_on_btn_iniciar_partida_pressed"]
+[connection signal="pressed" from="VBoxContainer/BtnCreditos" to="." method="_on_btn_creditos_pressed"]
 [connection signal="pressed" from="BtnAdmin" to="." method="_on_administradores_pressed"]
+[connection signal="pressed" from="PanelCreditos/VBoxContainer/BtnVolver" to="." method="_on_btn_volver_pressed"]

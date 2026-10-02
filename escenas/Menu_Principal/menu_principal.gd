@@ -2,6 +2,8 @@ extends Control
 
 func _ready():
 	$PopUpAdmin.confirmed.connect(_on_pop_up_admin_confirmed)
+	
+
 
 func _on_btn_iniciar_partida_pressed() -> void:
 	get_tree().change_scene_to_file("res://escenas/Seleccion/seleccion_personajes.tscn")
@@ -19,3 +21,11 @@ func _on_pop_up_admin_confirmed():
 		$PopUpAdmin/LabelError.text = "Inténtalo de nuevo"
 		$PopUpAdmin/InputPassword.text = ""
 		$PopUpAdmin.popup_centered()
+
+
+func _on_btn_creditos_pressed() -> void:
+	$PanelCreditos.show()
+
+
+func _on_btn_volver_pressed() -> void:
+	$PanelCreditos.hide()
