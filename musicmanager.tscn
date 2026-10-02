@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://cmqftvgtoi3g" path="res://script/music_manager.gd" id="1_t2rpn"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=1009327162]
+volume_db = 16.691
 script = ExtResource("1_t2rpn")

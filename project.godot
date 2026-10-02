@@ -17,7 +17,7 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 [autoload]
 
 Database="*uid://clpqkoratpot1"
-Musicmanager="*uid://b8b8a1suvk4qw"
+MusicManager="*uid://b8b8a1suvk4qw"
 
 [display]
 
