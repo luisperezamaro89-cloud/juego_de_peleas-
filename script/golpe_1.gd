@@ -1,9 +1,13 @@
 extends Node
-
 var player
 var sprite
 var animation_player
 
+
+var audio_golpe
+var golpe_defrente1
+var golpe_defrente2
+var sonido_golpe_3
 # ==========================================
 # COMBO
 # ==========================================
@@ -20,8 +24,8 @@ var animacion_iniciada = false
 var daño_golpe_1 = 30
 var daño_golpe_2 = 35
 var daño_golpe_3 = 45
-
-
+	
+	
 # ==========================================
 # ENTRAR AL ESTADO GOLPEAR
 # ==========================================
@@ -35,7 +39,9 @@ func entrar():
 
 	sprite = player.get_node("AnimatedSprite2D")
 	animation_player = player.get_node("AnimationPlayer")
+	audio_golpe = player.get_node("AudioStreamPlayer")
 
+	cargar_sonidos()
 	player.hitbox_delante.reiniciar_golpe()
 	player.hitbox_arriba.reiniciar_golpe()
 	player.hitbox_abajo.reiniciar_golpe()
@@ -44,7 +50,45 @@ func entrar():
 
 	reproducir_golpe()
 
+# ==========================================
+# CONFIGURAR SONIDO
+# ==========================================
 
+func cargar_sonidos():
+
+	if player.nombre_personaje == "Estudiante":
+
+		golpe_defrente1 = preload("res://audio/estudiante/golpe_bajop01.wav")
+	#	sonido_golpe_2 = preload("res://audio/estudiante/golpe2.wav")
+	#	sonido_golpe_3 = preload("res://audio/estudiante/golpe3.wav")
+
+	elif player.nombre_personaje == "Delincuente":
+
+		golpe_defrente1 = preload("res://audio/delincuente/primer_golpep2.wav")
+		golpe_defrente2 = preload("res://audio/delincuente/segundo_golpep2.wav")
+	#	sonido_golpe_3 = preload("res://audio/delincuente/golpe3.wav")
+		
+		
+func reproducir_sonido_golpe():
+
+	if not audio_golpe:
+		return
+
+	match golpe_actual:
+
+		1:
+			audio_golpe.stream = golpe_defrente1
+
+		2:
+			audio_golpe.stream = golpe_defrente2
+
+		3:
+			audio_golpe.stream = sonido_golpe_3
+
+	audio_golpe.play()
+	
+	
+	
 # ==========================================
 # ACTUALIZAR
 # ==========================================
@@ -124,7 +168,7 @@ func reproducir_golpe():
 	player.hitbox_arriba.reiniciar_golpe()
 	player.hitbox_abajo.reiniciar_golpe()
 
-
+	reproducir_sonido_golpe()
 	# ==========================================
 	# GOLPE HACIA ARRIBA
 	# ==========================================

@@ -56,12 +56,21 @@ func mostrar_ronda():
 
 func crear_peleadores():
 
+	# Recuperar personajes elegidos ANTES de crear los peleadores
+	if get_tree().has_meta("personaje_j1"):
+		personaje_j1 = get_tree().get_meta("personaje_j1")
+
+	if get_tree().has_meta("personaje_j2"):
+		personaje_j2 = get_tree().get_meta("personaje_j2")
+
+
 	# Si quedó algún peleador de prueba puesto en la escena, se quita
 	for nombre in ["peleador1", "peleador2"]:
 		var viejo = get_node_or_null(nombre)
 		if viejo:
 			remove_child(viejo)
 			viejo.queue_free()
+
 
 	var ruta1 = RUTA_PELEADOR_1_POR_DEFECTO
 	var ruta2 = RUTA_PELEADOR_2_POR_DEFECTO
@@ -72,20 +81,25 @@ func crear_peleadores():
 	if get_tree().has_meta("ruta_j2"):
 		ruta2 = get_tree().get_meta("ruta_j2")
 
-	peleador1 = crear_peleador(ruta1, "peleador1", POSICION_PELEADOR_1)
-	peleador2 = crear_peleador(ruta2, "peleador2", POSICION_PELEADOR_2)
 
-	# La cámara sigue a los peleadores: se le pasan los nuevos
+	peleador1 = crear_peleador(
+		ruta1,
+		"peleador1",
+		POSICION_PELEADOR_1
+	)
+
+	peleador2 = crear_peleador(
+		ruta2,
+		"peleador2",
+		POSICION_PELEADOR_2
+	)
+
+
+	# Cámara
 	for hijo in get_children():
 		if hijo is Camera2D:
 			hijo.peleador1 = peleador1
 			hijo.peleador2 = peleador2
-
-	if get_tree().has_meta("personaje_j1"):
-		personaje_j1 = get_tree().get_meta("personaje_j1")
-
-	if get_tree().has_meta("personaje_j2"):
-		personaje_j2 = get_tree().get_meta("personaje_j2")
 
 
 func crear_peleador(ruta: String, nombre: String, posicion: Vector2):

@@ -1,6 +1,6 @@
 extends CharacterBody2D 
 
-@onready var audio_animacion = $AudioStreamPlayer2D
+@onready var audio_animacion = $AudioStreamPlayer
 @export var velocidad: float = 200.0
 @export var gravedad: float = 1000.0
 @export var fuerza_salto: float = 400.0
@@ -45,16 +45,16 @@ func configurar_sonidos():
 	if nombre_personaje == "Estudiante":
 
 		sonidos = {
-			"golpe_bajo": preload("res://audio/estudiante/golpe bajo 01.wav"),
-		#	"daño": preload("res://audio/estudiante/daño.wav"),
+			"golpe_bajo": preload("res://audio/estudiante/golpe_bajop01.wav"),
+			"daño": preload("res://audio/estudiante/golpe_bajop01.wav"), #cambiar sonido
 		#	"bloqueo": preload("res://audio/estudiante/bloqueo.wav")
 		}
 
 	elif nombre_personaje == "Delincuente":
 
 		sonidos = {
-			"golpe1": preload("res://audio/delincuente/primer golpe p2.wav"),
-			"golpe_2": preload("res://audio/delincuente/segundo golpe p2.wav"),
+			"golpe1": preload("res://audio/delincuente/primer_golpep2.wav"),
+			"golpe_2": preload("res://audio/delincuente/segundo_golpep2.wav"),
 			#"bloqueo": preload("res://audio/delincuente/bloqueo.wav")
 		}
 
@@ -62,9 +62,15 @@ func configurar_sonidos():
 func reproducir_sonido(tipo: String):
 
 	if sonidos.has(tipo):
+		print("INTENTANDO REPRODUCIR SONIDO: ", tipo)
 
-		audio_animacion.stream = sonidos[tipo]
-		audio_animacion.play()
+	if not sonidos.has(tipo):
+		print("ERROR: no existe el sonido: ", tipo)
+		return
+		
+	audio_animacion.stream = sonidos[tipo]
+	audio_animacion.play()
+		
 		
 func _ready():
 
@@ -217,7 +223,7 @@ func recibir_daño(cantidad: int, atacante = null):
 			escena_pelea.solicitar_comprobar_ganador()
 
 	else:
-
+		reproducir_sonido("daño")
 		state_machine.cambiar_estado("daño")
 
 func morir():

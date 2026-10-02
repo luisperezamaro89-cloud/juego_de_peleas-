@@ -637,9 +637,6 @@ shape = SubResource("RectangleShape2D_xrivr")
 libraries/ = SubResource("AnimationLibrary_eka8j")
 speed_scale = 2.187
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1280747178]
-script = ExtResource("11_4601a")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1682922483]
 scale = Vector2(2.7010562, 2.7010562)
 sprite_frames = SubResource("SpriteFrames_b1lj4")
@@ -711,6 +708,9 @@ script = ExtResource("19_npc34")
 position = Vector2(-282.00003, 403.00003)
 scale = Vector2(14.015, 14.015)
 shape = SubResource("RectangleShape2D_b1lj4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1280747178]
+script = ExtResource("11_4601a")
 
 [connection signal="area_entered" from="StateMachine/Golpear/HitBox_delante" to="StateMachine/Golpear/HitBox_delante" method="_on_area_entered"]
 [connection signal="area_entered" from="StateMachine/Golpear/hitbox_arriba" to="StateMachine/Golpear/hitbox_arriba" method="_on_area_entered"]

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://wnobd6laev0h"
-path="res://.godot/imported/golpe bajo 01.wav-64e00657816990b6570558ebbd931b71.sample"
+path="res://.godot/imported/golpe_bajop01.wav-976bd3542c9d69fdc3b2eeb6a6cd77a0.sample"
 
 [deps]
 
-source_file="res://audio/estudiante/golpe bajo 01.wav"
-dest_files=["res://.godot/imported/golpe bajo 01.wav-64e00657816990b6570558ebbd931b71.sample"]
+source_file="res://audio/estudiante/golpe_bajop01.wav"
+dest_files=["res://.godot/imported/golpe_bajop01.wav-976bd3542c9d69fdc3b2eeb6a6cd77a0.sample"]
 
 [params]
 
