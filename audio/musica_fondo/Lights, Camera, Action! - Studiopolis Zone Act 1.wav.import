@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvclvi35knti3"
+path="res://.godot/imported/Lights, Camera, Action! - Studiopolis Zone Act 1.wav-16e7e78574cf0e7a3a07f61f2582614b.sample"
+
+[deps]
+
+source_file="res://audio/musica_fondo/Lights, Camera, Action! - Studiopolis Zone Act 1.wav"
+dest_files=["res://.godot/imported/Lights, Camera, Action! - Studiopolis Zone Act 1.wav-16e7e78574cf0e7a3a07f61f2582614b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
