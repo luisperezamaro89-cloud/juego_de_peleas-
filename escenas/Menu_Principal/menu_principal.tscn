@@ -6,6 +6,8 @@
 [ext_resource type="StyleBox" uid="uid://cx2oqjfxdfk2t" path="res://escenas/Seleccion/scenes/Estilos_botones/Pressed.tres" id="4_skn2h"]
 [ext_resource type="StyleBox" uid="uid://bqa7prlpi6o5g" path="res://escenas/Seleccion/scenes/Estilos_botones/hover.tres" id="5_1vakb"]
 [ext_resource type="StyleBox" uid="uid://dl5y0wmu42ax6" path="res://escenas/Seleccion/scenes/Estilos_botones/Focus.tres" id="6_hbxi3"]
+[ext_resource type="Texture2D" uid="uid://6ewmmye8tpnr" path="res://escenas/Menu_Principal/imagenes_Creadores/Luis.jpg" id="7_1vakb"]
+[ext_resource type="Texture2D" uid="uid://s5xuwo6hxtgt" path="res://escenas/Menu_Principal/imagenes_Creadores/Lucero.jpg" id="8_hbxi3"]
 
 [node name="Menu Principal" type="Control" unique_id=491037825]
 layout_mode = 3
@@ -63,6 +65,15 @@ theme_override_styles/hover = ExtResource("5_1vakb")
 theme_override_styles/focus = ExtResource("6_hbxi3")
 text = "TOP 3"
 
+[node name="BtnCreditos" type="Button" parent="VBoxContainer" unique_id=560673935]
+layout_mode = 2
+theme = ExtResource("2_skn2h")
+theme_override_styles/normal = ExtResource("3_nngpg")
+theme_override_styles/pressed = ExtResource("4_skn2h")
+theme_override_styles/hover = ExtResource("5_1vakb")
+theme_override_styles/focus = ExtResource("6_hbxi3")
+text = "CRÉDITOS"
+
 [node name="BtnSalir" type="Button" parent="VBoxContainer" unique_id=1180849548]
 layout_mode = 2
 theme = ExtResource("2_skn2h")
@@ -97,6 +108,67 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 192.0
 offset_bottom = 51.0
+
+[node name="PanelCreditos" type="PanelContainer" parent="." unique_id=945351508]
+visible = false
+custom_minimum_size = Vector2(700, 450)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -225.0
+offset_right = 350.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelCreditos" unique_id=2032779194]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TituloCreditos" type="Label" parent="PanelCreditos/VBoxContainer" unique_id=751266029]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "CREADORES"
+horizontal_alignment = 1
+
+[node name="FilaCreadores" type="HBoxContainer" parent="PanelCreditos/VBoxContainer" unique_id=1508010775]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Creador1" type="VBoxContainer" parent="PanelCreditos/VBoxContainer/FilaCreadores" unique_id=523746509]
+layout_mode = 2
+
+[node name="ImagenCreador1" type="TextureRect" parent="PanelCreditos/VBoxContainer/FilaCreadores/Creador1" unique_id=1249966177]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("7_1vakb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NombreCreador1" type="Label" parent="PanelCreditos/VBoxContainer/FilaCreadores/Creador1" unique_id=1954203856]
+layout_mode = 2
+text = "Luis Perez Amaro"
+horizontal_alignment = 1
+
+[node name="Creador2" type="VBoxContainer" parent="PanelCreditos/VBoxContainer/FilaCreadores" unique_id=1954631460]
+layout_mode = 2
+
+[node name="ImagenCreador2" type="TextureRect" parent="PanelCreditos/VBoxContainer/FilaCreadores/Creador2" unique_id=28494990]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("8_hbxi3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NombreCreador2" type="Label" parent="PanelCreditos/VBoxContainer/FilaCreadores/Creador2" unique_id=1710480455]
+layout_mode = 2
+text = "Jaquelin Martinez Colque"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/BtnIniciarPartida" to="." method="_on_btn_iniciar_partida_pressed"]
 [connection signal="pressed" from="BtnAdmin" to="." method="_on_administradores_pressed"]

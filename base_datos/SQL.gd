@@ -26,8 +26,7 @@ func _on_pop_up_admin_confirmed():
 var baseDatos : SQLite
 
 # Referencia directa al TextEdit que acabas de acomodar
-@onready var consola = $ConsolaSalida 
-@onready var panel_mas_opciones = $PanelMasOpciones
+@onready var consola = $ConsolaSalida
 
 func _ready():
 	baseDatos = SQLite.new()
@@ -78,9 +77,11 @@ func _on_ver_jugadores_button_down():
 	mostrar_en_consola("=== LISTA DE JUGADORES ===", true)
 	
 	for jugador in baseDatos.query_result:
-		mostrar_en_consola("ID: %d | Nombre: %s | Puntaje: %d | Personaje: %s | Derrotas: %s" % [
+		var victorias = jugador["victorias"] if jugador["victorias"] != null else 0
+		var derrotas = jugador["derrotas"] if jugador["derrotas"] != null else 0
+		mostrar_en_consola("ID: %d | Nombre: %s | Puntaje: %d | Personaje: %s | Victorias: %s | Derrotas: %s" % [
 			jugador["id"], jugador["nombre"], jugador["puntaje"],
-			jugador["personaje"], jugador["derrotas"]
+			jugador["personaje"], victorias, derrotas
 		])
 
 # --- BOTÓN 4: ACTUALIZAR JUGADOR ---
@@ -115,48 +116,307 @@ func _on_consulta_personalizada_button_down():
 		])
 		puesto += 1
 
+
+# --- BOTÓN: REGRESAR AL MENÚ PRINCIPAL ---
 func _on_regresar_menu_pressed():
 	baseDatos.close_db()
 	get_tree().change_scene_to_file("res://escenas/Menu_Principal/menu_principal.tscn")
 
 
+# ==========================================
+# PANEL "MÁS OPCIONES" Y PANEL DE EDICIÓN
+# ==========================================
+
+@onready var panel_mas_opciones = $PanelMasOpciones
+@onready var panel_editar = $PanelEditar
+@onready var titulo_editar = $PanelEditar/VBoxContainer/TituloEditar
+@onready var nombre_buscar = $PanelEditar/VBoxContainer/NombreBuscar
+@onready var sugerencias = $PanelEditar/VBoxContainer/SugerenciasNombre
+@onready var titulo_actual = $PanelEditar/VBoxContainer/FilaValores/ColumnaActual/TituloActual
+@onready var valor_actual = $PanelEditar/VBoxContainer/FilaValores/ColumnaActual/ValorActual
+@onready var titulo_nuevo = $PanelEditar/VBoxContainer/FilaValores/ColumnaNueva/TituloNuevo
+@onready var valor_nuevo = $PanelEditar/VBoxContainer/FilaValores/ColumnaNueva/ValorNuevo
+@onready var opciones_personaje = $PanelEditar/VBoxContainer/FilaValores/ColumnaNueva/OpcionesPersonaje
+@onready var mensaje_editar = $PanelEditar/VBoxContainer/MensajeEditar
+
+# Qué dato se está editando: "victorias", "derrotas" o "personaje"
+var campo_a_editar := ""
+
+# Último texto del campo de nombre que sí coincide con algún jugador
+var ultimo_texto_valido := ""
 
 
+# --- BOTÓN: MÁS OPCIONES (abre el panel "¿Qué quieres cambiar?") ---
 func _on_mas_obciones_pressed() -> void:
-	pass # Replace with function body.
+	panel_mas_opciones.visible = true
 
 
+# --- BOTÓN: VOLVER (cierra el panel "¿Qué quieres cambiar?") ---
+func _on_btn_volver_pressed() -> void:
+	panel_mas_opciones.visible = false
+
+
+# --- BOTONES DEL PANEL "¿QUÉ QUIERES CAMBIAR?" ---
 func _on_btn_victorias_pressed() -> void:
-	pass # Replace with function body.
+	abrir_editar("victorias")
 
 
 func _on_btn_derrotas_pressed() -> void:
-	pass # Replace with function body.
+	abrir_editar("derrotas")
 
 
 func _on_btn_personaje_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_btn_volver_pressed() -> void:
-	pass # Replace with function body.
+	abrir_editar("personaje")
 
 
 func _on_btn_nombre_pressed() -> void:
-	pass # Replace with function body.
+	abrir_editar("nombre")
 
+
+# ==========================================
+# ABRIR EL PANEL DE EDICIÓN
+# ==========================================
+
+func abrir_editar(campo: String) -> void:
+	campo_a_editar = campo
+	var es_personaje = campo == "personaje"
+	var es_nombre = campo == "nombre"
+
+	titulo_editar.text = "CAMBIAR " + campo.to_upper()
+
+	# Personaje y Nombre van en singular; Victorias y Derrotas en plural
+	if es_personaje or es_nombre:
+		titulo_actual.text = campo.capitalize() + " actual"
+		titulo_nuevo.text = campo.capitalize() + " nuevo"
+	else:
+		titulo_actual.text = campo.capitalize() + " actuales"
+		titulo_nuevo.text = campo.capitalize() + " nuevas"
+
+	# Personaje se elige de una lista; lo demás se escribe
+	valor_nuevo.visible = not es_personaje
+	opciones_personaje.visible = es_personaje
+	if opciones_personaje.item_count > 0:
+		opciones_personaje.select(0)
+
+	# Textos de ayuda de los campos
+	if es_nombre:
+		nombre_buscar.placeholder_text = "Nombre actual del jugador"
+		valor_nuevo.placeholder_text = "Nombre nuevo"
+	else:
+		nombre_buscar.placeholder_text = "Nombre del jugador"
+		valor_nuevo.placeholder_text = "Número nuevo"
+
+	valor_actual.text = "—"
+	valor_nuevo.text = ""
+	nombre_buscar.text = ""
+	ultimo_texto_valido = ""
+	mensaje_editar.text = ""
+
+	# La lista de sugerencias crece según cuántos nombres tenga
+	sugerencias.auto_height = true
+	sugerencias.clear()
+	sugerencias.visible = false
+
+	panel_mas_opciones.visible = false
+	panel_editar.visible = true
+	nombre_buscar.grab_focus()
+
+
+# Dice si el valor guardado es un personaje de verdad
+func tiene_personaje(valor) -> bool:
+	return valor != null and str(valor) != "" and str(valor) != "Desconocido"
+
+
+# Muestra a la izquierda el valor que tiene ahora el jugador
+func actualizar_valor_actual(nombre: String) -> void:
+	valor_actual.text = "—"
+
+	if nombre == "":
+		return
+
+	var sql = "SELECT %s FROM players WHERE nombre = ? COLLATE NOCASE;" % campo_a_editar
+	baseDatos.query_with_bindings(sql, [nombre])
+
+	if baseDatos.query_result.size() == 0:
+		return
+
+	var valor = baseDatos.query_result[0][campo_a_editar]
+
+	if campo_a_editar == "personaje":
+		if tiene_personaje(valor):
+			valor_actual.text = str(valor)
+
+			# Deja elegido en la lista el personaje que ya tiene
+			for i in opciones_personaje.item_count:
+				if opciones_personaje.get_item_text(i).to_lower() == str(valor).to_lower():
+					opciones_personaje.select(i)
+		else:
+			valor_actual.text = "No tiene personaje"
+	elif campo_a_editar == "nombre":
+		valor_actual.text = str(valor)
+	else:
+		valor_actual.text = str(valor) if valor != null else "0"
+
+
+# ==========================================
+# SUGERENCIAS DE NOMBRES (mientras se escribe)
+# ==========================================
 
 func _on_nombre_buscar_text_changed(new_text: String) -> void:
-	pass # Replace with function body.
+	# Campo vacío: no hay sugerencias y se permite
+	if new_text == "":
+		ultimo_texto_valido = ""
+		mensaje_editar.text = ""
+		sugerencias.clear()
+		sugerencias.visible = false
+		actualizar_valor_actual("")
+		return
+
+	# Nombres que empiezan con lo que se escribió (máximo 10)
+	baseDatos.query_with_bindings(
+		"SELECT DISTINCT nombre FROM players WHERE nombre LIKE ? ORDER BY nombre LIMIT 10;",
+		[new_text + "%"])
+
+	# Sin coincidencias: no se deja escribir esa letra y no aparece nada
+	if baseDatos.query_result.size() == 0:
+		nombre_buscar.text = ultimo_texto_valido
+		nombre_buscar.caret_column = ultimo_texto_valido.length()
+		mensaje_editar.text = "No hay jugadores que empiecen con eso."
+		return
+
+	# Hay coincidencias: se acepta el texto y se muestran las sugerencias
+	ultimo_texto_valido = new_text
+	mensaje_editar.text = ""
+
+	sugerencias.clear()
+	for fila in baseDatos.query_result:
+		sugerencias.add_item(str(fila["nombre"]))
+
+	sugerencias.visible = sugerencias.item_count > 0
+
+	# Si el nombre ya está completo, se muestra su valor actual
+	actualizar_valor_actual(new_text.strip_edges())
 
 
-func _on_sugerencias_nombre_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
-	pass # Replace with function body.
+func _on_sugerencias_nombre_item_clicked(index: int, _at_position: Vector2, _mouse_button_index: int) -> void:
+	var elegido = sugerencias.get_item_text(index)
+
+	nombre_buscar.text = elegido
+	nombre_buscar.caret_column = elegido.length()
+	ultimo_texto_valido = elegido
+
+	sugerencias.clear()
+	sugerencias.visible = false
+
+	actualizar_valor_actual(elegido)
+
+	if opciones_personaje.visible:
+		opciones_personaje.grab_focus()
+	else:
+		valor_nuevo.grab_focus()
 
 
-func _on_btn_cancelar_edicion_pressed() -> void:
-	pass # Replace with function body.
-
+# ==========================================
+# BOTÓN: CAMBIAR
+# ==========================================
 
 func _on_btn_guardar_edicion_pressed() -> void:
-	pass # Replace with function body.
+	sugerencias.visible = false
+
+	var nombre: String = nombre_buscar.text.strip_edges()
+
+	if nombre == "":
+		mensaje_editar.text = "Escribe el nombre del jugador."
+		return
+
+	# 1. Buscar al jugador (su id, su nombre tal como está guardado y el valor de ahora)
+	var columnas = "id, nombre"
+	if campo_a_editar != "nombre":
+		columnas += ", " + campo_a_editar
+
+	var sql_buscar = "SELECT %s FROM players WHERE nombre = ? COLLATE NOCASE;" % columnas
+	baseDatos.query_with_bindings(sql_buscar, [nombre])
+
+	if baseDatos.query_result.size() == 0:
+		mensaje_editar.text = "Elige un jugador de la lista."
+		return
+
+	var fila = baseDatos.query_result[0]
+	var id_jugador = fila["id"]
+	var nombre_real = str(fila["nombre"])
+	var anterior = fila[campo_a_editar]
+
+	# 2. Preparar el valor nuevo
+	var nuevo
+
+	if campo_a_editar == "personaje":
+		nuevo = opciones_personaje.get_item_text(opciones_personaje.selected)
+
+	elif campo_a_editar == "nombre":
+		nuevo = valor_nuevo.text.strip_edges()
+
+		if nuevo == "":
+			mensaje_editar.text = "Escribe el nombre nuevo."
+			return
+
+		if nuevo == nombre_real:
+			mensaje_editar.text = "El nombre nuevo es igual al actual."
+			return
+
+		# El nombre nuevo no puede ser el de OTRO jugador
+		baseDatos.query_with_bindings(
+			"SELECT id FROM players WHERE nombre = ? COLLATE NOCASE;", [nuevo])
+
+		if baseDatos.query_result.size() > 0 and baseDatos.query_result[0]["id"] != id_jugador:
+			mensaje_editar.text = "Ya existe un jugador llamado '%s'." % nuevo
+			return
+
+	else:
+		var texto: String = valor_nuevo.text.strip_edges()
+
+		if not texto.is_valid_int() or int(texto) < 0:
+			mensaje_editar.text = "Escribe un número entero (0 o mayor)."
+			return
+
+		nuevo = int(texto)
+		anterior = int(anterior) if anterior != null else 0
+
+	# 3. Guardar en la base de datos
+	var sql_guardar = "UPDATE players SET %s = ? WHERE id = ?;" % campo_a_editar
+	var ok = baseDatos.query_with_bindings(sql_guardar, [nuevo, id_jugador])
+
+	if not ok:
+		mensaje_editar.text = "No se pudo guardar: " + str(baseDatos.error_message)
+		return
+
+	# 4. Avisar qué se cambió
+	if campo_a_editar == "nombre":
+		mensaje_editar.text = "Se cambió el nombre de %s a %s." % [nombre_real, nuevo]
+		valor_actual.text = nuevo
+		nombre_buscar.text = nuevo
+		ultimo_texto_valido = nuevo
+		valor_nuevo.text = ""
+
+	elif campo_a_editar == "personaje":
+		if tiene_personaje(anterior):
+			mensaje_editar.text = "Se cambió el personaje de %s de %s a %s." % [
+				nombre_real, str(anterior), nuevo]
+		else:
+			mensaje_editar.text = "Se asignó el personaje %s a %s." % [nuevo, nombre_real]
+		valor_actual.text = nuevo
+
+	else:
+		mensaje_editar.text = "Se cambiaron las %s de %s de %d a %d." % [
+			campo_a_editar, nombre_real, anterior, nuevo]
+		valor_actual.text = str(nuevo)
+		valor_nuevo.text = ""
+
+
+# ==========================================
+# BOTÓN: CANCELAR
+# ==========================================
+
+func _on_btn_cancelar_edicion_pressed() -> void:
+	sugerencias.visible = false
+	panel_editar.visible = false
+	panel_mas_opciones.visible = true

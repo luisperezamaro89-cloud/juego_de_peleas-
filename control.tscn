@@ -119,6 +119,7 @@ offset_bottom = 156.0
 text = "Mas Obciones"
 
 [node name="PanelMasOpciones" type="PanelContainer" parent="." unique_id=317019846]
+visible = false
 custom_minimum_size = Vector2(400, 350)
 layout_mode = 0
 offset_left = 348.0
@@ -147,15 +148,16 @@ text = "Derrotas"
 layout_mode = 2
 text = "Personaje"
 
-[node name="BtnVolver" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=91075073]
-layout_mode = 2
-text = "Volver"
-
 [node name="BtnNombre" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=1912804501]
 layout_mode = 2
 text = "Nombre"
 
+[node name="BtnVolver" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=91075073]
+layout_mode = 2
+text = "Volver"
+
 [node name="PanelEditar" type="PanelContainer" parent="." unique_id=712888814]
+visible = false
 custom_minimum_size = Vector2(450, 400)
 layout_mode = 1
 anchors_preset = 8
@@ -219,6 +221,14 @@ layout_mode = 2
 placeholder_text = "Número nuevo"
 alignment = 1
 
+[node name="OpcionesPersonaje" type="OptionButton" parent="PanelEditar/VBoxContainer/FilaValores/ColumnaNueva" unique_id=1939217652]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "Estudiante"
+popup/item_0/id = 0
+popup/item_1/text = "Delincuente"
+popup/item_1/id = 1
+
 [node name="MensajeEditar" type="Label" parent="PanelEditar/VBoxContainer" unique_id=1407809758]
 custom_minimum_size = Vector2(400, 60)
 layout_mode = 2
@@ -252,8 +262,8 @@ text = "Cambiar"
 [connection signal="pressed" from="PanelMasOpciones/VBoxContainer/BtnVictorias" to="." method="_on_btn_victorias_pressed"]
 [connection signal="pressed" from="PanelMasOpciones/VBoxContainer/BtnDerrotas" to="." method="_on_btn_derrotas_pressed"]
 [connection signal="pressed" from="PanelMasOpciones/VBoxContainer/BtnPersonaje" to="." method="_on_btn_personaje_pressed"]
-[connection signal="pressed" from="PanelMasOpciones/VBoxContainer/BtnVolver" to="." method="_on_btn_volver_pressed"]
 [connection signal="pressed" from="PanelMasOpciones/VBoxContainer/BtnNombre" to="." method="_on_btn_nombre_pressed"]
+[connection signal="pressed" from="PanelMasOpciones/VBoxContainer/BtnVolver" to="." method="_on_btn_volver_pressed"]
 [connection signal="text_changed" from="PanelEditar/VBoxContainer/NombreBuscar" to="." method="_on_nombre_buscar_text_changed"]
 [connection signal="item_clicked" from="PanelEditar/VBoxContainer/SugerenciasNombre" to="." method="_on_sugerencias_nombre_item_clicked"]
 [connection signal="pressed" from="PanelEditar/VBoxContainer/FilaBotones/BtnCancelarEdicion" to="." method="_on_btn_cancelar_edicion_pressed"]
