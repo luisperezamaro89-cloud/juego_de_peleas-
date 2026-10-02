@@ -128,6 +128,12 @@ func _ready():
 	peleador1.jugador = 1
 	peleador2.jugador = 2
 
+	peleador1.nombre_personaje = personaje_j1
+	peleador2.nombre_personaje = personaje_j2
+
+	peleador1.configurar_sonidos()
+	peleador2.configurar_sonidos()
+
 	peleador1.configurar_controles()
 	peleador2.configurar_controles()
 	
