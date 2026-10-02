@@ -1,8 +1,8 @@
 extends Control
-
+	
 func _ready():
 	$PopUpAdmin.confirmed.connect(_on_pop_up_admin_confirmed)
-	
+	MusicManager.reproducir_musica("menu")
 
 
 func _on_btn_iniciar_partida_pressed() -> void:

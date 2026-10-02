@@ -45,6 +45,7 @@ var terminado = false
 
 
 func _ready():
+	MusicManager.reproducir_musica("seleccion")
 	aplicar_estilo_seleccion()
 
 	fondo_personaje.mouse_filter = Control.MOUSE_FILTER_IGNORE
