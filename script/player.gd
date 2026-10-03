@@ -53,8 +53,8 @@ func configurar_sonidos():
 	elif nombre_personaje == "Delincuente":
 
 		sonidos = {
-			"golpe1": preload("res://audio/delincuente/primer_golpep2.wav"),
-			"golpe_2": preload("res://audio/delincuente/segundo_golpep2.wav"),
+			"golpe1": preload("res://audio/delincuente/segundo_golpep2.wav"),
+			"golpe_2": preload("res://audio/delincuente/primer_golpep2.wav"),
 			#"bloqueo": preload("res://audio/delincuente/bloqueo.wav")
 		}
 

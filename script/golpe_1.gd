@@ -56,36 +56,58 @@ func entrar():
 
 func cargar_sonidos():
 
+	print("================================")
+	print("CARGANDO SONIDOS")
+	print("PERSONAJE: ", player.nombre_personaje)
+
 	if player.nombre_personaje == "Estudiante":
 
 		golpe_defrente1 = preload("res://audio/estudiante/golpe_bajop01.wav")
-	#	sonido_golpe_2 = preload("res://audio/estudiante/golpe2.wav")
-	#	sonido_golpe_3 = preload("res://audio/estudiante/golpe3.wav")
+
+		print("SONIDO ESTUDIANTE 1: ", golpe_defrente1)
 
 	elif player.nombre_personaje == "Delincuente":
 
 		golpe_defrente1 = preload("res://audio/delincuente/primer_golpep2.wav")
 		golpe_defrente2 = preload("res://audio/delincuente/segundo_golpep2.wav")
-	#	sonido_golpe_3 = preload("res://audio/delincuente/golpe3.wav")
-		
+
+		print("SONIDO DELINCUENTE 1: ", golpe_defrente1)
+		print("SONIDO DELINCUENTE 2: ", golpe_defrente2)
+
+	print("================================")
 		
 func reproducir_sonido_golpe():
 
-	if not audio_golpe:
+	print("================================")
+	print("INTENTANDO REPRODUCIR SONIDO")
+	print("GOLPE ACTUAL: ", golpe_actual)
+	print("PERSONAJE: ", player.nombre_personaje)
+	print("AUDIO: ", audio_golpe)
+
+	if audio_golpe == null:
+		print("ERROR: AudioStreamPlayer NO ENCONTRADO")
 		return
 
 	match golpe_actual:
 
 		1:
+			print("SELECCIONANDO GOLPE 1")
 			audio_golpe.stream = golpe_defrente1
 
 		2:
+			print("SELECCIONANDO GOLPE 2")
 			audio_golpe.stream = golpe_defrente2
 
 		3:
+			print("SELECCIONANDO GOLPE 3")
 			audio_golpe.stream = sonido_golpe_3
 
+	print("STREAM ACTUAL: ", audio_golpe.stream)
+
 	audio_golpe.play()
+
+	print("REPRODUCIENDO: ", audio_golpe.playing)
+	print("================================")
 	
 	
 	
