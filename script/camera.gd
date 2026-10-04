@@ -27,6 +27,29 @@ extends Camera2D
 # Distancia a partir de la cual empieza a alejarse
 @export var distancia_zoom: float = 200.0
 
+
+# ==========================================
+# ZOOM DE COMBO
+# ==========================================
+
+@export var zoom_combo_por_golpe: float = 0.15
+@export var zoom_combo_maximo: float = 0.8
+@export var velocidad_zoom_combo: float = 8.0
+
+var golpes_combo: int = 0
+var combo_activo: bool = false
+
+func golpe_combo():
+
+	golpes_combo += 1
+	combo_activo = true
+
+	print("GOLPES COMBO: ", golpes_combo)
+	
+func romper_combo():
+
+	golpes_combo = 0
+	combo_activo = false
 # ==========================================
 # CAMERA SHAKE
 # ==========================================

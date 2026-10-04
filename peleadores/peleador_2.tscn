@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://bw8d4mvd852ed" path="res://script/daño.gd" id="16_6opeu"]
 [ext_resource type="Script" uid="uid://7im6tth6n73s" path="res://script/bloquear.gd" id="17_awhok"]
 [ext_resource type="Script" uid="uid://d33olm0elxb0p" path="res://script/hurt_box.gd" id="18_2tgnx"]
+[ext_resource type="Script" uid="uid://dfl2yqs2n02os" path="res://script/sonido.gd" id="21_l55qd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilruh"]
 size = Vector2(723, 4141)
@@ -715,6 +716,9 @@ script = ExtResource("18_2tgnx")
 position = Vector2(-282.00003, 403.00003)
 scale = Vector2(14.015, 14.015)
 shape = SubResource("RectangleShape2D_xk0ua")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1823384986]
+script = ExtResource("21_l55qd")
 
 [connection signal="area_entered" from="StateMachine/Golpear/HitBox_delante" to="StateMachine/Golpear/HitBox_delante" method="_on_area_entered"]
 [connection signal="area_entered" from="StateMachine/Golpear/hitbox_arriba" to="StateMachine/Golpear/hitbox_arriba" method="_on_area_entered"]
