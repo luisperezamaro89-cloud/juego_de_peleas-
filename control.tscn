@@ -138,22 +138,27 @@ horizontal_alignment = 1
 
 [node name="BtnVictorias" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=2110258562]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Victorias"
 
 [node name="BtnDerrotas" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=1635748944]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Derrotas"
 
 [node name="BtnPersonaje" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=277653945]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Personaje"
 
 [node name="BtnNombre" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=1912804501]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Nombre"
 
 [node name="BtnVolver" type="Button" parent="PanelMasOpciones/VBoxContainer" unique_id=91075073]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Volver"
 
 [node name="PanelEditar" type="PanelContainer" parent="." unique_id=712888814]
