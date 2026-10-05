@@ -45,8 +45,11 @@ func configurar_sonidos():
 	if nombre_personaje == "Estudiante":
 
 		sonidos = {
-			"golpe_bajo": preload("res://audio/estudiante/golpe_bajop01.wav"),
-			"daño": preload("res://audio/estudiante/golpe_bajop01.wav"), #cambiar sonido
+			"golpe1": preload("res://audio/estudiante/gopledefrentep1.wav"),
+			"golpe_2": preload("res://audio/estudiante/segundo_golpe_defrente1.wav"),
+			"golpe_bajo": preload("res://audio/estudiante/golpe_abajop1.wav"),
+			"golpe_arriba": preload("res://audio/estudiante/golpe_arribap1.wav"),
+			"daño": preload("res://audio/estudiante/recibir_golpep1.wav"),
 		#	"bloqueo": preload("res://audio/estudiante/bloqueo.wav")
 		}
 
@@ -55,19 +58,21 @@ func configurar_sonidos():
 		sonidos = {
 			"golpe1": preload("res://audio/delincuente/segundo_golpep2.wav"),
 			"golpe_2": preload("res://audio/delincuente/primer_golpep2.wav"),
+			"golpe_bajo": preload("res://audio/delincuente/golpe_bajop2.wav"),
+			"golpe_arriba": preload("res://audio/delincuente/golpe_arribap2.wav"),
+			"daño": preload("res://audio/delincuente/recibir_golpe_p2.wav"),
 			#"bloqueo": preload("res://audio/delincuente/bloqueo.wav")
 		}
 
 
 func reproducir_sonido(tipo: String):
 
-	if sonidos.has(tipo):
-		print("INTENTANDO REPRODUCIR SONIDO: ", tipo)
-
 	if not sonidos.has(tipo):
 		print("ERROR: no existe el sonido: ", tipo)
 		return
-		
+
+	print("INTENTANDO REPRODUCIR SONIDO: ", tipo)
+
 	audio_animacion.stream = sonidos[tipo]
 	audio_animacion.play()
 		
