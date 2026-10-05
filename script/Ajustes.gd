@@ -17,6 +17,9 @@ var contexto := "menu"
 
 
 func _ready() -> void:
+	# El fundido entre escenas debe seguir funcionando siempre
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 	_crear_bus("Musica")
 	_crear_bus("Efectos")
 
@@ -129,3 +132,54 @@ func cargar() -> void:
 	for canal in volumen.keys():
 		volumen[canal] = cfg.get_value("audio", canal + "_volumen", volumen[canal])
 		silenciado[canal] = cfg.get_value("audio", canal + "_silenciado", silenciado[canal])
+
+
+# ==========================================
+# CAMBIO DE ESCENA CON FUNDIDO A NEGRO
+# ==========================================
+# (Está aquí para no tener que registrar otro autoload.)
+
+var _capa_fundido: CanvasLayer
+var _rect_fundido: ColorRect
+
+
+func _crear_capa_fundido() -> void:
+	if _capa_fundido != null:
+		return
+
+	_capa_fundido = CanvasLayer.new()
+	_capa_fundido.layer = 100
+	add_child(_capa_fundido)
+
+	_rect_fundido = ColorRect.new()
+	_rect_fundido.color = Color.BLACK
+	_rect_fundido.modulate.a = 0.0
+	_rect_fundido.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_capa_fundido.add_child(_rect_fundido)
+	_rect_fundido.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+
+
+# La pantalla se va a negro, se cambia de escena y aparece poco a poco
+func cambiar_escena_con_fundido(ruta: String, duracion: float = 0.8) -> void:
+	_crear_capa_fundido()
+
+	# Mientras dura el fundido no se puede hacer clic en nada
+	_rect_fundido.mouse_filter = Control.MOUSE_FILTER_STOP
+
+	var salida = create_tween()
+	salida.set_ignore_time_scale(true)
+	salida.tween_property(_rect_fundido, "modulate:a", 1.0, duracion)
+	await salida.finished
+
+	get_tree().change_scene_to_file(ruta)
+
+	# Se espera a que la escena nueva esté lista
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+	var entrada = create_tween()
+	entrada.set_ignore_time_scale(true)
+	entrada.tween_property(_rect_fundido, "modulate:a", 0.0, duracion)
+	await entrada.finished
+
+	_rect_fundido.mouse_filter = Control.MOUSE_FILTER_IGNORE

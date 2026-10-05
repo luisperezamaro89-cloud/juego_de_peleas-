@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b34o70nnhu3li"]
 
 [ext_resource type="Script" uid="uid://brv1fvfdvxbun" path="res://escenas/Menu_Principal/menu_principal.gd" id="1_nngpg"]
+[ext_resource type="Script" uid="uid://e54mkvwpo0xo" path="res://script/estilo_menu.gd" id="2_hbxi3"]
 [ext_resource type="Theme" uid="uid://ett3uumdmfl1" path="res://escenas/Menu_Principal/Boton_menu_principal.tres" id="2_skn2h"]
 [ext_resource type="StyleBox" uid="uid://gjeyjoy0rjn3" path="res://escenas/Seleccion/scenes/Estilos_botones/Normal.tres" id="3_nngpg"]
 [ext_resource type="StyleBox" uid="uid://cx2oqjfxdfk2t" path="res://escenas/Seleccion/scenes/Estilos_botones/Pressed.tres" id="4_skn2h"]
@@ -8,6 +9,8 @@
 [ext_resource type="StyleBox" uid="uid://dl5y0wmu42ax6" path="res://escenas/Seleccion/scenes/Estilos_botones/Focus.tres" id="6_hbxi3"]
 [ext_resource type="Texture2D" uid="uid://6ewmmye8tpnr" path="res://escenas/Menu_Principal/imagenes_Creadores/Luis.jpg" id="7_1vakb"]
 [ext_resource type="Texture2D" uid="uid://s5xuwo6hxtgt" path="res://escenas/Menu_Principal/imagenes_Creadores/Lucero.jpg" id="8_hbxi3"]
+[ext_resource type="Script" uid="uid://b0eva0vk3xk1b" path="res://script/estilo_admin.gd" id="8_vfkpw"]
+[ext_resource type="Script" uid="uid://plf8j5yu81va" path="res://script/estilo_panel.gd" id="9_6pcpc"]
 
 [node name="Menu Principal" type="Control" unique_id=491037825]
 layout_mode = 3
@@ -37,6 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
+script = ExtResource("2_hbxi3")
 
 [node name="BtnIniciarPartida" type="Button" parent="VBoxContainer" unique_id=844312960]
 layout_mode = 2
@@ -90,6 +94,7 @@ offset_top = 563.0
 offset_right = 1150.0
 offset_bottom = 643.0
 text = "ADMINISTRADORES"
+script = ExtResource("8_vfkpw")
 
 [node name="PopUpAdmin" type="ConfirmationDialog" parent="." unique_id=1089627831]
 oversampling_override = 1.0
@@ -124,6 +129,7 @@ offset_right = 350.0
 offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("9_6pcpc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelCreditos" unique_id=2032779194]
 layout_mode = 2
@@ -189,6 +195,7 @@ offset_right = 325.0
 offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("9_6pcpc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelAjustes" unique_id=1925169030]
 custom_minimum_size = Vector2(650, 350)

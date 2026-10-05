@@ -2,6 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://gjeyjoy0rjn3" path="res://escenas/Seleccion/scenes/Estilos_botones/Normal.tres" id="1_mbim7"]
 [ext_resource type="Script" uid="uid://bc4h6emdekib6" path="res://escenas/Seleccion/seleccion_personajes.gd" id="1_phnib"]
+[ext_resource type="Script" uid="uid://ca1o40ixak5t1" path="res://script/estilo_seleccion.gd" id="2_yqtke"]
 [ext_resource type="Texture2D" uid="uid://c5v13ddp4g6e1" path="res://images seccion personajes/images.jpg" id="3_xf1re"]
 [ext_resource type="Texture2D" uid="uid://b7sjc7fapc50r" path="res://images seccion personajes/images (1).jpg" id="4_yqtke"]
 
@@ -59,6 +60,7 @@ offset_bottom = 645.0
 theme = SubResource("Theme_hfy2b")
 theme_override_constants/separation = 30
 alignment = 1
+script = ExtResource("2_yqtke")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=417790820]
 layout_mode = 2
@@ -99,7 +101,7 @@ layout_mode = 2
 
 [node name="LabelestudianteJ2" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=1355797999]
 layout_mode = 2
-text = "ESTUDINTE"
+text = "ESTUDIANTE"
 
 [node name="BtnestudianteJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=836550484]
 custom_minimum_size = Vector2(150, 150)

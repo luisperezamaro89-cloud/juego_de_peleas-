@@ -12,6 +12,7 @@ var peleador2
 @onready var score_2 = $Uix/score_2
 
 @onready var ronda_label = $Uix/ronda_label
+@onready var texto_anuncio = $Anuncio/TextoAnuncio
 var jugador1
 var jugador2
 var personaje_j1 = "Estudiante"
@@ -25,9 +26,23 @@ const RUTA_PELEADOR_2_POR_DEFECTO := "res://peleadores/peleador_2.tscn"
 const POSICION_PELEADOR_1 := Vector2(-110.0, 26.0)
 const POSICION_PELEADOR_2 := Vector2(103.0, 27.0)
 
-# Tamaño de los peleadores. Si se ven más grandes o pequeños que antes,
-# pon aquí el mismo Scale que tenían en la escena.
+# Tamaño de los peleadores. En sus escenas son enormes y en la pelea se
+# usan muy reducidos. Si se ven más grandes o pequeños, cambia este número.
 const ESCALA_PELEADORES := Vector2(0.03, 0.03)
+
+# --- K.O. y final de la pelea ---
+const TIEMPO_LENTO = 0.3            # velocidad del juego en cámara lenta (1.0 = normal)
+const TAMANO_TEXTO_KO = 120         # tamaño de las letras del K.O.
+const TAMANO_TEXTO_GANADOR = 64     # tamaño del texto del ganador
+const FUERZA_TEMBLOR = 3.0          # qué tanto tiembla la cámara
+
+# Cada paso: qué texto se muestra y cuántos segundos espera antes del siguiente
+const PASOS_KO = [
+	{"texto": "K", "espera": 0.6},
+	{"texto": "K.", "espera": 0.4},
+	{"texto": "K.O", "espera": 0.6},
+	{"texto": "K.O.", "espera": 0.4},
+]
 
 
 # ==========================================
@@ -56,21 +71,12 @@ func mostrar_ronda():
 
 func crear_peleadores():
 
-	# Recuperar personajes elegidos ANTES de crear los peleadores
-	if get_tree().has_meta("personaje_j1"):
-		personaje_j1 = get_tree().get_meta("personaje_j1")
-
-	if get_tree().has_meta("personaje_j2"):
-		personaje_j2 = get_tree().get_meta("personaje_j2")
-
-
 	# Si quedó algún peleador de prueba puesto en la escena, se quita
 	for nombre in ["peleador1", "peleador2"]:
 		var viejo = get_node_or_null(nombre)
 		if viejo:
 			remove_child(viejo)
 			viejo.queue_free()
-
 
 	var ruta1 = RUTA_PELEADOR_1_POR_DEFECTO
 	var ruta2 = RUTA_PELEADOR_2_POR_DEFECTO
@@ -81,25 +87,20 @@ func crear_peleadores():
 	if get_tree().has_meta("ruta_j2"):
 		ruta2 = get_tree().get_meta("ruta_j2")
 
+	peleador1 = crear_peleador(ruta1, "peleador1", POSICION_PELEADOR_1)
+	peleador2 = crear_peleador(ruta2, "peleador2", POSICION_PELEADOR_2)
 
-	peleador1 = crear_peleador(
-		ruta1,
-		"peleador1",
-		POSICION_PELEADOR_1
-	)
-
-	peleador2 = crear_peleador(
-		ruta2,
-		"peleador2",
-		POSICION_PELEADOR_2
-	)
-
-
-	# Cámara
+	# La cámara sigue a los peleadores: se le pasan los nuevos
 	for hijo in get_children():
 		if hijo is Camera2D:
 			hijo.peleador1 = peleador1
 			hijo.peleador2 = peleador2
+
+	if get_tree().has_meta("personaje_j1"):
+		personaje_j1 = get_tree().get_meta("personaje_j1")
+
+	if get_tree().has_meta("personaje_j2"):
+		personaje_j2 = get_tree().get_meta("personaje_j2")
 
 
 func crear_peleador(ruta: String, nombre: String, posicion: Vector2):
@@ -121,6 +122,9 @@ func crear_peleador(ruta: String, nombre: String, posicion: Vector2):
 	
 func _ready():
 
+	# Audio: en esta escena suena la música de pelea
+	Ajustes.poner_contexto("pelea")
+
 	# Primero se crean los peleadores que eligieron en la selección
 	crear_peleadores()
 	
@@ -141,12 +145,6 @@ func _ready():
 	
 	peleador1.jugador = 1
 	peleador2.jugador = 2
-
-	peleador1.nombre_personaje = personaje_j1
-	peleador2.nombre_personaje = personaje_j2
-
-	peleador1.configurar_sonidos()
-	peleador2.configurar_sonidos()
 
 	peleador1.configurar_controles()
 	peleador2.configurar_controles()
@@ -255,9 +253,12 @@ func terminar_ronda():
 	print("VICTORIAS J2: ", victorias_j2)
 	print("================================")
 
-	await get_tree().create_timer(2.0, false).timeout
+	var es_ultima_ronda = ronda_actual >= max_rondas
 
-	if ronda_actual < max_rondas:
+	if not es_ultima_ronda:
+
+		# Rondas 1 y 2: sin K.O., una pausa corta y sigue la siguiente
+		await get_tree().create_timer(2.0, false).timeout
 
 		ronda_actual += 1
 
@@ -269,7 +270,9 @@ func terminar_ronda():
 
 	else:
 
-		terminar_pelea()
+		# Ronda 3: aquí sí sale el K.O., luego el ganador y Resultados
+		await secuencia_ko()
+		await terminar_pelea()
 
 
 # ==========================================
@@ -353,5 +356,116 @@ func terminar_pelea():
 	get_tree().set_meta("ganador_partida", ganador_partida)
 
 
-	# Ir a resultados
-	get_tree().change_scene_to_file("res://escenas/ko_estudiante.tscn")
+	# Texto del ganador
+	if ganador_partida == "Empate":
+		await mostrar_ganador("¡EMPATE!")
+	else:
+		await mostrar_ganador("¡GANA EL " + ganador_partida.to_upper() + "!")
+
+	# Ir a resultados con un fundido a negro
+	Ajustes.cambiar_escena_con_fundido("res://escenas/Resultado.tscn", 0.8)
+
+
+# ==========================================
+# K.O. EN CÁMARA LENTA
+# ==========================================
+
+func secuencia_ko() -> void:
+
+	# Cámara lenta y temblor al golpe final
+	Engine.time_scale = TIEMPO_LENTO
+	temblor_de_camara()
+
+	texto_anuncio.add_theme_font_size_override("font_size", TAMANO_TEXTO_KO)
+	texto_anuncio.modulate.a = 1.0
+	texto_anuncio.visible = true
+
+	# El K.O. aparece letra por letra, despacio
+	for paso in PASOS_KO:
+		texto_anuncio.text = paso["texto"]
+		golpe_de_texto()
+		await esperar_real(paso["espera"])
+
+	# Se queda un momento en pantalla
+	await esperar_real(0.5)
+
+	# Vuelve a la velocidad normal y el texto se desvanece
+	var tween = create_tween()
+	tween.set_ignore_time_scale(true)
+	tween.set_parallel(true)
+	tween.tween_property(Engine, "time_scale", 1.0, 0.5)
+	tween.tween_property(texto_anuncio, "modulate:a", 0.0, 0.5)
+	await tween.finished
+
+	Engine.time_scale = 1.0
+	texto_anuncio.visible = false
+	texto_anuncio.modulate.a = 1.0
+
+
+# La letra aparece grande y se asienta, como si cayera
+func golpe_de_texto() -> void:
+
+	texto_anuncio.pivot_offset = texto_anuncio.size / 2.0
+	texto_anuncio.scale = Vector2(1.6, 1.6)
+
+	var tween = create_tween()
+	tween.set_ignore_time_scale(true)
+	tween.set_trans(Tween.TRANS_BACK)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(texto_anuncio, "scale", Vector2.ONE, 0.25)
+
+
+# Un temblor corto de la cámara
+func temblor_de_camara() -> void:
+
+	var camara = get_node_or_null("Camera2D")
+
+	if camara == null:
+		return
+
+	var tween = create_tween()
+	tween.set_ignore_time_scale(true)
+
+	for i in 6:
+		var desplazamiento = Vector2(
+			randf_range(-FUERZA_TEMBLOR, FUERZA_TEMBLOR),
+			randf_range(-FUERZA_TEMBLOR, FUERZA_TEMBLOR))
+		tween.tween_property(camara, "offset", desplazamiento, 0.04)
+
+	tween.tween_property(camara, "offset", Vector2.ZERO, 0.04)
+
+
+# Espera en tiempo real, sin que la cámara lenta la alargue
+func esperar_real(segundos: float) -> void:
+	await get_tree().create_timer(segundos, false, false, true).timeout
+
+
+# ==========================================
+# TEXTO DEL GANADOR
+# ==========================================
+
+func mostrar_ganador(texto: String) -> void:
+
+	texto_anuncio.add_theme_font_size_override("font_size", TAMANO_TEXTO_GANADOR)
+	texto_anuncio.text = texto
+	texto_anuncio.visible = true
+	texto_anuncio.modulate.a = 0.0
+	texto_anuncio.pivot_offset = texto_anuncio.size / 2.0
+	texto_anuncio.scale = Vector2(0.8, 0.8)
+
+	# Aparece suavemente
+	var tween = create_tween()
+	tween.set_ignore_time_scale(true)
+	tween.set_parallel(true)
+	tween.tween_property(texto_anuncio, "modulate:a", 1.0, 0.6)
+	tween.tween_property(texto_anuncio, "scale", Vector2.ONE, 0.6) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	await tween.finished
+
+	# Se queda un momento para que se lea
+	await esperar_real(1.2)
+
+
+func _exit_tree() -> void:
+	# Por si se sale de la pelea en plena cámara lenta
+	Engine.time_scale = 1.0
