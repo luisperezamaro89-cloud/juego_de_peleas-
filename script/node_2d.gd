@@ -45,7 +45,7 @@ func mostrar_ronda():
 	ronda_label.text = "RONDA " + str(ronda_actual)
 	ronda_label.visible = true
 	
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(2.0, false).timeout
 	
 	ronda_label.visible = false
 
@@ -196,7 +196,7 @@ func iniciar_ronda():
 
 	print("COMIENZA RONDA ", ronda_actual)
 
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(2.0, false).timeout
 
 	ronda_label.visible = false
 
@@ -255,7 +255,7 @@ func terminar_ronda():
 	print("VICTORIAS J2: ", victorias_j2)
 	print("================================")
 
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(2.0, false).timeout
 
 	if ronda_actual < max_rondas:
 

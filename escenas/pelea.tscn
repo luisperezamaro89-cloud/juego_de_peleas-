@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ceoca2imt1krw" path="res://script/node_2d.gd" id="1_0hol4"]
 [ext_resource type="Script" uid="uid://dlxhiflqvokpq" path="res://script/camera.gd" id="3_iyxqb"]
 [ext_resource type="PackedScene" uid="uid://dj6yeng6igspc" path="res://Uix/healthbar/healthbar_1.tscn" id="4_q6r6c"]
+[ext_resource type="Script" uid="uid://t66rgx4k4ktx" path="res://escenas/pausa.gd" id="5_fsg6a"]
 [ext_resource type="PackedScene" uid="uid://gp665tcad2cf" path="res://Uix/score_1.tscn" id="6_2edlo"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fsg6a"]
@@ -2321,3 +2322,126 @@ offset_right = 393.0
 offset_bottom = 78.0
 scale = Vector2(5.16, 5.16)
 text = "RONDA 1"
+
+[node name="Pausa" type="CanvasLayer" parent="." unique_id=150707522]
+process_mode = 3
+layer = 10
+script = ExtResource("5_fsg6a")
+
+[node name="Oscurecer" type="ColorRect" parent="Pausa" unique_id=478399135]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 10.0
+offset_right = -1.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelPausa" type="PanelContainer" parent="Pausa" unique_id=1348311826]
+custom_minimum_size = Vector2(650, 420)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -210.0
+offset_right = 325.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pausa/PanelPausa" unique_id=1230941139]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TituloPausa" type="Label" parent="Pausa/PanelPausa/VBoxContainer" unique_id=1649721881]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "PAUSA"
+horizontal_alignment = 1
+
+[node name="FilaMusicaMenu" type="HBoxContainer" parent="Pausa/PanelPausa/VBoxContainer" unique_id=249818818]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LabelMusicaMenu" type="Label" parent="Pausa/PanelPausa/VBoxContainer/FilaMusicaMenu" unique_id=151875141]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Música del menú"
+
+[node name="BtnMuteMenu" type="Button" parent="Pausa/PanelPausa/VBoxContainer/FilaMusicaMenu" unique_id=220883790]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "ON"
+
+[node name="SliderMusicaMenu" type="HSlider" parent="Pausa/PanelPausa/VBoxContainer/FilaMusicaMenu" unique_id=758960916]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 70.0
+
+[node name="ValorMusicaMenu" type="Label" parent="Pausa/PanelPausa/VBoxContainer/FilaMusicaMenu" unique_id=768231202]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "70%"
+
+[node name="FilaMusicaPelea" type="HBoxContainer" parent="Pausa/PanelPausa/VBoxContainer" unique_id=742844151]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LabelMusicaPelea" type="Label" parent="Pausa/PanelPausa/VBoxContainer/FilaMusicaPelea" unique_id=1685759450]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Música de peleas"
+
+[node name="BtnMutePelea" type="Button" parent="Pausa/PanelPausa/VBoxContainer/FilaMusicaPelea" unique_id=99384306]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "ON"
+
+[node name="SliderMusicaPelea" type="HSlider" parent="Pausa/PanelPausa/VBoxContainer/FilaMusicaPelea" unique_id=1009368174]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 80.0
+
+[node name="ValorMusicaPelea" type="Label" parent="Pausa/PanelPausa/VBoxContainer/FilaMusicaPelea" unique_id=722518472]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "80%"
+
+[node name="FilaEfectos" type="HBoxContainer" parent="Pausa/PanelPausa/VBoxContainer" unique_id=877808988]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LabelEfectos" type="Label" parent="Pausa/PanelPausa/VBoxContainer/FilaEfectos" unique_id=477276370]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Efectos de golpes"
+
+[node name="BtnMuteEfectos" type="Button" parent="Pausa/PanelPausa/VBoxContainer/FilaEfectos" unique_id=187931062]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "ON"
+
+[node name="SliderEfectos" type="HSlider" parent="Pausa/PanelPausa/VBoxContainer/FilaEfectos" unique_id=1228055654]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 60.0
+
+[node name="ValorEfectos" type="Label" parent="Pausa/PanelPausa/VBoxContainer/FilaEfectos" unique_id=60117444]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "60%"
+
+[node name="BtnReanudar" type="Button" parent="Pausa/PanelPausa/VBoxContainer" unique_id=1689562317]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Reanudar"

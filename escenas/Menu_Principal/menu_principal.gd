@@ -160,3 +160,7 @@ func _refrescar_canal(canal: String) -> void:
 
 func _on_btn_top_3_pressed() -> void:
 	get_tree().change_scene_to_file("res://Top_jugadores/top_5.tscn")
+
+
+func _on_btn_salir_pressed() -> void:
+	get_tree().quit()
