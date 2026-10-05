@@ -226,8 +226,7 @@ func registrar_derrota(nombre: String):
 
 
 		var datos = {
-			"derrotas": derrotas_actuales + 1,
-			"puntaje": 0
+			"derrotas": derrotas_actuales + 1
 		}
 
 
@@ -240,7 +239,6 @@ func registrar_derrota(nombre: String):
 
 		print(nombre, " perdió.")
 		print("Derrotas totales: ", derrotas_actuales + 1)
-		print("Puntaje eliminado: 0")
 
 
 	else:

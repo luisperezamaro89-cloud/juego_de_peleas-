@@ -2326,6 +2326,7 @@ text = "RONDA 1"
 [node name="Pausa" type="CanvasLayer" parent="." unique_id=150707522]
 process_mode = 3
 layer = 10
+visible = false
 script = ExtResource("5_fsg6a")
 
 [node name="Oscurecer" type="ColorRect" parent="Pausa" unique_id=478399135]
@@ -2445,3 +2446,19 @@ custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Reanudar"
+
+[node name="Anuncio" type="CanvasLayer" parent="." unique_id=1559688019]
+layer = 5
+
+[node name="TextoAnuncio" type="Label" parent="Anuncio" unique_id=1756884814]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.63600004, 0.22000003, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 120
+text = "¡K.O.!"
+horizontal_alignment = 1
+vertical_alignment = 1
