@@ -4,10 +4,6 @@ var sprite
 var animation_player
 
 
-var audio_golpe
-var golpe_defrente1
-var golpe_defrente2
-var sonido_golpe_3
 # ==========================================
 # COMBO
 # ==========================================
@@ -39,9 +35,7 @@ func entrar():
 
 	sprite = player.get_node("AnimatedSprite2D")
 	animation_player = player.get_node("AnimationPlayer")
-	audio_golpe = player.get_node("AudioStreamPlayer")
 
-	cargar_sonidos()
 	player.hitbox_delante.reiniciar_golpe()
 	player.hitbox_arriba.reiniciar_golpe()
 	player.hitbox_abajo.reiniciar_golpe()
@@ -51,64 +45,49 @@ func entrar():
 	reproducir_golpe()
 
 # ==========================================
-# CONFIGURAR SONIDO
+# REPRODUCIR SONIDO DEL GOLPE
 # ==========================================
 
-func cargar_sonidos():
-
-	print("================================")
-	print("CARGANDO SONIDOS")
-	print("PERSONAJE: ", player.nombre_personaje)
-
-	if player.nombre_personaje == "Estudiante":
-
-		golpe_defrente1 = preload("res://audio/estudiante/golpe_bajop01.wav")
-
-		print("SONIDO ESTUDIANTE 1: ", golpe_defrente1)
-
-	elif player.nombre_personaje == "Delincuente":
-
-		golpe_defrente1 = preload("res://audio/delincuente/primer_golpep2.wav")
-		golpe_defrente2 = preload("res://audio/delincuente/segundo_golpep2.wav")
-
-		print("SONIDO DELINCUENTE 1: ", golpe_defrente1)
-		print("SONIDO DELINCUENTE 2: ", golpe_defrente2)
-
-	print("================================")
-		
 func reproducir_sonido_golpe():
 
 	print("================================")
 	print("INTENTANDO REPRODUCIR SONIDO")
 	print("GOLPE ACTUAL: ", golpe_actual)
+	print("DIRECCION: ", player.direccion_ataque)
 	print("PERSONAJE: ", player.nombre_personaje)
-	print("AUDIO: ", audio_golpe)
 
-	if audio_golpe == null:
-		print("ERROR: AudioStreamPlayer NO ENCONTRADO")
-		return
+	match player.direccion_ataque:
 
-	match golpe_actual:
+		"delante":
 
-		1:
-			print("SELECCIONANDO GOLPE 1")
-			audio_golpe.stream = golpe_defrente1
+			match golpe_actual:
 
-		2:
-			print("SELECCIONANDO GOLPE 2")
-			audio_golpe.stream = golpe_defrente2
+				1:
+					print("SONIDO: GOLPE DE FRENTE 1")
+					player.reproducir_sonido("golpe1")
 
-		3:
-			print("SELECCIONANDO GOLPE 3")
-			audio_golpe.stream = sonido_golpe_3
+				2:
+					print("SONIDO: GOLPE DE FRENTE 2")
+					player.reproducir_sonido("golpe_2")
 
-	print("STREAM ACTUAL: ", audio_golpe.stream)
+				3:
+					print("SONIDO: GOLPE DE FRENTE 3")
+					player.reproducir_sonido("golpe_2")
 
-	audio_golpe.play()
 
-	print("REPRODUCIENDO: ", audio_golpe.playing)
+		"abajo":
+
+			print("SONIDO: GOLPE ABAJO")
+			player.reproducir_sonido("golpe_bajo")
+
+
+		"arriba":
+
+			print("SONIDO: GOLPE ARRIBA")
+			player.reproducir_sonido("golpe_Arriba")
+
+
 	print("================================")
-	
 	
 	
 # ==========================================
@@ -191,6 +170,7 @@ func reproducir_golpe():
 	player.hitbox_abajo.reiniciar_golpe()
 
 	reproducir_sonido_golpe()
+
 	# ==========================================
 	# GOLPE HACIA ARRIBA
 	# ==========================================

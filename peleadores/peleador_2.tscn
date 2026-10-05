@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bqgoyabhgay30" path="res://assets/personajes/personaje 1/sprites/caminata/spritesheet caminata.png" id="3_hkbjh"]
 [ext_resource type="Texture2D" uid="uid://861rtx80j1c1" path="res://assets/personajes/personaje 1/sprites/daño/spiptesheet general.png" id="3_l55qd"]
 [ext_resource type="Texture2D" uid="uid://dpmftho060dal" path="res://assets/personajes/personaje 2/sprites/golpefrentep2.png" id="5_v30wq"]
-[ext_resource type="Texture2D" uid="uid://w1efmtxrjinx" path="res://assets/personajes/personaje 1/sprites/golpes/spritesheet golpe bajo.png" id="5_xvi2n"]
+[ext_resource type="Texture2D" uid="uid://cngoaeuqr0og8" path="res://assets/personajes/personaje 2/sprites/golpebajo p2.png" id="6_l55qd"]
 [ext_resource type="Texture2D" uid="uid://cib1sb4461t3y" path="res://assets/personajes/personaje 2/sprites/golpearribap2.png" id="7_l55qd"]
 [ext_resource type="Texture2D" uid="uid://bg8v1ihorxall" path="res://assets/personajes/personaje 2/sprites/golpefrentep22.png" id="8_vhuk2"]
 [ext_resource type="Texture2D" uid="uid://7vbvcjohwdya" path="res://assets/personajes/personaje 2/sprites/spritesheetidlep2.png" id="9_hkbjh"]
@@ -272,25 +272,29 @@ region = Rect2(0, 1231, 1231, 1231)
 atlas = ExtResource("5_v30wq")
 region = Rect2(1231, 1231, 1231, 1231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cowne"]
-atlas = ExtResource("5_xvi2n")
+[sub_resource type="AtlasTexture" id="AtlasTexture_47k8d"]
+atlas = ExtResource("6_l55qd")
 region = Rect2(0, 0, 1231, 1231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gxf8q"]
-atlas = ExtResource("5_xvi2n")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8cxc"]
+atlas = ExtResource("6_l55qd")
 region = Rect2(1231, 0, 1231, 1231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8re3y"]
-atlas = ExtResource("5_xvi2n")
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5teg"]
+atlas = ExtResource("6_l55qd")
 region = Rect2(2462, 0, 1231, 1231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aduok"]
-atlas = ExtResource("5_xvi2n")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1edjl"]
+atlas = ExtResource("6_l55qd")
 region = Rect2(3693, 0, 1231, 1231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2yt0f"]
-atlas = ExtResource("5_xvi2n")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkmj0"]
+atlas = ExtResource("6_l55qd")
 region = Rect2(0, 1231, 1231, 1231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3my0"]
+atlas = ExtResource("6_l55qd")
+region = Rect2(1231, 1231, 1231, 1231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22mbt"]
 atlas = ExtResource("7_l55qd")
@@ -491,20 +495,23 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.4,
-"texture": SubResource("AtlasTexture_cowne")
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_47k8d")
 }, {
-"duration": 0.4,
-"texture": SubResource("AtlasTexture_gxf8q")
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_s8cxc")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_h5teg")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_1edjl")
 }, {
 "duration": 0.7,
-"texture": SubResource("AtlasTexture_8re3y")
+"texture": SubResource("AtlasTexture_nkmj0")
 }, {
-"duration": 0.7,
-"texture": SubResource("AtlasTexture_aduok")
-}, {
-"duration": 0.7,
-"texture": SubResource("AtlasTexture_2yt0f")
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_j3my0")
 }],
 "loop": 0,
 "name": &"golpe_bajo",
@@ -648,7 +655,7 @@ speed_scale = 2.187
 position = Vector2(6.500122, 7.500122)
 scale = Vector2(2.7010562, 2.7010562)
 sprite_frames = SubResource("SpriteFrames_wopbi")
-animation = &"golpe_saltando"
+animation = &"golpe_bajo"
 autoplay = "idle"
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=1545829901]
