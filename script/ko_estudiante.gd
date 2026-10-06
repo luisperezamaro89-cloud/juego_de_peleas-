@@ -3,6 +3,7 @@ extends Control
 @onready var video = self
 
 func _ready():
+	MusicManager.reproducir_musica("ganador_estudiante")
 	video.play()
 	video.finished.connect(_on_video_finished)
 

@@ -60,19 +60,17 @@ func reproducir_sonido_golpe():
 
 		"delante":
 
-			match golpe_actual:
+			if golpe_actual == 1:
+				print("SONIDO: GOLPE DE FRENTE 1")
+				player.reproducir_sonido("golpe1")
 
-				1:
-					print("SONIDO: GOLPE DE FRENTE 1")
-					player.reproducir_sonido("golpe1")
+			elif golpe_actual == 2:
+				print("SONIDO: GOLPE DE FRENTE 2")
+				player.reproducir_sonido("golpe_2")
 
-				2:
-					print("SONIDO: GOLPE DE FRENTE 2")
-					player.reproducir_sonido("golpe_2")
-
-				3:
-					print("SONIDO: GOLPE DE FRENTE 3")
-					player.reproducir_sonido("golpe_2")
+			elif golpe_actual == 3:
+				print("SONIDO: GOLPE DE FRENTE 2")
+				player.reproducir_sonido("golpe_2")
 
 
 		"abajo":
@@ -85,7 +83,6 @@ func reproducir_sonido_golpe():
 
 			print("SONIDO: GOLPE ARRIBA")
 			player.reproducir_sonido("golpe_Arriba")
-
 
 	print("================================")
 	
