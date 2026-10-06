@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://d041dbsj7npi7"]
 
 [ext_resource type="VideoStream" uid="uid://b20ufjmqhuyta" path="res://assets/ko/pantalla-ganador1.ogv" id="1_7drfe"]
-[ext_resource type="Script" uid="uid://cbqw0045chso2" path="res://script/estilo_video.gd" id="3_jge66"]
+[ext_resource type="Script" uid="uid://bhvh6saohro3k" path="res://script/ko_estudiante.gd" id="2_7drfe"]
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" unique_id=935622825]
 offset_right = 40.0
 offset_bottom = 40.0
 stream = ExtResource("1_7drfe")
 autoplay = true
-script = ExtResource("3_jge66")
+script = ExtResource("2_7drfe")
