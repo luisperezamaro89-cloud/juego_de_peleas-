@@ -45,11 +45,11 @@ position = Vector2(291.125, 649.375)
 shape = SubResource("RectangleShape2D_xrivr")
 
 [node name="pared2" type="CollisionShape2D" parent="StaticBody2D" unique_id=462442517]
-position = Vector2(63.5, 519)
+position = Vector2(76, 521)
 shape = SubResource("RectangleShape2D_b1lj4")
 
 [node name="pared1" type="CollisionShape2D" parent="StaticBody2D" unique_id=1809700135]
-position = Vector2(521.25, 512)
+position = Vector2(503, 510)
 shape = SubResource("RectangleShape2D_13qdw")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1924857379]
@@ -60,61 +60,56 @@ script = ExtResource("3_iyxqb")
 
 [node name="Uix" type="CanvasLayer" parent="." unique_id=298885631]
 
-[node name="score_1" parent="Uix" unique_id=1076015153 instance=ExtResource("6_2edlo")]
-modulate = Color(0, 0, 0, 1)
-anchors_preset = -1
-anchor_left = 0.16059028
-anchor_top = 0.032407407
-anchor_right = 0.27256945
-anchor_bottom = 0.06790123
-offset_right = 0.0
-offset_bottom = 3.8146973e-06
-theme_override_colors/font_color = Color(0.73168725, 0.68570995, 0.87513816, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
-metadata/_edit_use_anchors_ = true
+[node name="score_2" parent="Uix" unique_id=1076015153 instance=ExtResource("6_2edlo")]
+offset_left = 983.0
+offset_top = 33.0
+offset_right = 1055.0
+offset_bottom = 56.0
+scale = Vector2(1.2, 1.2)
 
-[node name="score_2" parent="Uix" unique_id=194074743 instance=ExtResource("6_2edlo")]
-offset_left = 971.0
-offset_top = 18.0
-offset_right = 1043.0
-offset_bottom = 41.0
-
-[node name="healthbar_1" parent="Uix" unique_id=230015840 instance=ExtResource("4_q6r6c")]
-modulate = Color(1.3704424, 1.3704424, 1.3704424, 1)
-top_level = true
-anchors_preset = -1
-anchor_left = 0.014756944
-anchor_top = 0.06944445
-anchor_right = 0.25520834
-anchor_bottom = 0.15493828
-offset_right = -77.0
-offset_bottom = -15.400009
-scale = Vector2(1.385, 1.385)
-metadata/_edit_use_anchors_ = true
-
-[node name="healthbar_2" parent="Uix" unique_id=1207519493 instance=ExtResource("4_q6r6c")]
-anchors_preset = -1
-anchor_left = 0.7560764
-anchor_top = 0.06944445
-anchor_right = 0.9724827
-anchor_bottom = 0.15493828
-offset_right = -69.30005
-offset_bottom = -15.400009
-grow_horizontal = 0
-scale = Vector2(1.385, 1.385)
-metadata/_edit_use_anchors_ = true
+[node name="score_1" parent="Uix" unique_id=1387676217 instance=ExtResource("6_2edlo")]
+offset_left = 123.0
+offset_top = 30.000002
+offset_right = 195.0
+offset_bottom = 53.0
+scale = Vector2(1.2, 1.2)
 
 [node name="ronda_label" type="Label" parent="Uix" unique_id=1586363716]
-offset_left = 399.0
-offset_top = 72.99997
-offset_right = 470.0
-offset_bottom = 95.99997
-scale = Vector2(5.16, 5.16)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -283.5
+offset_top = -87.5
+offset_right = 283.5
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0.3882353, 1)
+theme_override_colors/font_outline_color = Color(0.13803688, 0.20180148, 0.564128, 1)
+theme_override_constants/shadow_offset_x = 9
+theme_override_constants/shadow_offset_y = 9
+theme_override_constants/shadow_outline_size = 22
+theme_override_font_sizes/font_size = 128
 text = "RONDA 1"
+
+[node name="healthbar_1" parent="Uix" unique_id=230015840 instance=ExtResource("4_q6r6c")]
+offset_left = 35.0
+offset_top = 62.0
+offset_right = 215.0
+offset_bottom = 94.0
+metadata/_edit_use_anchors_ = true
+
+[node name="healthbar_2" parent="Uix" unique_id=726358770 instance=ExtResource("4_q6r6c")]
+offset_left = 751.0
+offset_top = 65.0
+offset_right = 931.0
+offset_bottom = 97.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Pausa" type="CanvasLayer" parent="." unique_id=150707522]
 process_mode = 3
