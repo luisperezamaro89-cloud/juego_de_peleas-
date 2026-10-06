@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://gp665tcad2cf" path="res://Uix/score_1.tscn" id="6_2edlo"]
 [ext_resource type="Script" uid="uid://b4tkpv078xdca" path="res://script/estilo_pausa.gd" id="7_db4js"]
 [ext_resource type="Script" uid="uid://bmss4gmvy2sdl" path="res://script/estilo_pelea.gd" id="8_bpb78"]
+[ext_resource type="Script" uid="uid://dnxv0awsrxy1o" path="res://script/controles_pantalla.gd" id="9_bpb78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(619.75, 68.75)
@@ -259,3 +260,6 @@ vertical_alignment = 1
 
 [node name="DecoracionPelea" type="Node" parent="." unique_id=463166289]
 script = ExtResource("8_bpb78")
+
+[node name="Controles" type="CanvasLayer" parent="." unique_id=1811649049]
+script = ExtResource("9_bpb78")

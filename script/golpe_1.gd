@@ -146,6 +146,7 @@ func actualizar(_direccion):
 	if animacion_iniciada and not sprite.is_playing():
 
 		player.desactivar_hitboxes()
+		player.set_meta("fin_golpe", Time.get_ticks_msec())
 
 		return "Idle"
 

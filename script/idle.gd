@@ -3,6 +3,8 @@ extends Node
 var player
 var sprite
 
+var cooldown_golpe := 0.5
+
 
 func entrar():
 
@@ -10,10 +12,15 @@ func entrar():
 	sprite.play("idle")
 
 
+func puede_golpear() -> bool:
+	var ultimo = player.get_meta("fin_golpe", -100000)
+	return (Time.get_ticks_msec() - ultimo) >= cooldown_golpe * 1000.0
+
+
 func actualizar(direccion):
 
-	# Golpear
-	if Input.is_key_pressed(player.golpear):
+	# Golpear (solo si ya pasó el cooldown)
+	if Input.is_key_pressed(player.golpear) and puede_golpear():
 		return "Golpear"
 
 	# Bloquear

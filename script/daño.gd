@@ -4,6 +4,7 @@ var player
 var sprite
 
 @export var duracion_hit_stun: float = 0.25
+@export var invulnerabilidad_extra: float = 0.3
 
 var tiempo_restante: float = 0.0
 
@@ -13,12 +14,10 @@ func entrar():
 	player.velocity.x = 0
 	tiempo_restante = duracion_hit_stun
 
-	print("ENTRÓ EN ESTADO DAÑO")
-	print("ANIMACIÓN ACTUAL: ", sprite.animation)
+	var total = (duracion_hit_stun + invulnerabilidad_extra) * 1000.0
+	player.set_meta("invulnerable_hasta", Time.get_ticks_msec() + total)
 
 	sprite.play("daño")
-
-	print("ANIMACIÓN DESPUÉS DE PLAY: ", sprite.animation)
 
 
 func actualizar(_direccion):

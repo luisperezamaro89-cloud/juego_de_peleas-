@@ -67,7 +67,12 @@ func _on_area_entered(area: Area2D):
 func _aplicar_golpe(area: Area2D):
 
 	if ya_golpeo:
-		print("ESTA HITBOX YA GOLPEÓ")
+		return
+
+	# Si el rival está en su tiempo de invulnerabilidad, el golpe no cuenta
+	var objetivo = area.get_parent()
+	if objetivo and objetivo.get_meta("invulnerable_hasta", 0) > Time.get_ticks_msec():
+		ya_golpeo = true
 		return
 
 	ya_golpeo = true
@@ -75,12 +80,6 @@ func _aplicar_golpe(area: Area2D):
 	var golpe = player.get_node("StateMachine/Golpear")
 	var daño = golpe.obtener_daño()
 
-	print("================================")
-	print("¡¡GOLPE DETECTADO!!")
-	print("HITBOX: ", name)
-	print("DAÑO APLICADO: ", daño)
-	print("ATACANTE: ", player.name)
+	print("GOLPE: ", name, " | DAÑO: ", daño, " | ATACANTE: ", player.name)
 
 	area.recibir_daño(daño, player)
-
-	print("================================")
