@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d01ukiwenn2op"]
+[gd_scene format=3 uid="uid://wk2dsfscufnm"]
 
 [ext_resource type="StyleBox" uid="uid://gjeyjoy0rjn3" path="res://escenas/Seleccion/scenes/Estilos_botones/Normal.tres" id="1_mbim7"]
 [ext_resource type="Script" uid="uid://bc4h6emdekib6" path="res://escenas/Seleccion/seleccion_personajes.gd" id="1_phnib"]
