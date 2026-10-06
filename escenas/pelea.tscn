@@ -8,13 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://gp665tcad2cf" path="res://Uix/score_1.tscn" id="6_2edlo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
-size = Vector2(619.75, 57.75)
+size = Vector2(619.75, 68.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1lj4"]
-size = Vector2(34, 254)
+size = Vector2(39, 254)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
-size = Vector2(31, 262)
+size = Vector2(40.5, 262)
 
 [node name="Node2D" type="Node2D" unique_id=762175199]
 script = ExtResource("1_0hol4")
@@ -41,15 +41,15 @@ collision_mask = 3
 [node name="piso" type="CollisionShape2D" parent="StaticBody2D" unique_id=2030690337]
 light_mask = 7
 visibility_layer = 7
-position = Vector2(291.125, 654.875)
+position = Vector2(291.125, 649.375)
 shape = SubResource("RectangleShape2D_xrivr")
 
 [node name="pared2" type="CollisionShape2D" parent="StaticBody2D" unique_id=462442517]
-position = Vector2(61, 519)
+position = Vector2(63.5, 519)
 shape = SubResource("RectangleShape2D_b1lj4")
 
 [node name="pared1" type="CollisionShape2D" parent="StaticBody2D" unique_id=1809700135]
-position = Vector2(526, 512)
+position = Vector2(521.25, 512)
 shape = SubResource("RectangleShape2D_13qdw")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1924857379]

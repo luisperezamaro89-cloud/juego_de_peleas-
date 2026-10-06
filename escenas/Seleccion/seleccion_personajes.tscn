@@ -3,8 +3,8 @@
 [ext_resource type="StyleBox" uid="uid://gjeyjoy0rjn3" path="res://escenas/Seleccion/scenes/Estilos_botones/Normal.tres" id="1_mbim7"]
 [ext_resource type="Script" uid="uid://bc4h6emdekib6" path="res://escenas/Seleccion/seleccion_personajes.gd" id="1_phnib"]
 [ext_resource type="Script" uid="uid://ca1o40ixak5t1" path="res://script/estilo_seleccion.gd" id="2_yqtke"]
-[ext_resource type="Texture2D" uid="uid://c5v13ddp4g6e1" path="res://images seccion personajes/images.jpg" id="3_xf1re"]
-[ext_resource type="Texture2D" uid="uid://b7sjc7fapc50r" path="res://images seccion personajes/images (1).jpg" id="4_yqtke"]
+[ext_resource type="Texture2D" uid="uid://3ga6pavwylsf" path="res://images seccion personajes/icono p1.jpg" id="4_yqtke"]
+[ext_resource type="Texture2D" uid="uid://mg4w7jl8nvqo" path="res://images seccion personajes/icono p2.jpg" id="5_n1xgo"]
 
 [sub_resource type="Theme" id="Theme_hfy2b"]
 
@@ -80,19 +80,19 @@ custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = ExtResource("1_mbim7")
-icon = ExtResource("3_xf1re")
+icon = ExtResource("4_yqtke")
 expand_icon = true
 
 [node name="LabeldelincuenteJ1" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1859312645]
 layout_mode = 2
-text = "DELICUENTE"
+text = "DELINCUENTE"
 
 [node name="BtndelincuenteJ1" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ1" unique_id=1705366667]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = ExtResource("1_mbim7")
-icon = ExtResource("4_yqtke")
+icon = ExtResource("5_n1xgo")
 expand_icon = true
 
 [node name="ContenedorJ2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1535375093]
@@ -108,17 +108,17 @@ custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = ExtResource("1_mbim7")
-icon = ExtResource("3_xf1re")
+icon = ExtResource("4_yqtke")
 expand_icon = true
 
 [node name="LabeldelincuenteJ2" type="Label" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=2049738083]
 layout_mode = 2
-text = "DELICUENTE"
+text = "DELINCUENTE"
 
 [node name="BtndelincuenteJ2" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorJ2" unique_id=1786577451]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = ExtResource("1_mbim7")
-icon = ExtResource("4_yqtke")
+icon = ExtResource("5_n1xgo")
 expand_icon = true
