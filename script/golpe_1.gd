@@ -82,7 +82,7 @@ func reproducir_sonido_golpe():
 		"arriba":
 
 			print("SONIDO: GOLPE ARRIBA")
-			player.reproducir_sonido("golpe_Arriba")
+			player.reproducir_sonido("golpe_arriba")
 
 	print("================================")
 	

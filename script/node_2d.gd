@@ -23,8 +23,8 @@ const RUTA_PELEADOR_1_POR_DEFECTO := "res://peleadores/peleador1.tscn"
 const RUTA_PELEADOR_2_POR_DEFECTO := "res://peleadores/peleador_2.tscn"
 
 # Dónde aparece cada peleador
-const POSICION_PELEADOR_1 := Vector2(-110.0, 26.0)
-const POSICION_PELEADOR_2 := Vector2(103.0, 27.0)
+const POSICION_PELEADOR_1 := Vector2(250.0, 550.0)
+const POSICION_PELEADOR_2 := Vector2(400.0, 550.0)
 
 # Tamaño de los peleadores. En sus escenas son enormes y en la pelea se
 # usan muy reducidos. Si se ven más grandes o pequeños, cambia este número.
@@ -95,13 +95,18 @@ func crear_peleadores():
 		if hijo is Camera2D:
 			hijo.peleador1 = peleador1
 			hijo.peleador2 = peleador2
-
+			
 	if get_tree().has_meta("personaje_j1"):
 		personaje_j1 = get_tree().get_meta("personaje_j1")
 
 	if get_tree().has_meta("personaje_j2"):
 		personaje_j2 = get_tree().get_meta("personaje_j2")
 
+	peleador1.nombre_personaje = personaje_j1
+	peleador2.nombre_personaje = personaje_j2
+
+	peleador1.configurar_sonidos()
+	peleador2.configurar_sonidos()
 
 func crear_peleador(ruta: String, nombre: String, posicion: Vector2):
 
@@ -331,39 +336,75 @@ func terminar_pelea():
 	print("================================")
 
 	var ganador_partida = ""
+	var personaje_ganador = ""
+
+	# ==========================================
+	# DETERMINAR QUIÉN GANÓ
+	# ==========================================
 
 	if victorias_j1 > victorias_j2:
 
 		ganador_partida = "Jugador 1"
+
+		# Obtener el personaje que eligió J1
+		personaje_ganador = get_tree().get_meta("pj_jugador1", "")
+
 		print("JUGADOR 1 GANA LA PELEA")
+		print("PERSONAJE GANADOR: ", personaje_ganador)
 
 	elif victorias_j2 > victorias_j1:
 
 		ganador_partida = "Jugador 2"
+
+		# Obtener el personaje que eligió J2
+		personaje_ganador = get_tree().get_meta("pj_jugador2", "")
+
 		print("JUGADOR 2 GANA LA PELEA")
+		print("PERSONAJE GANADOR: ", personaje_ganador)
 
 	else:
 
 		ganador_partida = "Empate"
+
 		print("EMPATE")
 
 
-	# Guardar los puntajes
+	# ==========================================
+	# GUARDAR INFORMACIÓN
+	# ==========================================
+
 	get_tree().set_meta("puntaje_jugador1", jugador1.puntaje)
 	get_tree().set_meta("puntaje_jugador2", jugador2.puntaje)
 
-	# Guardar quién ganó la partida
 	get_tree().set_meta("ganador_partida", ganador_partida)
 
+	get_tree().set_meta("personaje_ganador", personaje_ganador)
 
-	# Texto del ganador
-	if ganador_partida == "Empate":
-		await mostrar_ganador("¡EMPATE!")
+
+	# ==========================================
+	# ESCENA SEGÚN EL PERSONAJE GANADOR
+	# ==========================================
+
+	if personaje_ganador == "estudiante":
+
+		print("CARGANDO PANTALLA DE GANADOR: ESTUDIANTE")
+
+		get_tree().change_scene_to_file(
+			"res://escenas/ko_estudiante.tscn"
+		)
+
+	elif personaje_ganador == "delincuente":
+
+		print("CARGANDO PANTALLA DE GANADOR: DELINCUENTE")
+
+		get_tree().change_scene_to_file(
+			"res://escenas/ko_delincuente.tscn"
+		)
+
 	else:
-		await mostrar_ganador("¡GANA EL " + ganador_partida.to_upper() + "!")
 
-	# Ir a resultados con un fundido a negro
-	Ajustes.cambiar_escena_con_fundido("res://escenas/Resultado.tscn", 0.8)
+		print("ERROR: NO SE ENCONTRÓ EL PERSONAJE GANADOR")
+		print("PERSONAJE: ", personaje_ganador)
 
 
 # ==========================================
@@ -469,3 +510,22 @@ func mostrar_ganador(texto: String) -> void:
 func _exit_tree() -> void:
 	# Por si se sale de la pelea en plena cámara lenta
 	Engine.time_scale = 1.0
+
+	# ==========================================
+	# CAMBIAR ESCENA SEGÚN EL GANADOR
+	# ==========================================
+
+	if victorias_j1 > victorias_j2:
+
+		print("CARGANDO ESCENA DEL GANADOR: JUGADOR 1")
+		get_tree().change_scene_to_file("res://escenas/ko_estudiante.tscn")
+
+	elif victorias_j2 > victorias_j1:
+
+		print("CARGANDO ESCENA DEL GANADOR: JUGADOR 2")
+		get_tree().change_scene_to_file("res://escenas/ko_delincuente.tscn")
+
+	else:
+
+		print("CARGANDO ESCENA DE EMPATE")
+		get_tree().change_scene_to_file("res://escenas/empate.tscn")
