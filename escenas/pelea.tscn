@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dj6yeng6igspc" path="res://Uix/healthbar/healthbar_1.tscn" id="4_q6r6c"]
 [ext_resource type="Script" uid="uid://t66rgx4k4ktx" path="res://escenas/pausa.gd" id="5_fsg6a"]
 [ext_resource type="PackedScene" uid="uid://gp665tcad2cf" path="res://Uix/score_1.tscn" id="6_2edlo"]
+[ext_resource type="Script" uid="uid://b4tkpv078xdca" path="res://script/estilo_pausa.gd" id="7_db4js"]
+[ext_resource type="Script" uid="uid://bmss4gmvy2sdl" path="res://script/estilo_pelea.gd" id="8_bpb78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(619.75, 68.75)
@@ -240,6 +242,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Reanudar"
 
+[node name="DecoracionPausa" type="Node" parent="Pausa" unique_id=579921250]
+script = ExtResource("7_db4js")
+
 [node name="Anuncio" type="CanvasLayer" parent="." unique_id=1559688019]
 layer = 5
 
@@ -256,3 +261,6 @@ theme_override_font_sizes/font_size = 120
 text = "¡K.O.!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DecoracionPelea" type="Node" parent="." unique_id=463166289]
+script = ExtResource("8_bpb78")

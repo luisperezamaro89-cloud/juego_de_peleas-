@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ch0hvs5qdjjq7"]
 
 [ext_resource type="Script" uid="uid://dl4ufygp3ocpk" path="res://base_datos/SQL.gd" id="1_0fbet"]
+[ext_resource type="Script" uid="uid://bmj36r1my0034" path="res://script/estilo_control.gd" id="2_62e2m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlew8"]
 content_margin_left = 8.0
@@ -96,10 +97,10 @@ offset_bottom = 150.0
 
 [node name="ConsolaSalida" type="TextEdit" parent="." unique_id=570092381]
 layout_mode = 0
-offset_left = 286.0
+offset_left = 277.0
 offset_top = 184.0
-offset_right = 1045.0
-offset_bottom = 608.0
+offset_right = 1134.0
+offset_bottom = 636.0
 editable = false
 
 [node name="regresar_menu" type="Button" parent="." unique_id=1886611927]
@@ -255,6 +256,9 @@ text = "Cancelar"
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 text = "Cambiar"
+
+[node name="Decoracion" type="Node" parent="." unique_id=1349054788]
+script = ExtResource("2_62e2m")
 
 [connection signal="button_down" from="CrearTabla" to="." method="_on_crear_tabla_button_down"]
 [connection signal="button_down" from="InsertarJugador" to="." method="_on_insertar_jugador_button_down"]

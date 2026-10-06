@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d3ruwjeg171m0"]
 
 [ext_resource type="Script" uid="uid://dqqrp015q6tbl" path="res://script/Resultado.gd" id="1_rwogp"]
+[ext_resource type="Script" uid="uid://cvqbpl5c4w3lr" path="res://script/estilo_resultado.gd" id="2_nrq4i"]
 
 [node name="Resultado" type="Control" unique_id=1949715539]
 layout_mode = 3
@@ -14,6 +15,7 @@ layout_mode = 0
 offset_right = 1148.0
 offset_bottom = 652.0
 color = Color(0.15487596, 0.154876, 0.15487596, 1)
+script = ExtResource("2_nrq4i")
 
 [node name="Titulo" type="Label" parent="." unique_id=477222430]
 layout_mode = 0

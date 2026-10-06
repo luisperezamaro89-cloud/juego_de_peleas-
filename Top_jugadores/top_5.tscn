@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://uymxyh242178"]
 
 [ext_resource type="Script" uid="uid://runljopey51t" path="res://control.gd" id="1_hn8yy"]
+[ext_resource type="Script" uid="uid://b42ki74phrvqy" path="res://script/estilo_top5.gd" id="2_fc164"]
 
 [node name="Control" type="Control" unique_id=353167568]
 layout_mode = 3
@@ -15,6 +16,7 @@ script = ExtResource("1_hn8yy")
 layout_mode = 0
 offset_right = 1147.0
 offset_bottom = 650.0
+script = ExtResource("2_fc164")
 
 [node name="TituloTop" type="Label" parent="Panel" unique_id=474207771]
 layout_mode = 0
